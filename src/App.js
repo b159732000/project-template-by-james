@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import './App.scss';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar/NavigationBar.jsx';
+import { Xmjs } from './components/Xmjs/index.js';
+import { Qwzs } from './components/Qwzs/index.js';
+
 
 function App() {
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <NavigationBar></NavigationBar>
+        <Switch>
+          <Route path="/" exact component={Xmjs}></Route>
+          <Route path="/Qwzs" exact component={Qwzs}></Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
