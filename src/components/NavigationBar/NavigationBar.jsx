@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavigationBar.scss';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openMenu, closeMenu } from '../../actions/actions.js'
 
@@ -35,34 +35,42 @@ class NavigationBar extends React.Component {
 
     render() {
         return (
-            <div className="NavigationBar">
+            <div className={"NavigationBar" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}>
 
-                <div className={"menuIcon" + ((this.props.menuIsOpen) ? " active" : "")} onClick={() => this.handleMenuIconClick()}>
-                    {/*<div className="menuIcon active" onClick={this.openMenu}>*/}
+                {/*<div className={"menuIcon" + ((this.props.menuIsOpen) ? " active" : "")} onClick={() => this.handleMenuIconClick()}>
                     <div className="hamburger"></div>
-                </div>
+                    </div>
 
-                <div className="logo">Cui.hu</div>
+                    <div className="logo">Cui.hu</div>*/}
 
                 <ul className="menuList">
                     <li>
-                        <div className="menuNameCN">項目介紹</div>
-                        <div className="menuNameEn">Project introduciton</div>
+                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+
+                            <div className="menuNameCN">項目介紹</div>
+                            <div className="menuNameEn">Project introduciton</div>
+                        </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <div className="menuNameCN">區位展示</div>
-                        <div className="menuNameEn">Location display</div>
+                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">區位展示</div>
+                            <div className="menuNameEn">Location display</div>
+                        </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <div className="menuNameCN">精工戶型</div>
-                        <div className="menuNameEn">Seiko apartment</div>
+                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">精工戶型</div>
+                            <div className="menuNameEn">Seiko apartment</div>
+                        </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <div className="menuNameCN">景觀展示</div>
-                        <div className="menuNameEn">Landscape display</div>
+                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">景觀展示</div>
+                            <div className="menuNameEn">Landscape display</div>
+                        </Link>
                     </li>
                 </ul>
 

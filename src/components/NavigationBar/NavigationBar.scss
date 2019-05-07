@@ -2,13 +2,61 @@
 
 .NavigationBar {
   // border: 1px solid #000;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $primaryPink;
+  z-index: 1000;
+  background-color: $PrimaryRed;
   color: $PrimaryWhite;
+  transform: translate(-100%, 0);
+  transition: $NavigationBarTransition; //transition:property duration timing-function delay;
+
+  a {
+    color: $PrimaryWhite;
+  }
+
+  &.menuIsActive {
+    transform: translate(0, 0);
+    .menuList {
+      li {
+        transform: translate(0, 0);
+        transition-delay: 0s; //進入此class時會看這個延遲
+      }
+
+      @for $i from 1 through 4 {
+        li:nth-child(#{$i*2-1}) {
+          opacity: 1;
+          transition-delay: #{$i*0.14}s;
+          transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.970);
+        }
+      }
+      // li:nth-child(1) {
+      //   opacity: 1;
+      //   transition-delay: 0.1s;
+      // }
+      // li:nth-child(3) {
+      //   opacity: 1;
+      //   transition-delay: 0.2s;
+      // }
+      // li:nth-child(5) {
+      //   opacity: 1;
+      //   transition-delay: 0.3s;
+      // }
+      // li:nth-child(7) {
+      //   opacity: 1;
+      //   transition-delay: 0.4s;
+      // }
+    }
+    .bottom {
+      transform: translate(0, 0);
+      transition-delay: 0s; //進入此class時會看這個延遲
+      opacity: 1;
+      transition-delay: #{5*0.14}s;
+      transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.970);
+    }
+  }
 
   .menuIcon {
     position: fixed;
@@ -19,20 +67,6 @@
 
     // Menu開啟時
     &.active .hamburger {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); //translate僅具x,y位移作用
-      transition: all 0.5s; //transition:property duration timing-function delay;
-
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        width: 40px;
-        height: 2px;
-        background-color: $PrimaryWhite;
-      }
       &:before {
         top: -1px;
         left: -20px;
@@ -44,7 +78,6 @@
         transform: rotate(-45deg);
       }
     }
-
     // Menu關閉時
     .hamburger {
       background-color: #fff;
@@ -52,8 +85,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); //translate僅具x,y位移作用
-      transition: all 0.5s; //transition:property duration timing-function delay;
-
       &:before,
       &:after {
         content: "";
@@ -61,6 +92,7 @@
         width: 40px;
         height: 2px;
         background-color: $PrimaryWhite;
+        transition: $NavigationBarTransition; //transition:property duration timing-function delay;
       }
       &:before {
         top: -6px;
@@ -83,6 +115,8 @@
   }
 
   .menuList {
+    transition: $NavigationBarTransition;
+
     margin: 0;
     padding: 0;
     position: relative;
@@ -99,6 +133,11 @@
     }
 
     li {
+      opacity: 0;
+      transform: translate(-125%, 0);
+      transition: $NavigationBarTransition;
+      transition-delay: 0.7s; //進入此class時會看這個延遲
+
       display: flex;
       justify-content: flex-end; //水平對齊
       align-items: flex-end; //垂直對齊
@@ -127,6 +166,11 @@
   }
 
   .bottom {
+    opacity: 0;
+    transform: translate(-125%, 0);
+    transition: $NavigationBarTransition;
+    transition-delay: 0.7s; //進入此class時會看這個延遲
+
     position: absolute;
     bottom: 3vh;
     right: 6.5vw;
