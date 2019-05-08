@@ -1,0 +1,130 @@
+@import "../../variables.scss";
+
+
+
+.QwzsContainer {
+  background-color: $PrimaryWhite;
+  width: 100vw;
+  height: 100%;
+  position: relative;
+
+  // 背景鏤空字
+  .bgStrokeText {
+    position: absolute;
+    top: 31.5vh;
+    left: 0;
+    font-size: 16vw;
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: $PrimaryBlack;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .choiceList {
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    top: 38vh;
+
+    // 隱藏捲動軸
+    // -ms-overflow-style: none; // IE 10+
+    // scrollbar-width: none; // Firefox
+    ::-webkit-scrollbar {
+      display: none; // Safari and Chrome
+      // width: 0px;  /* Remove scrollbar space */
+      // background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+
+    ul {
+      overflow-x: scroll;   //讓清單在此範圍內左右移動，而非整個頁面左右移動
+      white-space: nowrap;  //超過寬度也不換行
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 100%;
+
+      li {
+        height: 100%;
+        width: 68vw;
+
+        // 為了讓圖片和內容的flex-grow起作用
+        display: inline-flex;
+        flex-direction: column;
+
+        .imgDiv {
+          flex-grow: 0; //元件伸展性設定成不縮放
+          img {
+            width: 100%;
+          }
+        }
+
+        .content {
+          flex-grow: 1; //元件伸展性設定成填滿剩餘空間
+          width: 100%;
+          //   height: 100%;
+          position: relative;
+          .title {
+            color: $PrimaryRed;
+            font-family: "Noto Sans TC", sans-serif;
+            font-size: 26px;
+            font-weight: 600;
+            font-stretch: expanded;
+
+            // 字體寬扁與縮放參考點
+            transform: scale(1.18, 1);
+            transform-origin: 0 0;
+          }
+          .instruction {
+            position: absolute;
+            top: 50%;
+            div {
+              font-family: "Raleway", sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+            }
+          }
+          .bottom {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            //   justify-content: flex-start;
+            align-items: flex-start; //靠上對齊
+            div {
+              display: inline-block;
+            }
+            .currentPage {
+              font-family: "Raleway", sans-serif;
+              color: $PrimaryRed;
+              font-weight: 800;
+              font-size: 30px;
+            }
+            .slash {
+              font-family: "Martel", serif;
+              color: $PrimaryBlack;
+              font-weight: 900;
+              font-size: 17px;
+            }
+            .totalPages {
+              font-family: "Raleway", sans-serif;
+              -webkit-text-fill-color: transparent;
+              -webkit-text-stroke-color: $PrimaryBlack;
+              -webkit-text-stroke-width: 1px;
+              font-weight: 800;
+              font-size: 17px;
+            }
+          }
+        }
+      }
+      li:nth-child(1) {
+        margin-left: 15vw;
+      }
+      li:not(:first-child) {
+          margin-left: 10vw;
+      }
+      li:last-child {
+          margin-right: 10vw;
+      }
+    }
+  }
+}

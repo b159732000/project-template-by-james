@@ -28,7 +28,7 @@
       @for $i from 1 through 4 {
         li:nth-child(#{$i*2-1}) {
           opacity: 1;
-          transition-delay: #{$i*0.14}s;
+          transition-delay: #{$i*0.1}s;
           transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.970);
         }
       }
@@ -53,7 +53,7 @@
       transform: translate(0, 0);
       transition-delay: 0s; //進入此class時會看這個延遲
       opacity: 1;
-      transition-delay: #{5*0.14}s;
+      transition-delay: #{5*0.1}s;
       transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.970);
     }
   }
