@@ -1,12 +1,12 @@
 import React from 'react';
-import './Xmjs.css';
+import './Xmjs.scss';
 
 class Xmjs extends React.Component {
+
     render() {
         return (
-            <div>
+            <div className="XmjsContainer">
 
-                <div>This Xmjs, Xmjs import successed.</div>
 
             </div>
         )

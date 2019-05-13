@@ -45,7 +45,7 @@ class NavigationBar extends React.Component {
 
                 <ul className="menuList">
                     <li>
-                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/Xmjs" onClick={() => this.handleMenuIconClick()}>
 
                             <div className="menuNameCN">項目介紹</div>
                             <div className="menuNameEn">Project introduciton</div>
@@ -67,9 +67,9 @@ class NavigationBar extends React.Component {
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">景觀展示</div>
-                            <div className="menuNameEn">Landscape display</div>
+                        <Link to="/TestPlayground" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">測試小天地</div>
+                            <div className="menuNameEn">My Own Test Playground</div>
                         </Link>
                     </li>
                 </ul>

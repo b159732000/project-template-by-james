@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.XmjsContainer {
+  background-color: $PrimaryWhite;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &.componentChangeCSSTransition-enter {
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+  }
+}

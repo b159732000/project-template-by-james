@@ -14,7 +14,7 @@ const store = createStore(
     rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()    //為了用Chrome Redux Extention
 );
-console.log(store.getState());
+// console.log(store.getState());
 
 ReactDOM.render(
     <Provider store={store}>
