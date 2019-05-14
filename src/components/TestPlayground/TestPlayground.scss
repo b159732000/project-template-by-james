@@ -208,9 +208,10 @@ $lastPageFadeOutTime: 0.6s;
         display: flex;
         align-items: center;
         .icon {
+          border: 1px solid $PrimaryRed;
           display: inline-block;
-          height: 8vh;
-          width: 8vh;
+          height: 10vh;
+          width: 10vh;
           margin-right: 5.5vw;
         }
         .watchProjectText {
