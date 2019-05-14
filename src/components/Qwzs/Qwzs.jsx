@@ -2,6 +2,7 @@ import React from 'react';
 import './Qwzs.scss';
 import { connect } from 'react-redux';
 import { updateChoiceListX, updateChoiceListY } from '../../actions/actions.js';
+import { Link } from 'react-router-dom';
 
 // 用this.props讀取Store的值
 function mapStateToProps(state) {
@@ -151,6 +152,18 @@ class Qwzs extends React.Component {
     // ----- 為了計算背景簍空字的移動距離 END -----
 
 
+    // ----- 換頁時，控制照片位移 START -----
+    handleChoiceListSelect(event) {
+        this.changeSelectedImageClass(event);
+    }
+
+    changeSelectedImageClass(event) {
+        let selectedImgDiv = this.refs.imgDiv1;
+        // console.log(window.location.pathname);
+        console.log(event.currentTarget.pathname);
+    }
+    // ----- 換頁時，控制照片位移 END -----
+
     render() {
         return (
             <div className="QwzsContainer">
@@ -165,8 +178,10 @@ class Qwzs extends React.Component {
                     <ul ref="choiceListUlDOMNode">
 
                         <li>
-                            <div className="imgDiv">
-                                <img src={require('../../images/DA_08-995x560.jpg')} alt="" />
+                            <div className={"imgDiv"} ref="imgDiv1">
+                                <Link to='/TestPlayground' onClick={(event) => this.handleChoiceListSelect(event)}>
+                                    <img src={require('../../images/DA_08-995x560.jpg')} alt="" />
+                                </Link>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
