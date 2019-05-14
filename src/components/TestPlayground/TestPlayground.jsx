@@ -1,7 +1,7 @@
+/* eslint-disable no-useless-concat */
 import React from 'react';
 import './TestPlayground.scss';
 import { connect } from 'react-redux';
-import { StringDecoder } from 'string_decoder';
 import ScrollPercentage from 'react-scroll-percentage';
 
 // 將Store的值存在this.props中
@@ -31,6 +31,8 @@ class TestPlayground extends React.Component {
             fixedImage1IsInViewPort: false,
             fixedImage2IsInViewPort: false,
             fixedImage3IsInViewPort: false,
+            nextTextIsInViewPort: false,
+            backToOverviewTextIsInViewPort: false,
         }
     }
 
@@ -52,21 +54,39 @@ class TestPlayground extends React.Component {
         let fixedImage3 = this.refs.fixedImage3;
         let fixedImage2 = this.refs.fixedImage2;
         let fixedImage1 = this.refs.fixedImage1;
+        let nextText = this.refs.nextText;
+        let backToOverviewText = this.refs.backToOverviewText;
         // console.log(fixedImage3.getBoundingClientRect());
+        
+        // 偵測最上面的固定式照片是否進入視窗
         if (fixedImage3.getBoundingClientRect().y <= viewportHeight && this.state.fixedImage3IsInViewPort === false && fixedImage3.getBoundingClientRect().y >= 0) {
             this.setState({ fixedImage3IsInViewPort: true })
         } else if (fixedImage3.getBoundingClientRect().y > viewportHeight && this.state.fixedImage3IsInViewPort === true) {
             this.setState({ fixedImage3IsInViewPort: false })
         }
+        // 偵測最上面第二張固定式照片是否進入視窗
         if (fixedImage2.getBoundingClientRect().y <= viewportHeight && this.state.fixedImage2IsInViewPort === false && fixedImage2.getBoundingClientRect().y >= 0) {
             this.setState({ fixedImage2IsInViewPort: true })
         } else if (fixedImage2.getBoundingClientRect().y > viewportHeight && this.state.fixedImage2IsInViewPort === true) {
             this.setState({ fixedImage2IsInViewPort: false })
         }
+        // 偵測最上面第三張固定式照片是否進入視窗
         if (fixedImage1.getBoundingClientRect().y <= viewportHeight && this.state.fixedImage1IsInViewPort === false && fixedImage1.getBoundingClientRect().y >= 0) {
             this.setState({ fixedImage1IsInViewPort: true })
         } else if (fixedImage1.getBoundingClientRect().y > viewportHeight && this.state.fixedImage1IsInViewPort === true) {
             this.setState({ fixedImage1IsInViewPort: false })
+        }
+        // 偵測最下面文字(Next Project)是否進入視窗
+        if (nextText.getBoundingClientRect().y <= viewportHeight && this.state.nextTextIsInViewPort === false && nextText.getBoundingClientRect().y >= 0) {
+            this.setState({ nextTextIsInViewPort: true })
+        } else if (nextText.getBoundingClientRect().y > viewportHeight && this.state.nextTextIsInViewPort === true) {
+            this.setState({ nextTextIsInViewPort: false })
+        }
+        // 偵測最下面文字(Back To Overview)是否進入視窗
+        if (backToOverviewText.getBoundingClientRect().y <= viewportHeight && this.state.backToOverviewTextIsInViewPort === false && backToOverviewText.getBoundingClientRect().y >= 0) {
+            this.setState({ backToOverviewTextIsInViewPort: true })
+        } else if (backToOverviewText.getBoundingClientRect().y > viewportHeight && this.state.backToOverviewTextIsInViewPort === true) {
+            this.setState({ backToOverviewTextIsInViewPort: false })
         }
         // console.log("success");
         // console.log(document.body.getBoundingClientRect().height);
@@ -167,8 +187,8 @@ class TestPlayground extends React.Component {
                                 </div>
                             </div>
                             <div className="bottom">
-                                <div className="nextText" ref="nextText">Next Project</div>
-                                <div className="backToOverviewText" ref="backToOverviewText">Back To Overview</div>
+                                <div className={"nextText" + ((this.state.nextTextIsInViewPort) ? (" active") : (""))} ref="nextText">Next Project</div>
+                                <div className={"backToOverviewText" + ((this.state.backToOverviewTextIsInViewPort) ? (" active") : (""))} ref="backToOverviewText">Back To Overview</div>
                             </div>
                         </div>
                     </div>
