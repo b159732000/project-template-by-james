@@ -9,7 +9,7 @@ import TestPlayground from './components/TestPlayground/TestPlayground.jsx';
 import { connect } from 'react-redux';
 import { openMenu, closeMenu } from './actions/actions.js'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-// import ReactTransitionGroup from 'react-addons-transition-group'
+import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
 function mapStateToProps(state) {
@@ -71,7 +71,7 @@ class App extends React.Component {
                     // 在進入時，產生class-enter，且在瞬間同層加上class-enter-active，在指定時間後被class-enter-done代替。
                     // 在離開時，class-enter-done被class-exit代替，在瞬間加上class-exit-active代替，在指定時間後被刪除
                     // timeout={{ enter: 2000, exit: 600 }}
-                    timeout={{ enter: 3000, exit: 2000 }}
+                    timeout={{ enter: 20000, exit: 20000 }}
                     classNames={"componentChangeCSSTransition"}
                 >
                 {/*<ReactTransitionGroup component="div">{}</ReactTransitionGroup>*/}
