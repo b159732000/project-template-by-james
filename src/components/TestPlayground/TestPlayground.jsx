@@ -44,12 +44,12 @@ class TestPlayground extends React.Component {
     }
 
     onScrollActive = () => {
-        this.changeFixedImage3ShowsOnScroll();
+        this.changeItemsShowsOnScroll();
     }
 
     // 用以下這個來管控fixedImage3是否該顯示
     // 偵測Image3是否在viewport內
-    changeFixedImage3ShowsOnScroll() {
+    changeItemsShowsOnScroll() {
         let viewportHeight = document.body.getBoundingClientRect().height;
         let fixedImage3 = this.refs.fixedImage3;
         let fixedImage2 = this.refs.fixedImage2;
@@ -57,7 +57,7 @@ class TestPlayground extends React.Component {
         let nextText = this.refs.nextText;
         let backToOverviewText = this.refs.backToOverviewText;
         // console.log(fixedImage3.getBoundingClientRect());
-        
+
         // 偵測最上面的固定式照片是否進入視窗
         if (fixedImage3.getBoundingClientRect().y <= viewportHeight && this.state.fixedImage3IsInViewPort === false && fixedImage3.getBoundingClientRect().y >= 0) {
             this.setState({ fixedImage3IsInViewPort: true })
@@ -134,7 +134,13 @@ class TestPlayground extends React.Component {
                                 <div>2019</div>
                             </div>
                             <div className="watchProjectBarContainer">
-                                <div className="icon"></div>
+                                <div className="icon">
+                                    <svg width="100%" height="100%" viewBox="0 0 600 600" version='1.1' xmlns="http://www.w3.org/2000/svg">
+                                        {/*<rect id="A" x="0" y="0" fill="#FF6CC4" stroke="#C30D23" stroke-width="3" width="100" height="100" />*/}
+                                        <path d="M366.11,305.67l-86.27-49.78a5.32,5.32,0,0,0-8,4.61v99.64a5.32,5.32,0,0,0,8,4.61L366.11,315A5.39,5.39,0,0,0,366.11,305.67Z" fill="#D92040" stroke="#D92040"></path>
+                                        <circle id="B" cx="300" cy="300" fill="none" stroke="#D92040" strokeWidth="20" r="280" />
+                                    </svg>
+                                </div>
                                 <div className="watchProjectText">Watch Full Project</div>
                             </div>
                             <div className="mainIntroTextContainer">
