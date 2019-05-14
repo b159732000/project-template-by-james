@@ -53,8 +53,6 @@ class TestPlayground extends React.Component {
         let fixedImage2 = this.refs.fixedImage2;
         let fixedImage1 = this.refs.fixedImage1;
         // console.log(fixedImage3.getBoundingClientRect());
-        
-        // 偵測最上面的固定式照片是否進入視窗
         if (fixedImage3.getBoundingClientRect().y <= viewportHeight && this.state.fixedImage3IsInViewPort === false && fixedImage3.getBoundingClientRect().y >= 0) {
             this.setState({ fixedImage3IsInViewPort: true })
         } else if (fixedImage3.getBoundingClientRect().y > viewportHeight && this.state.fixedImage3IsInViewPort === true) {
