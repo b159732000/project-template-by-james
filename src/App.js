@@ -79,9 +79,9 @@ class App extends React.Component {
                 <Switch location={location}>  {/* Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
                   {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
-                  <Route path="/Xmjs" exact component={Xmjs}></Route>
-                  <Route path="/Qwzs" exact component={Qwzs}></Route>
-                  <Route path="/TestPlayground" exact component={TestPlayground}></Route>
+                  <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
+                  <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route>
+                  <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
                 </Switch>
                 </CSSTransition>
               {/*</ReactTransitionGroup>*/}

@@ -45,7 +45,7 @@ class NavigationBar extends React.Component {
 
                 <ul className="menuList">
                     <li>
-                        <Link to="/Xmjs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/Xmjs" onClick={() => this.handleMenuIconClick()}>
 
                             <div className="menuNameCN">項目介紹</div>
                             <div className="menuNameEn">Project introduciton</div>
@@ -53,21 +53,21 @@ class NavigationBar extends React.Component {
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">區位展示</div>
                             <div className="menuNameEn">Location display</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">精工戶型</div>
                             <div className="menuNameEn">Seiko apartment</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/TestPlayground" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/TestPlayground" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">測試小天地</div>
                             <div className="menuNameEn">My Own Test Playground</div>
                         </Link>

@@ -1,0 +1,102 @@
+@import "../../variables.scss";
+
+.XmjsContainer {
+  background-color: $PrimaryWhite;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &.componentChangeCSSTransition-enter {
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    .swiper-wrapper {
+      width: 100%;
+      height: 100%;
+      .swiper-slide {
+        &:nth-child(1) {
+          background: url("../../images/ProjectIntroduction/Car.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+        &:nth-child(2) {
+          background: url("../../images/ProjectIntroduction/Norwegian-Town.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+        &:nth-child(3) {
+          background: url("../../images/ProjectIntroduction/Man-Mountain-Sea.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+        &:nth-child(4) {
+          background: url("../../images/ProjectIntroduction/Women-Sea.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+        &:nth-child(5) {
+          background: url("../../images/ProjectIntroduction/White-Cloths-Model.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+        &:nth-child(6) {
+          background: url("../../images/ProjectIntroduction/Stairs.jpg") no-repeat
+            center;
+          -webkit-background-size: 100% auto;
+          background-size: 100% auto;
+        }
+      }
+    }
+    .swiper-pagination {  //pagination容器
+      // border: 1px solid #000;
+      // display: block;
+      // height: 80px !important;
+      // width: 20px !important;
+      // position: fixed;
+      // top: 45%;
+      // right: 15%;
+      .swiper-pagination-bullet {   //pagination指示點的本體
+        // background-color: $PrimaryWhite;
+        // width: 8px;
+        // height: 8px;
+        // position: absolute;
+        // top: 50%;
+        // height: 50%;
+      }
+      .swiper-pagination-bullet-active {   //pagination顯示在畫面上的指示點們
+        .swiper-pagination-bullet-active-main {   //pagination當前頁面的指示點
+
+        }
+        .swiper-pagination-bullet-active-next {   //pagination下一個指示點
+
+        }
+        .swiper-pagination-bullet-active-next-next {   //pagination下下一個指示點
+
+        }
+        .swiper-pagination-bullet-active-prev {   //pagination上一個指示點
+
+        }
+        .swiper-pagination-bullet-active-prev-prev {   //pagination上上一個指示點
+
+        }
+      }
+    }
+  }
+}
