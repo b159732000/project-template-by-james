@@ -47,28 +47,28 @@ class NavigationBar extends React.Component {
                     <li>
                         <Link to="/james/project-template-by-james/Xmjs" onClick={() => this.handleMenuIconClick()}>
 
-                            <div className="menuNameCN">項目介紹</div>
+                            <div className="menuNameCN">建案介紹</div>
                             <div className="menuNameEn">Project introduciton</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
                         <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">區位展示</div>
+                            <div className="menuNameCN">建案地址</div>
                             <div className="menuNameEn">Location display</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
                         <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">精工戶型</div>
+                            <div className="menuNameCN">3D房屋模型</div>
                             <div className="menuNameEn">Seiko apartment</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
                         <Link to="/james/project-template-by-james/TestPlayground" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">測試小天地</div>
+                            <div className="menuNameCN">360°室內全景</div>
                             <div className="menuNameEn">My Own Test Playground</div>
                         </Link>
                     </li>

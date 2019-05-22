@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.fullScreenPannellumSampleRoom {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 10001;
+    transform: translate(0, -100%);
+    transition: $NavigationBarTransition 0.2s; //transition:property duration timing-function delay;
+    pointer-events: none;
+    .pnlm-container {
+        opacity: 0;
+        transition: $NavigationBarTransition 0.2s; //transition:property duration timing-function delay;
+    }
+    &.active {
+        pointer-events: auto;
+        transform: translate(0, 0);
+        transition: $NavigationBarTransition 0.2s; //transition:property duration timing-function delay;
+        .pnlm-container {
+            opacity: 1;
+        }
+    }
+    .closeContainer {
+        border: 1px solid #000;
+        position: fixed;
+        top: 3%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-family: 'Raleway', sans-serif;
+        font-weight: 900;
+        font-size: 2rem;
+        z-index: 10002;
+    }
+  }

@@ -3,11 +3,13 @@ import React from 'react';
 import './TestPlayground.scss';
 import { connect } from 'react-redux';
 import ScrollPercentage from 'react-scroll-percentage';
+import PannellumSampleRoom from '../PannellumSampleRoom/PannellumSampleRoom.jsx';
+import FullScreenPannellumSampleRoom from '../FullScreenPannellumSampleRoom/FullScreenPannellumSampleRoom.jsx';
 
 // 將Store的值存在this.props中
 function mapStateToProps(state) {
     return {
-
+        fullScreenPanoIsShowing: state.pannellumSampleRoomReducers.fullScreenPanoIsShowing,
     }
 }
 
@@ -141,6 +143,11 @@ class TestPlayground extends React.Component {
             // <ScrollPercentage>
             <div className="TestPlaygroundContainer">
 
+                {/* {(this.props.fullScreenPanoIsShowing)?((<FullScreenPannellumSampleRoom></FullScreenPannellumSampleRoom>)):(null)} */}
+                {/* <div style={(this.props.fullScreenPanoIsShowing)?(pointer-events: "none"):()}> */}
+                <FullScreenPannellumSampleRoom></FullScreenPannellumSampleRoom>
+                {/* </div> */}
+
                 {/* 用這個來定義所有內容離螢幕的左右邊距 */}
                 <div className="mainContent" ref="mainContent">
                     <div className="pager">
@@ -153,7 +160,9 @@ class TestPlayground extends React.Component {
                     </div>
 
                     <div className="contentContainer">
-                        <div className="videoContainer"></div>
+                        <div className="videoContainer">
+                            <PannellumSampleRoom></PannellumSampleRoom>
+                        </div>
                         <div className="title">Dating Around</div>
                         <div className="topIntroText">
                             <div>Netflick Dating Show</div>

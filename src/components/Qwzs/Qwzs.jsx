@@ -178,7 +178,7 @@ class Qwzs extends React.Component {
                     <ul ref="choiceListUlDOMNode">
 
                         <li>
-                            <div className={"imgDiv"} ref="imgDiv1">
+                            <div className="imgDiv" ref="imgDiv1">
                                 <Link to='/james/project-template-by-james/TestPlayground' onClick={(event) => this.handleChoiceListSelect(event)}>
                                     <img src={require('../../images/DA_08-995x560.jpg')} alt="" />
                                 </Link>

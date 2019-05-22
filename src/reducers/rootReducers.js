@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import myFirstReducers from './myFirstReducers.js'
+import pannellumSampleRoomReducers from './pannellumSampleRoomReducers.js'
 import openCloseMenuReducers from './openCloseMenuReducers.js'
 import bgStrokeTextPositionReducers from './bgStrokeTextPositionReducers.js'
 
@@ -9,7 +9,7 @@ import bgStrokeTextPositionReducers from './bgStrokeTextPositionReducers.js'
 // export default rootReducer
 
 export default combineReducers({
-    myFirstReducers,
+    pannellumSampleRoomReducers,
     openCloseMenuReducers,
     bgStrokeTextPositionReducers,
 })

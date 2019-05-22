@@ -40,6 +40,11 @@
       transform: translate(0, -100%);
       transition: all 1.5s $PrimaryTimeFunction;
     }
+    .imgDiv {
+      opacity: 0;
+      transform: translate(0, 10%);
+      transition: all 1.5s $PrimaryTimeFunction 0.2s;
+    }
     .content {
       opacity: 0;
       transform: translate(0, 10%);
