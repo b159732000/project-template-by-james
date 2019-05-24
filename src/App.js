@@ -5,10 +5,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar/NavigationBar.jsx';
 import { Xmjs } from './components/Xmjs/index.js';
 import Qwzs from './components/Qwzs/Qwzs.jsx';
+import HouseModel3D from './components/HouseModel3D/HouseModel3D.jsx';
 import TestPlayground from './components/TestPlayground/TestPlayground.jsx';
 import { connect } from 'react-redux';
 import { openMenu, closeMenu } from './actions/actions.js'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Traffic from './components/Traffic/Traffic.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -80,7 +82,8 @@ class App extends React.Component {
                   {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
                   <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
-                  <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route>
+                  <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
+                  <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
                   <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
                 </Switch>
                 </CSSTransition>

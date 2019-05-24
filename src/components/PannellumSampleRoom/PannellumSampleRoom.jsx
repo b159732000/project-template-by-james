@@ -87,6 +87,7 @@ class PannellumSampleRoom extends React.Component {
         } else {
             this.openFullScreenPano();
         }
+        console.log("touch success");
     }
 
     render() {
@@ -113,12 +114,16 @@ class PannellumSampleRoom extends React.Component {
                     autoRotate={-3}
                     showFullscreenCtrl={true}
                     ref={self => this.Pannellum = self}
-                    onTouchend={this.handlePannellumTouchEnd}
+                    // onTouchend={this.handlePannellumTouchEnd}
                 >
                 </Pannellum>
-                <div className="fullScreenIconContainer" onClick={this.openFullScreenPano}>
+
+
+                <div className={"fullScreenIconContainer"} onClick={()=>this.handleFullScreenIconContainerClick()}>
                     <i className="fas fa-compress"></i>
                 </div>
+
+
             </div>
         )
     }

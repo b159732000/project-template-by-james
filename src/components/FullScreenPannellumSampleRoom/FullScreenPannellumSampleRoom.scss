@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    z-index: 10001;
+    z-index: 1101;
     transform: translate(0, -100%);
     transition: $NavigationBarTransition 0.2s; //transition:property duration timing-function delay;
     pointer-events: none;
@@ -20,16 +20,20 @@
         .pnlm-container {
             opacity: 1;
         }
+        .closeContainer {
+            transform: translate(-50%, 0);
+            transition: $NavigationBarTransition 1s; //transition:property duration timing-function delay;
+        }
     }
     .closeContainer {
-        border: 1px solid #000;
-        position: fixed;
+        position: absolute;
         top: 3%;
         left: 50%;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, -200%);
+        transition: transform 0.6s cubic-bezier(0.125, 0.595, 0.315, 0.970) 1s; //transition:property duration timing-function delay;
         font-family: 'Raleway', sans-serif;
         font-weight: 900;
         font-size: 2rem;
-        z-index: 10002;
+        z-index: 1102;
     }
   }

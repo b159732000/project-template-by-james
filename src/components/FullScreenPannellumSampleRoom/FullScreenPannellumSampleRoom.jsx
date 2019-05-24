@@ -81,6 +81,7 @@ class FullScreenPannellumSampleRoom extends React.Component {
                     <div>Close</div>
                 </div>
 
+                {/* 搭配componentDidMount，使全景圖在全螢幕隱藏後兩秒才卸載 */}
                 {(this.state.mountPannellumSampleRoom) ? ((
                     <Pannellum
                     width="100%"

@@ -2,6 +2,10 @@
 
 .QwzsContainer {
   &.componentChangeCSSTransition-enter {
+    .threeDModelContainer {
+      transform: translate(-20%, 0);
+      opacity: 0;
+    }
     .bgStrokeText {
       transform: translate(-100%, 0);
     }
@@ -15,6 +19,11 @@
     }
   }
   &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+    .threeDModelContainer {
+      transform: translate(0, 0);
+      opacity: 1;
+      transition: all 1.2s $PrimaryTimeFunction 1.3s;
+    }
     .bgStrokeText {
       transform: translate(0, 0);
       transition: all 1.2s $PrimaryTimeFunction 1.3s;
@@ -35,6 +44,11 @@
   &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
     // opacity: 0;
     transition: all 0.6s $PrimaryTimeFunction;
+    .threeDModelContainer {
+      transform: translate(0, -20%);
+      opacity: 0;
+      transition: all 1.5s $PrimaryTimeFunction;
+    }
     .bgStrokeText {
       opacity: 0;
       transform: translate(0, -100%);
@@ -59,10 +73,19 @@
   width: 100vw;
   height: 100vh;
 
+  .threeDModelContainer {
+    width: 100%;
+    height: 35%;
+    position: absolute;
+    top: 10vh;
+    z-index: 1;
+  }
+
   // 背景鏤空字
   .bgStrokeText {
+    display: none;
     position: absolute;
-    top: 31.5vh;
+    top: 41.5vh;
     left: 0;
     font-size: 16vw;
     font-family: "Raleway", sans-serif;
@@ -74,9 +97,12 @@
 
   .choiceList {
     width: 100%;
-    height: 60vh;
+    height: 80vh;
     position: absolute;
-    top: 20vh;
+    top: 30vh;
+    * {
+      -webkit-overflow-scrolling: touch !important;
+    }
 
     // 隱藏捲動軸
     // -ms-overflow-style: none; // IE 10+
@@ -87,13 +113,15 @@
       // background: transparent;  /* Optional: just make scrollbar invisible */
     }
 
+
     ul {
+      -webkit-overflow-scrolling: touch;
       overflow-x: scroll; //讓清單在此範圍內左右移動，而非整個頁面左右移動
       white-space: nowrap; //超過寬度也不換行
       position: relative;
       top: 0;
       left: 0;
-      height: 78vh;
+      height: 68vh;
 
       li {
         height: 100%;

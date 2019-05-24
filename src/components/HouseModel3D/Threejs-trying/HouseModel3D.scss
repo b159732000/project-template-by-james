@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.houseModel3DContainer {
+    background-color: $PrimaryWhite;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    #boardCanvas {
+        width: 100%;
+        height: 100%;
+    }
+}

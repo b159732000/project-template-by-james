@@ -4,6 +4,7 @@
   height: 100%;
   width: 100%;
   position: relative;
+  z-index: 150;
   .fullScreenIconContainer {
     background-color: rgba( $PrimaryBlack, 0.3);
     border-radius: 50%;
@@ -12,6 +13,10 @@
     position: absolute;
     bottom: 4%;
     right: 3%;
+    z-index: 151;
+    &.noDisplay {
+      display: none;
+    }
     i {
       color: rgba( $PrimaryWhite, 1);
       font-size: 1.5rem;

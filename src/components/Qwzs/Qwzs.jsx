@@ -3,6 +3,7 @@ import './Qwzs.scss';
 import { connect } from 'react-redux';
 import { updateChoiceListX, updateChoiceListY } from '../../actions/actions.js';
 import { Link } from 'react-router-dom';
+import HouseModel3D from '../HouseModel3D/HouseModel3D.jsx';    // 小房子3D模型 (從Sketchfab來的)
 
 // 用this.props讀取Store的值
 function mapStateToProps(state) {
@@ -67,111 +68,116 @@ class Qwzs extends React.Component {
     }
 
 
-    // ---- 為了計算背景鏤空字的移動距離 START -----
-    // --> 做了以下這些事情
-    // 計算背景鏤空字可以移動的距離，透過以下方法
-    //      計算螢幕寬度
-    //      計算最初choiceList的螢幕位置xy
-    // 計算choiceList捲動的距離百分比，透過以下方法
-    //      當choiceList捲動時，讀取state中的最新的choiceList xy位置數值
-    // 更新背景鏤空字的container在螢幕中的位置，透過以下方法
-    //      鏤空字可移動距離*choiceList捲動百分比得出
-    //      加入初始化時的偏移
+    // // ---- 為了計算背景鏤空字的移動距離 START -----
+    // // --> 做了以下這些事情
+    // // 計算背景鏤空字可以移動的距離，透過以下方法
+    // //      計算螢幕寬度
+    // //      計算最初choiceList的螢幕位置xy
+    // // 計算choiceList捲動的距離百分比，透過以下方法
+    // //      當choiceList捲動時，讀取state中的最新的choiceList xy位置數值
+    // // 更新背景鏤空字的container在螢幕中的位置，透過以下方法
+    // //      鏤空字可移動距離*choiceList捲動百分比得出
+    // //      加入初始化時的偏移
 
-    componentDidMount() {
-        // console.log(this.refs.choiceListDOMNode);
-        var choiceList = this.refs.choiceListDOMNode;
-        var choiceListUl = this.refs.choiceListUlDOMNode;   //將choiceListUl清單DOM節點，存到變數choiceListUl中
-        this.setState({
-            choiceListX: choiceList.scrollLeft,
-            choiceListY: choiceList.scrollHeight,
-            choiceListUlWidth: choiceListUl.scrollWidth,
-            choiceListUlContainerWidth: choiceListUl.offsetWidth,
-            bgStrokeTextWidth: this.refs.BgStrokeTextDOMNode.offsetWidth,
-        });
-        this.updateWindowInnerWidth();    // 更新瀏覽器內可用寬度，並在更新完後計算背景簍空字可以移動的距離
-        this.updateChoiceListX(choiceList.scrollLeft);
-        this.updateChoiceListY(choiceList.scrollHeight);
-    }
+    // componentDidMount() {
+    //     // console.log(this.refs.choiceListDOMNode);
+    //     var choiceList = this.refs.choiceListDOMNode;
+    //     var choiceListUl = this.refs.choiceListUlDOMNode;   //將choiceListUl清單DOM節點，存到變數choiceListUl中
+    //     this.setState({
+    //         choiceListX: choiceList.scrollLeft,
+    //         choiceListY: choiceList.scrollHeight,
+    //         choiceListUlWidth: choiceListUl.scrollWidth,
+    //         choiceListUlContainerWidth: choiceListUl.offsetWidth,
+    //         bgStrokeTextWidth: this.refs.BgStrokeTextDOMNode.offsetWidth,
+    //     });
+    //     this.updateWindowInnerWidth();    // 更新瀏覽器內可用寬度，並在更新完後計算背景簍空字可以移動的距離
+    //     this.updateChoiceListX(choiceList.scrollLeft);
+    //     this.updateChoiceListY(choiceList.scrollHeight);
+    // }
 
-    // 當choiceList捲動時，更新state中的choiceList xy位置數值
-    handleChoiceListScroll(event) {
-        let element = event.target;
-        this.updateChoiceListX(element.scrollLeft);
-        this.updateChoiceListY(element.scrollHeight);
-        this.setState({
-            // with border: offsetWidth, without border: clientWidth, 所有內容物的總距離: scrollWidth
-            choiceListX: element.scrollLeft,
-            choiceListY: element.scrollHeight,
-        });
-        this.updateChoiceListScrollPercentage();    //更新choiceList捲動的距離百分比
-        this.caculateBgTextContainerStyle();
-    }
+    // // 當choiceList捲動時，更新state中的choiceList xy位置數值
+    // handleChoiceListScroll(event) {
+    //     let element = event.target;
+    //     this.updateChoiceListX(element.scrollLeft);
+    //     this.updateChoiceListY(element.scrollHeight);
+    //     this.setState({
+    //         // with border: offsetWidth, without border: clientWidth, 所有內容物的總距離: scrollWidth
+    //         choiceListX: element.scrollLeft,
+    //         choiceListY: element.scrollHeight,
+    //     });
+    //     this.updateChoiceListScrollPercentage();    //更新choiceList捲動的距離百分比
+    //     this.caculateBgTextContainerStyle();
+    // }
 
-    // 計算choiceList捲動的距離百分比
-    updateChoiceListScrollPercentage() {
-        this.setState({
-            choiceListScrollPercentage: this.state.choiceListX / (this.state.choiceListUlWidth - this.state.choiceListUlContainerWidth),
-        })
-        // console.log("choiceList已經捲動" + this.state.choiceListScrollPercentage + "%");
-    }
+    // // 計算choiceList捲動的距離百分比
+    // updateChoiceListScrollPercentage() {
+    //     this.setState({
+    //         choiceListScrollPercentage: this.state.choiceListX / (this.state.choiceListUlWidth - this.state.choiceListUlContainerWidth),
+    //     })
+    //     // console.log("choiceList已經捲動" + this.state.choiceListScrollPercentage + "%");
+    // }
 
-    // 更新瀏覽器內可用寬度
-    // 並在更新完後，計算背景鏤空字可以移動的距離
-    // 接著，更新背景鏤空字的container在螢幕中的位置
-    updateWindowInnerWidth() {
-        this.setState({
-            windowInnerWidth: window.innerWidth,
-        }, function () {
-            this.caculateBgTextCouldMoveDistance()
-        });
-    }
+    // // 更新瀏覽器內可用寬度
+    // // 並在更新完後，計算背景鏤空字可以移動的距離
+    // // 接著，更新背景鏤空字的container在螢幕中的位置
+    // updateWindowInnerWidth() {
+    //     this.setState({
+    //         windowInnerWidth: window.innerWidth,
+    //     }, function () {
+    //         this.caculateBgTextCouldMoveDistance()
+    //     });
+    // }
 
-    // 計算背景鏤空字可以移動的距離
-    // 計算方式: 螢幕總寬度-簍空字寬度
-    caculateBgTextCouldMoveDistance() {
-        this.setState({
-            bgStrokeTextMovableDistance: (this.state.windowInnerWidth - this.state.bgStrokeTextWidth),
-        }, function () {
-            // console.log("bgStrokeTextMovableDistance = " + this.state.bgStrokeTextMovableDistance);
-            // console.log("success");
-        })
-    }
+    // // 計算背景鏤空字可以移動的距離
+    // // 計算方式: 螢幕總寬度-簍空字寬度
+    // caculateBgTextCouldMoveDistance() {
+    //     this.setState({
+    //         bgStrokeTextMovableDistance: (this.state.windowInnerWidth - this.state.bgStrokeTextWidth),
+    //     }, function () {
+    //         // console.log("bgStrokeTextMovableDistance = " + this.state.bgStrokeTextMovableDistance);
+    //         // console.log("success");
+    //     })
+    // }
 
-    // 更新背景鏤空字的container在螢幕中的位置
-    // 透過鏤空字可移動距離*choiceList捲動百分比得出，並加入最初的偏移數字
-    caculateBgTextContainerStyle() {
-        // let offsetX = "50" + "%";
-        let offsetX = (-this.state.windowInnerWidth * 0.025) + 1.3 * this.state.bgStrokeTextMovableDistance * this.state.choiceListScrollPercentage + "px";
-        this.setState({
-            bgStrokeTextContainerStyleTransform: { transform: ("translate(" + offsetX + ", 0%)") },
-        }, function () {
-            // console.log(this.state.bgStrokeTextContainerStyleTransform)
-        })
-    }
-    // ----- 為了計算背景簍空字的移動距離 END -----
+    // // 更新背景鏤空字的container在螢幕中的位置
+    // // 透過鏤空字可移動距離*choiceList捲動百分比得出，並加入最初的偏移數字
+    // caculateBgTextContainerStyle() {
+    //     // let offsetX = "50" + "%";
+    //     let offsetX = (-this.state.windowInnerWidth * 0.025) + 1.3 * this.state.bgStrokeTextMovableDistance * this.state.choiceListScrollPercentage + "px";
+    //     this.setState({
+    //         bgStrokeTextContainerStyleTransform: { transform: ("translate(" + offsetX + ", 0%)") },
+    //     }, function () {
+    //         // console.log(this.state.bgStrokeTextContainerStyleTransform)
+    //     })
+    // }
+    // // ----- 為了計算背景簍空字的移動距離 END -----
 
 
-    // ----- 換頁時，控制照片位移 START -----
-    handleChoiceListSelect(event) {
-        this.changeSelectedImageClass(event);
-    }
+    // // ----- 換頁時，控制照片位移 START -----
+    // handleChoiceListSelect(event) {
+    //     this.changeSelectedImageClass(event);
+    // }
 
-    changeSelectedImageClass(event) {
-        let selectedImgDiv = this.refs.imgDiv1;
-        // console.log(window.location.pathname);
-        console.log(event.currentTarget.pathname);
-    }
-    // ----- 換頁時，控制照片位移 END -----
+    // changeSelectedImageClass(event) {
+    //     let selectedImgDiv = this.refs.imgDiv1;
+    //     // console.log(window.location.pathname);
+    //     console.log(event.currentTarget.pathname);
+    // }
+    // // ----- 換頁時，控制照片位移 END -----
 
     render() {
         return (
             <div className="QwzsContainer">
 
-                {/* 背景鏤空字 */}
-                <div className="bgStrokeTextContainer" style={this.state.bgStrokeTextContainerStyleTransform}>
-                    <div className="bgStrokeText" ref="BgStrokeTextDOMNode">LOCATION</div>
+                {/* 3D模型 */}
+                <div className="threeDModelContainer">
+                    <HouseModel3D></HouseModel3D>
                 </div>
+
+                {/* 背景鏤空字 */}
+                {/*<div className="bgStrokeTextContainer" style={this.state.bgStrokeTextContainerStyleTransform}>
+                    <div className="bgStrokeText" ref="BgStrokeTextDOMNode">LOCATION</div>
+                </div>*/}
 
                 {/* 四大灣區...等等共五個清單 */}
                 <div className="choiceList" onScroll={(event) => this.handleChoiceListScroll(event)} ref="choiceListDOMNode">
@@ -179,9 +185,7 @@ class Qwzs extends React.Component {
 
                         <li>
                             <div className="imgDiv" ref="imgDiv1">
-                                <Link to='/james/project-template-by-james/TestPlayground' onClick={(event) => this.handleChoiceListSelect(event)}>
                                     <img src={require('../../images/DA_08-995x560.jpg')} alt="" />
-                                </Link>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
