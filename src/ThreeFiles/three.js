@@ -10,5 +10,6 @@ require('./postprocessing/TexturePass');
 require('./postprocessing/ShaderPass');
 require('./postprocessing/MaskPass');
 require('./Otherjs/WebGL');
+// require('./lights/AmbientLight');
 
 export default window.THREE;

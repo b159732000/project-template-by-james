@@ -180,7 +180,8 @@ class Qwzs extends React.Component {
                 </div>*/}
 
                 {/* 四大灣區...等等共五個清單 */}
-                <div className="choiceList" onScroll={(event) => this.handleChoiceListScroll(event)} ref="choiceListDOMNode">
+                {/*<div className="choiceList" onScroll={(event) => this.handleChoiceListScroll(event)} ref="choiceListDOMNode">*/}
+                <div className="choiceList" ref="choiceListDOMNode">
                     <ul ref="choiceListUlDOMNode">
 
                         <li>
