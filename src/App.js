@@ -74,6 +74,7 @@ class App extends React.Component {
                     // 在離開時，class-enter-done被class-exit代替，在瞬間加上class-exit-active代替，在指定時間後被刪除
                     // timeout={{ enter: 2000, exit: 600 }}
                     timeout={{ enter: 3000, exit: 2000 }}
+                    appear={true}
                     classNames={"componentChangeCSSTransition"}
                 >
                 {/*<ReactTransitionGroup component="div">{}</ReactTransitionGroup>*/}
