@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "/james/project-template-by-james",
   "dependencies": {
+    "@tweenjs/tween.js": "^17.4.0",
+    "parallax-js": "^3.1.0",
     "react": "^16.8.6",
     "react-3d-viewer": "^1.0.12",
     "react-dom": "^16.8.6",

@@ -98,19 +98,20 @@
             .number {
               opacity: 1;
               font-size: 3.5rem;
-              transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              // transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              transition: all 1s cubic-bezier(.02,.95,.17,1);
             }
           }
           .pageName {
             .text {
               opacity: 1;
-              transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              transition: all 1s cubic-bezier(.02,.95,.17,1);
             }
           }
           .pageIndicator {
             &::after {
               opacity: 1;
-              transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              transition: all 1s cubic-bezier(.02,.95,.17,1);
             }
           }
         }

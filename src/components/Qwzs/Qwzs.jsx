@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateChoiceListX, updateChoiceListY } from '../../actions/actions.js';
 import { Link } from 'react-router-dom';
 import HouseModel3D from '../HouseModel3D/HouseModel3D.jsx';    // 小房子3D模型 (從Sketchfab來的)
+import Parallax from 'parallax-js';
 
 // 用this.props讀取Store的值
 function mapStateToProps(state) {
@@ -64,6 +65,7 @@ class Qwzs extends React.Component {
             bgStrokeTextMovableDistance: null,      //背景鏤空字可移動距離
             bgStrokeTextWidth: null,   // 簍空字寬度
             bgStrokeTextContainerStyleTransform: { transform: "translate(-2.5vw, 0)" },
+            listImgIsSelecting: 0,  //正在選取第幾個清單，0代表沒有選取的清單
         }
     }
 
@@ -165,6 +167,22 @@ class Qwzs extends React.Component {
     // }
     // // ----- 換頁時，控制照片位移 END -----
 
+
+    // ----- 點圖片產生選單、圖片放大且模糊 START -----
+    handleImgClick(selectedIndex) {
+        if (this.state.listImgIsSelecting !== 0) {
+            this.setState({
+                listImgIsSelecting: 0,
+            })
+        } else {
+            this.setState({
+                listImgIsSelecting: selectedIndex,
+            })
+        }
+    }
+    // ----- 點圖片產生選單、圖片放大且模糊 END -----
+
+
     render() {
         return (
             <div className="QwzsContainer">
@@ -184,9 +202,17 @@ class Qwzs extends React.Component {
                 <div className="choiceList" ref="choiceListDOMNode">
                     <ul ref="choiceListUlDOMNode">
 
-                        <li>
-                            <div className="imgDiv" ref="imgDiv1">
-                                    <img src={require('../../images/DA_08-995x560.jpg')} alt="" />
+                        <li className={(this.state.listImgIsSelecting === 1) ? ("active") : ("")}>
+                            <div className="imgDiv" ref="imgDiv1" onClick={() => this.handleImgClick(1)}>
+                                {/* <div refs="scene"></div> */}
+                                {/* <img src={require('../../images/DA_08-995x560.jpg')} alt="" /> */}
+                                <div className="img" alt="" />
+                                <div className="cover"></div>
+                                <div className="icons">
+                                    <i className="fas fa-home"></i>
+                                    <i className="fas fa-object-ungroup"></i>
+                                    <i className="fas fa-ruler-combined"></i>
+                                </div>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
@@ -203,9 +229,16 @@ class Qwzs extends React.Component {
                             </div>
                         </li>
 
-                        <li>
-                            <div className="imgDiv">
-                                <img src={require('../../images/MS_06-copy-995x560.jpg')} alt="" />
+                        <li className={(this.state.listImgIsSelecting === 2) ? ("active") : ("")}>
+                            <div className="imgDiv" onClick={() => this.handleImgClick(2)}>
+                                {/* <img src={require('../../images/MS_06-copy-995x560.jpg')} alt="" /> */}
+                                <div className="img" alt="" />
+                                <div className="cover"></div>
+                                <div className="icons">
+                                    <i className="fas fa-home"></i>
+                                    <i className="fas fa-object-ungroup"></i>
+                                    <i className="fas fa-ruler-combined"></i>
+                                </div>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
@@ -222,9 +255,16 @@ class Qwzs extends React.Component {
                             </div>
                         </li>
 
-                        <li>
-                            <div className="imgDiv">
-                                <img src={require('../../images/AGT_S13_05-995x560.jpg')} alt="" />
+                        <li className={(this.state.listImgIsSelecting === 3) ? ("active") : ("")}>
+                            <div className="imgDiv" onClick={() => this.handleImgClick(3)}>
+                                {/* <img src={require('../../images/AGT_S13_05-995x560.jpg')} alt="" /> */}
+                                <div className="img" alt="" />
+                                <div className="cover"></div>
+                                <div className="icons">
+                                    <i className="fas fa-home"></i>
+                                    <i className="fas fa-object-ungroup"></i>
+                                    <i className="fas fa-ruler-combined"></i>
+                                </div>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
@@ -241,9 +281,16 @@ class Qwzs extends React.Component {
                             </div>
                         </li>
 
-                        <li>
-                            <div className="imgDiv">
-                                <img src={require('../../images/HEY_DJ_06-995x560.jpg')} alt="" />
+                        <li className={(this.state.listImgIsSelecting === 4) ? ("active") : ("")}>
+                            <div className="imgDiv" onClick={() => this.handleImgClick(4)}>
+                                {/* <img src={require('../../images/HEY_DJ_06-995x560.jpg')} alt="" /> */}
+                                <div className="img" alt="" />
+                                <div className="cover"></div>
+                                <div className="icons">
+                                    <i className="fas fa-home"></i>
+                                    <i className="fas fa-object-ungroup"></i>
+                                    <i className="fas fa-ruler-combined"></i>
+                                </div>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>
@@ -260,9 +307,16 @@ class Qwzs extends React.Component {
                             </div>
                         </li>
 
-                        <li>
-                            <div className="imgDiv">
-                                <img src={require('../../images/SW_06-995x560.jpg')} alt="" />
+                        <li className={(this.state.listImgIsSelecting === 5) ? ("active") : ("")}>
+                            <div className="imgDiv" onClick={() => this.handleImgClick(5)}>
+                                {/* <img src={require('../../images/SW_06-995x560.jpg')} alt="" /> */}
+                                <div className="img" alt="" />
+                                <div className="cover"></div>
+                                <div className="icons">
+                                    <i className="fas fa-home"></i>
+                                    <i className="fas fa-object-ungroup"></i>
+                                    <i className="fas fa-ruler-combined"></i>
+                                </div>
                             </div>
                             <div className="content">
                                 <div className="title">四大灣區</div>

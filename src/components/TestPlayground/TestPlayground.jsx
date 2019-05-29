@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ScrollPercentage from 'react-scroll-percentage';
 import PannellumSampleRoom from '../PannellumSampleRoom/PannellumSampleRoom.jsx';
 import FullScreenPannellumSampleRoom from '../FullScreenPannellumSampleRoom/FullScreenPannellumSampleRoom.jsx';
+import { openFullScreenPano } from '../../actions/actions.js';
 
 // 將Store的值存在this.props中
 function mapStateToProps(state) {
@@ -15,15 +16,15 @@ function mapStateToProps(state) {
 
 // 準備將reducer的方法與外部連結，搭配connect
 const mapDispatchToProps = {
-    // updateChoiceListX,
+    openFullScreenPano
 }
 
 class TestPlayground extends React.Component {
 
     // 在此將reducer的方法與本頁的方法連結
-    // updateChoiceListX = (choiceListX) => {
-    //     this.props.updateChoiceListX(choiceListX);
-    // }
+    openFullScreenPano = () => {
+        this.props.openFullScreenPano();
+    }
 
     constructor(props) {
         super(props)
@@ -170,14 +171,14 @@ class TestPlayground extends React.Component {
                             <div>2019</div>
                         </div>
                         <div className="watchProjectBarContainer">
-                            <div className="icon">
+                            <div className="icon" onClick={()=>this.props.openFullScreenPano()}>
                                 <svg width="100%" height="100%" viewBox="0 0 600 600" version='1.1' xmlns="http://www.w3.org/2000/svg">
                                     {/*<rect id="A" x="0" y="0" fill="#FF6CC4" stroke="#C30D23" stroke-width="3" width="100" height="100" />*/}
                                     <path d="M366.11,305.67l-86.27-49.78a5.32,5.32,0,0,0-8,4.61v99.64a5.32,5.32,0,0,0,8,4.61L366.11,315A5.39,5.39,0,0,0,366.11,305.67Z" fill="#D92040" stroke="#D92040"></path>
                                     <circle id="B" cx="300" cy="300" fill="none" stroke="#D92040" strokeWidth="20" r="280" />
                                 </svg>
                             </div>
-                            <div className="watchProjectText">Watch Full Project</div>
+                            <div className="watchProjectText" onClick={()=>this.props.openFullScreenPano()}>Watch Full Project</div>
                         </div>
                         <div className="mainIntroTextContainer">
                             <div className="mainIntroText">In each episode of flirtations and fails, one real-life single navigates five blind dates. The mission: Find one match worthy of a second date. Burnish Creative designed the opening titles along with editing and finishing this enticing Netflix hit. </div>

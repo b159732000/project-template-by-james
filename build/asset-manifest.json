@@ -1,24 +1,20 @@
 {
   "files": {
-    "main.css": "/james/project-template-by-james/static/css/main.ad3685c9.chunk.css",
-    "main.js": "/james/project-template-by-james/static/js/main.5808ef5f.chunk.js",
-    "main.js.map": "/james/project-template-by-james/static/js/main.5808ef5f.chunk.js.map",
+    "main.css": "/james/project-template-by-james/static/css/main.475aa1f7.chunk.css",
+    "main.js": "/james/project-template-by-james/static/js/main.eeb0d8e3.chunk.js",
+    "main.js.map": "/james/project-template-by-james/static/js/main.eeb0d8e3.chunk.js.map",
     "runtime~main.js": "/james/project-template-by-james/static/js/runtime~main.4bbb33c6.js",
     "runtime~main.js.map": "/james/project-template-by-james/static/js/runtime~main.4bbb33c6.js.map",
     "static/css/2.db738265.chunk.css": "/james/project-template-by-james/static/css/2.db738265.chunk.css",
-    "static/js/2.c136693d.chunk.js": "/james/project-template-by-james/static/js/2.c136693d.chunk.js",
-    "static/js/2.c136693d.chunk.js.map": "/james/project-template-by-james/static/js/2.c136693d.chunk.js.map",
+    "static/js/2.3469e328.chunk.js": "/james/project-template-by-james/static/js/2.3469e328.chunk.js",
+    "static/js/2.3469e328.chunk.js.map": "/james/project-template-by-james/static/js/2.3469e328.chunk.js.map",
     "index.html": "/james/project-template-by-james/index.html",
-    "precache-manifest.f7b3f2aa42ce4df27c708d0634458403.js": "/james/project-template-by-james/precache-manifest.f7b3f2aa42ce4df27c708d0634458403.js",
+    "precache-manifest.17d87680a112d9d31b857d708dd13d82.js": "/james/project-template-by-james/precache-manifest.17d87680a112d9d31b857d708dd13d82.js",
     "service-worker.js": "/james/project-template-by-james/service-worker.js",
     "static/css/2.db738265.chunk.css.map": "/james/project-template-by-james/static/css/2.db738265.chunk.css.map",
-    "static/css/main.ad3685c9.chunk.css.map": "/james/project-template-by-james/static/css/main.ad3685c9.chunk.css.map",
-    "static/media/AGT_S13_05-995x560.jpg": "/james/project-template-by-james/static/media/AGT_S13_05-995x560.84130fcd.jpg",
+    "static/css/main.475aa1f7.chunk.css.map": "/james/project-template-by-james/static/css/main.475aa1f7.chunk.css.map",
+    "static/media/Qwzs.scss": "/james/project-template-by-james/static/media/SW_06-995x560.f47dc092.jpg",
     "static/media/SimpleSwiperWithParams.scss": "/james/project-template-by-james/static/media/Women-Sea.46353eb3.jpg",
-    "static/media/DA_08-995x560.jpg": "/james/project-template-by-james/static/media/DA_08-995x560.cdb79f06.jpg",
-    "static/media/HEY_DJ_06-995x560.jpg": "/james/project-template-by-james/static/media/HEY_DJ_06-995x560.3c29fa55.jpg",
-    "static/media/MS_06-copy-995x560.jpg": "/james/project-template-by-james/static/media/MS_06-copy-995x560.dcca17bd.jpg",
-    "static/media/SW_06-995x560.jpg": "/james/project-template-by-james/static/media/SW_06-995x560.f47dc092.jpg",
     "static/media/SampleRoomPano1.jpg": "/james/project-template-by-james/static/media/SampleRoomPano1.6df2a883.jpg",
     "static/media/SampleRoomPano2.jpg": "/james/project-template-by-james/static/media/SampleRoomPano2.7fa8c9c5.jpg",
     "static/media/Taiwan_01.jpg": "/james/project-template-by-james/static/media/Taiwan_01.5a229f2d.jpg",
@@ -31,7 +27,6 @@
     "static/media/bg2.jpg": "/james/project-template-by-james/static/media/bg2.84974d00.jpg",
     "static/media/bg3.jpg": "/james/project-template-by-james/static/media/bg3.a52314bd.jpg",
     "static/media/bg4.jpg": "/james/project-template-by-james/static/media/bg4.f8ea5f8d.jpg",
-    "static/media/bg5.jpg": "/james/project-template-by-james/static/media/bg5.ef2714b4.jpg",
-    "static/media/smoke_1.png": "/james/project-template-by-james/static/media/smoke_1.a7987bab.png"
+    "static/media/bg5.jpg": "/james/project-template-by-james/static/media/bg5.ef2714b4.jpg"
   }
 }

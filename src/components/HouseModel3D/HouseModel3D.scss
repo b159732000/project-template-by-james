@@ -139,20 +139,21 @@
     height: 100%;
     width: 100%;
     .hideBarTop {
-      border: 1px solid #000;
+      background-color: $PrimaryWhite;
       position: absolute;
+      z-index: 100;
       top: 0;
       width: 100%;
-      height: 20%;
-      display: none;
+      height: 45px;
+      // display: none;
     }
     .hideBarBottom {
-      border: 1px solid #000;
+      background-color: $PrimaryWhite;
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 20%;
-      display: none;
+      height: 45px;
+      // display: none;
     }
   }
 }
