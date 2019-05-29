@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import HouseModel3D from '../HouseModel3D/HouseModel3D.jsx';    // 小房子3D模型 (從Sketchfab來的)
 import Parallax from 'parallax-js';
 
+var parallaxScene1, parallaxScene2, parallaxScene3, parallaxScene4, parallaxScene5, parallaxInstance1, parallaxInstance2, parallaxInstance3, parallaxInstance4, parallaxInstance5;
+
 // 用this.props讀取Store的值
 function mapStateToProps(state) {
     return {
@@ -69,6 +71,54 @@ class Qwzs extends React.Component {
         }
     }
 
+    componentDidMount() {
+        parallaxScene1 = this.refs.parallaxScene1;
+        parallaxScene2 = this.refs.parallaxScene2;
+        parallaxScene3 = this.refs.parallaxScene3;
+        parallaxScene4 = this.refs.parallaxScene4;
+        parallaxScene5 = this.refs.parallaxScene5;
+        parallaxInstance1 = new Parallax(parallaxScene1, {
+            relativeInput: true,
+            hoverOnly: true,    //只有滑鼠滑過時才有特效，當有陀螺儀此選項不起作用
+            frictionX: 0.8,
+            frictionY: 0.8,
+            scalarX: 20.4,   //移動的靈敏度
+            scalarY: 20.4,   //移動的靈敏度
+        });
+        parallaxInstance2 = new Parallax(parallaxScene2, {
+            relativeInput: true,
+            hoverOnly: true,    //只有滑鼠滑過時才有特效，當有陀螺儀此選項不起作用
+            frictionX: 0.9,
+            frictionY: 0.9,
+            scalarX: 20.4,   //移動的靈敏度
+            scalarY: 20.4,   //移動的靈敏度
+        });
+        parallaxInstance3 = new Parallax(parallaxScene3, {
+            relativeInput: true,
+            hoverOnly: true,    //只有滑鼠滑過時才有特效，當有陀螺儀此選項不起作用
+            frictionX: 0.9,
+            frictionY: 0.9,
+            scalarX: 20.4,   //移動的靈敏度
+            scalarY: 20.4,   //移動的靈敏度
+        });
+        parallaxInstance4 = new Parallax(parallaxScene4, {
+            relativeInput: true,
+            hoverOnly: true,    //只有滑鼠滑過時才有特效，當有陀螺儀此選項不起作用
+            frictionX: 0.9,
+            frictionY: 0.9,
+            scalarX: 20.4,   //移動的靈敏度
+            scalarY: 20.4,   //移動的靈敏度
+        });
+        parallaxInstance5 = new Parallax(parallaxScene5, {
+            relativeInput: true,
+            hoverOnly: true,    //只有滑鼠滑過時才有特效，當有陀螺儀此選項不起作用
+            frictionX: 0.9,
+            frictionY: 0.9,
+            scalarX: 20.4,   //移動的靈敏度
+            scalarY: 20.4,   //移動的靈敏度
+        });
+        // console.log(this.refs.parallaxScene);
+    }
 
     // // ---- 為了計算背景鏤空字的移動距離 START -----
     // // --> 做了以下這些事情
@@ -204,9 +254,9 @@ class Qwzs extends React.Component {
 
                         <li className={(this.state.listImgIsSelecting === 1) ? ("active") : ("")}>
                             <div className="imgDiv" ref="imgDiv1" onClick={() => this.handleImgClick(1)}>
-                                {/* <div refs="scene"></div> */}
-                                {/* <img src={require('../../images/DA_08-995x560.jpg')} alt="" /> */}
-                                <div className="img" alt="" />
+                                <div ref="parallaxScene1" className="parallaxScene">
+                                    <div data-depth="0.2" className="img" alt="" />
+                                </div>
                                 <div className="cover"></div>
                                 <div className="icons">
                                     <i className="fas fa-home"></i>
@@ -232,7 +282,9 @@ class Qwzs extends React.Component {
                         <li className={(this.state.listImgIsSelecting === 2) ? ("active") : ("")}>
                             <div className="imgDiv" onClick={() => this.handleImgClick(2)}>
                                 {/* <img src={require('../../images/MS_06-copy-995x560.jpg')} alt="" /> */}
-                                <div className="img" alt="" />
+                                <div ref="parallaxScene2" className="parallaxScene">
+                                    <div data-depth="0.2" className="img" alt="" />
+                                </div>
                                 <div className="cover"></div>
                                 <div className="icons">
                                     <i className="fas fa-home"></i>
@@ -258,7 +310,9 @@ class Qwzs extends React.Component {
                         <li className={(this.state.listImgIsSelecting === 3) ? ("active") : ("")}>
                             <div className="imgDiv" onClick={() => this.handleImgClick(3)}>
                                 {/* <img src={require('../../images/AGT_S13_05-995x560.jpg')} alt="" /> */}
-                                <div className="img" alt="" />
+                                <div ref="parallaxScene3" className="parallaxScene">
+                                    <div data-depth="0.2" className="img" alt="" />
+                                </div>
                                 <div className="cover"></div>
                                 <div className="icons">
                                     <i className="fas fa-home"></i>
@@ -284,7 +338,9 @@ class Qwzs extends React.Component {
                         <li className={(this.state.listImgIsSelecting === 4) ? ("active") : ("")}>
                             <div className="imgDiv" onClick={() => this.handleImgClick(4)}>
                                 {/* <img src={require('../../images/HEY_DJ_06-995x560.jpg')} alt="" /> */}
-                                <div className="img" alt="" />
+                                <div ref="parallaxScene4" className="parallaxScene">
+                                    <div data-depth="0.2" className="img" alt="" />
+                                </div>
                                 <div className="cover"></div>
                                 <div className="icons">
                                     <i className="fas fa-home"></i>
@@ -310,7 +366,9 @@ class Qwzs extends React.Component {
                         <li className={(this.state.listImgIsSelecting === 5) ? ("active") : ("")}>
                             <div className="imgDiv" onClick={() => this.handleImgClick(5)}>
                                 {/* <img src={require('../../images/SW_06-995x560.jpg')} alt="" /> */}
-                                <div className="img" alt="" />
+                                <div ref="parallaxScene5" className="parallaxScene">
+                                    <div data-depth="0.2" className="img" alt="" />
+                                </div>
                                 <div className="cover"></div>
                                 <div className="icons">
                                     <i className="fas fa-home"></i>

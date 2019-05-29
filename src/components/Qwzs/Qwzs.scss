@@ -74,6 +74,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+
+  // 3D模型圖區
   .threeDModelContainer {
     padding: 0 5.5vw; //上 左右 下
     width: 100%;
@@ -125,30 +127,28 @@
       // height: 68vh;
 
       li {
+        top: 0;
         position: relative;
         height: 100%;
         width: 294px;
-        // width: 68vw;
 
         // 為了讓圖片和內容的flex-grow起作用
         display: inline-flex;
         flex-direction: column;
+
         &.active {
           .imgDiv {
-            .img {
-              filter: blur(0.3rem); //用這種方式會有白邊
-              transform: scale(1.35) translate(-5%, -5%);
+            .parallaxScene {
+              height: 125%;
+              width: 125%;
+              top: -10%;
+              left: -10%;
               transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-              box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
-              // &::after {
-              //   border: 1px solid #000;
-              //   content: "";
-              //   background-image: inherit;
-              //   position: absolute;
-              //   color: white;
-              //   height: 100%;
-              //   width: 100%;
-              // }
+            }
+            .img {
+              filter: blur(0.3rem); //用這種方式會有白邊，我這次用放大來掩蓋白邊
+              transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+              box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
             }
             .cover {
               opacity: 0.2;
@@ -166,28 +166,30 @@
         .imgDiv {
           flex-grow: 0; //元件伸展性設定成不縮放
           height: 147px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 294px;
           position: relative;
           overflow: hidden;
           transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-          // &:hover {
-          //   transform: rotate(35deg);
-          //   transition: all 0.6s ease-in-out;
-          // }
+
+          .parallaxScene {
+            height: 110%;
+            width: 110%;
+            top: -5%;
+            left: -5%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+          }
+
           .img {
             height: 100%;
             width: 100%;
             transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
             position: absolute;
-            // top: 18vh;
             transform-origin: top left;
             transform: scale(1.2) translate(0px, 0);
-            // &:hover {
-            //   transform: scale(1.4);
-            //   transition: all 0.6s ease-in-out;
-            // }
           }
           .cover {
             background-color: white;
@@ -200,13 +202,16 @@
           .icons {
             display: flex;
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
 
             i {
               color: $PrimaryWhite;
               opacity: 0;
               font-size: 2rem;
               padding: 0 1rem;
-              text-shadow: 0px 0px 5px rgba(0,0,0,0.75);
+              text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
               transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
               &:nth-child(1) {
               }
@@ -266,6 +271,7 @@
           width: 100%;
           height: 33vh;
           position: relative;
+          bottom: 0;
           .title {
             color: $PrimaryRed;
             font-family: "Noto Sans TC", sans-serif;
