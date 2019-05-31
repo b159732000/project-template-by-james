@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { openMenu, closeMenu } from './actions/actions.js'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Traffic from './components/Traffic/Traffic.jsx';
+import LoadingPage from './components/LoadingPage/LoadingPage.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -62,33 +63,34 @@ class App extends React.Component {
 
 
         <BrowserRouter>   {/* BrowserRouter底下的每一個Route，都會有match,location,history三個props */}
+          <Route path="/james/project-template-by-james/" exact component={LoadingPage}></Route>
           <Route render={({ location }) => (
             <div className="mainRouteContainer">
               <NavigationBar></NavigationBar>
               <TransitionGroup>
-              {/*<ReactTransitionGroup key={location.key} location={location}>*/}
+                {/*<ReactTransitionGroup key={location.key} location={location}>*/}
                 <CSSTransition
-                    key={location.key}
-                    in={true}
-                    // 在進入時，產生class-enter，且在瞬間同層加上class-enter-active，在指定時間後被class-enter-done代替。
-                    // 在離開時，class-enter-done被class-exit代替，在瞬間加上class-exit-active代替，在指定時間後被刪除
-                    // timeout={{ enter: 2000, exit: 600 }}
-                    timeout={{ enter: 3000, exit: 2000 }}
-                    appear={true}
-                    classNames={"componentChangeCSSTransition"}
+                  key={location.key}
+                  in={true}
+                  // 在進入時，產生class-enter，且在瞬間同層加上class-enter-active，在指定時間後被class-enter-done代替。
+                  // 在離開時，class-enter-done被class-exit代替，在瞬間加上class-exit-active代替，在指定時間後被刪除
+                  // timeout={{ enter: 2000, exit: 600 }}
+                  timeout={{ enter: 3000, exit: 2000 }}
+                  appear={true}
+                  classNames={"componentChangeCSSTransition"}
                 >
-                {/*<ReactTransitionGroup component="div">{}</ReactTransitionGroup>*/}
-                {/*<Switch component={ReactTransitionGroup}>   Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
-                <Switch location={location}>  {/* Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
-                  {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
+                  {/*<ReactTransitionGroup component="div">{}</ReactTransitionGroup>*/}
+                  {/*<Switch component={ReactTransitionGroup}>   Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
+                  <Switch location={location}>  {/* Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
+                    {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
-                  <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
-                  <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
-                  <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
-                  <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
-                </Switch>
+                    <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
+                    <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
+                    <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
+                    <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
+                  </Switch>
                 </CSSTransition>
-              {/*</ReactTransitionGroup>*/}
+                {/*</ReactTransitionGroup>*/}
               </TransitionGroup>
             </div>
           )} />

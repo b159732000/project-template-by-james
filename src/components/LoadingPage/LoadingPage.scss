@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+
+.LoadingPageContainer {
+    background-color: $PrimaryWhite;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    .threeContainer {
+        height: 100%;
+        width: 100%;
+    }
+}
