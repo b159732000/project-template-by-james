@@ -1,0 +1,1 @@
+py "D:\Desktop\pannellum\generate.py" "D:\Desktop\pannellum\AreaMainPano.jpg" -nona "C:\Program Files\Hugin\bin\nona.exe"

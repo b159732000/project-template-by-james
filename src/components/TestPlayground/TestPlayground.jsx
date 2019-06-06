@@ -6,6 +6,7 @@ import ScrollPercentage from 'react-scroll-percentage';
 import PannellumSampleRoom from '../PannellumSampleRoom/PannellumSampleRoom.jsx';
 import FullScreenPannellumSampleRoom from '../FullScreenPannellumSampleRoom/FullScreenPannellumSampleRoom.jsx';
 import { openFullScreenPano } from '../../actions/actions.js';
+import PurePannellumJS from '../PurePannellumJS/PurePannellumJS.jsx';
 
 // 將Store的值存在this.props中
 function mapStateToProps(state) {
@@ -163,6 +164,7 @@ class TestPlayground extends React.Component {
                     <div className="contentContainer">
                         <div className="videoContainer">
                             <PannellumSampleRoom></PannellumSampleRoom>
+                            {/* <PurePannellumJS></PurePannellumJS> */}
                         </div>
                         <div className="title">Dating Around</div>
                         <div className="topIntroText">

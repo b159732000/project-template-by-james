@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar/NavigationBar.jsx';
 import { Xmjs } from './components/Xmjs/index.js';
 import Qwzs from './components/Qwzs/Qwzs.jsx';
@@ -12,6 +12,9 @@ import { openMenu, closeMenu } from './actions/actions.js'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Traffic from './components/Traffic/Traffic.jsx';
 import LoadingPage from './components/LoadingPage/LoadingPage.jsx';
+import GardenTraveling from './components/GardenTraveling/GardenTraveling.jsx';
+import AerialView from './components/AerialView/AerialView.jsx';
+import FullpageVideoPlayer from './components/FullpageVideoPlayer/FullpageVideoPlayer.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -38,12 +41,30 @@ class App extends React.Component {
   }
 
   // 點擊Menu Icon時，如果Menu是打開的，就把Menu關上，反之亦然
-  handleMenuIconClick() {
-    if (this.props.menuIsOpen) {
-      this.closeMenu();
-    } else {
-      this.openMenu();
+  handleMenuIconClick(forceCloseOrOpen) {
+    switch (forceCloseOrOpen) {
+      case "Close":
+        this.closeMenu();
+        break;
+      case "Open":
+        this.openMenu();
+        break;
+      case null:
+        if (this.props.menuIsOpen) {
+          this.closeMenu();
+        } else {
+          this.openMenu();
+        }
+        break;
+      default:
+        if (this.props.menuIsOpen) {
+          this.closeMenu();
+        } else {
+          this.openMenu();
+        }
+        break;
     }
+
   }
 
   render() {
@@ -53,19 +74,21 @@ class App extends React.Component {
         {/* Menu出現時，覆蓋底層的灰色 */}
         <div className={"blackCover" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}></div>
 
-        {/* Menu Icon & Logo */}
-        <div className="fixedThing">
-          <div className={"menuIcon" + ((this.props.menuIsOpen) ? " menuIsActive" : "")} onClick={() => this.handleMenuIconClick()}>
-            <div className="hamburger"></div>
-          </div>
-          <div className={"logo" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}>Cui.hu</div>
-        </div>
-
-
         <BrowserRouter>   {/* BrowserRouter底下的每一個Route，都會有match,location,history三個props */}
           <Route path="/james/project-template-by-james/" exact component={LoadingPage}></Route>
           <Route render={({ location }) => (
             <div className="mainRouteContainer">
+
+              {/* Menu Icon & Logo */}
+              <div className="fixedThing">
+                <div className={"menuIcon" + ((this.props.menuIsOpen) ? " menuIsActive" : "")} onClick={() => this.handleMenuIconClick()}>
+                  <div className="hamburger"></div>
+                </div>
+                <Link to="/james/project-template-by-james" onClick={() => this.handleMenuIconClick("Close")}>
+                  <div className={"logo" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}>Cui.hu</div>
+                </Link>
+              </div>
+
               <NavigationBar></NavigationBar>
               <TransitionGroup>
                 {/*<ReactTransitionGroup key={location.key} location={location}>*/}
@@ -88,6 +111,9 @@ class App extends React.Component {
                     <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
                     <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
                     <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
+                    <Route path="/james/project-template-by-james/GardenTraveling" component={GardenTraveling}></Route>
+                    <Route path="/james/project-template-by-james/AerialView" component={AerialView}></Route>
+                    <Route path="/james/project-template-by-james/FullpageVideoPlayer" component={FullpageVideoPlayer}></Route>
                   </Switch>
                 </CSSTransition>
                 {/*</ReactTransitionGroup>*/}

@@ -1,0 +1,37 @@
+@import "../../variables.scss";
+
+.AerialViewContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $PrimaryWhite;
+    &.componentChangeCSSTransition-enter {
+      opacity: 0;
+    }
+    &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+      opacity: 1;
+      transition: all 2s $PrimaryTimeFunction 0s;
+    }
+    &.componentChangeCSSTransition-exit {
+      background-color: transparent;
+      pointer-events: none;
+    }
+    &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+      opacity: 0;
+      transition: all 0.6s $PrimaryTimeFunction;
+    }
+    .videoContaienr {
+      width: 100%;
+      height: 100%;
+  
+      // 為了讓player預設全螢幕 (指定plyr和plyr__video-wrapper Height:100%)
+      .plyr {
+        height: 100%;
+        .plyr__video-wrapper {
+          height: 100%;
+        }
+      }
+    }
+}

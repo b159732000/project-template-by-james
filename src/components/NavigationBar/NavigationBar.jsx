@@ -46,32 +46,54 @@ class NavigationBar extends React.Component {
                 <ul className="menuList">
                     <li>
                         <Link to="/james/project-template-by-james/Xmjs" onClick={() => this.handleMenuIconClick()}>
-
-                            <div className="menuNameCN">建案介紹</div>
+                            <div className="menuNameCN">品牌介紹</div>
+                            <div className="menuNameEn">Project introduciton</div>
+                        </Link>
+                    </li>
+                    <div className="lineBreak"></div>
+                    <li>
+                        <Link to="/james/project-template-by-james/Xmjs" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">项目楼书</div>
                             <div className="menuNameEn">Project introduciton</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
                         <Link to="/james/project-template-by-james/Traffic" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">建案地址</div>
+                            <div className="menuNameCN">区位介绍</div>
                             <div className="menuNameEn">Location display</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
-                            <div className="menuNameCN">3D房屋模型</div>
-                            <div className="menuNameEn">Seiko apartment</div>
+                        <Link to="/james/project-template-by-james/AerialView" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">三維沙盘</div>
+                            <div className="menuNameEn">My Own Test Playground</div>
                         </Link>
                     </li>
                     <div className="lineBreak"></div>
                     <li>
+                        <Link to="/james/project-template-by-james/GardenTraveling" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">园林漫游</div>
+                            <div className="menuNameEn">My Own Test Playground</div>
+                        </Link>
+                    </li>
+                    <div className="lineBreak"></div>
+                    <li>
+                        <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                            <div className="menuNameCN">精工户型</div>
+                            <div className="menuNameEn">Seiko apartment</div>
+                        </Link>
+                    </li>
+
+                    {/* <li>
                         <Link to="/james/project-template-by-james/TestPlayground" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">360°室內全景</div>
                             <div className="menuNameEn">My Own Test Playground</div>
                         </Link>
                     </li>
+                    <div className="lineBreak"></div> */}
+
                 </ul>
 
                 <div className="bottom">

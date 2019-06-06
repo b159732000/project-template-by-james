@@ -39,7 +39,7 @@ class LoadingPage extends React.Component {
 
         // 場景
         scene = new window.THREE.Scene();
-        scene.background = new THREE.Color(0x404749);
+        scene.background = new THREE.Color(0x7a8689);
 
         // 相機
         camera = new window.THREE.PerspectiveCamera(
@@ -73,7 +73,8 @@ class LoadingPage extends React.Component {
             // antialias: false,
             alpha: true,
         })
-        renderer.setClearColor(0x404749, 1);    //設定背景色(color, opacity)，如果不起作用，就是scene的背景蓋過了canvas的背景
+        renderer.setClearColor(0x7a8689, 1);    //設定背景色(color, opacity)，如果不起作用，就是scene的背景蓋過了canvas的背景
+        // renderer.setClearColor(0x404749, 1);    //設定背景色(color, opacity)，如果不起作用，就是scene的背景蓋過了canvas的背景
         renderer.setPixelRatio(window.divicePixelRatio);    //解決高DPI裝置，
         renderer.setSize(width, height);
         renderer.autoClear = false;   //參數 - 是否要清除上一個frame

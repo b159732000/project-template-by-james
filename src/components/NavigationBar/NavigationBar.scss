@@ -25,7 +25,7 @@
         transition-delay: 0s; //進入此class時會看這個延遲
       }
 
-      @for $i from 1 through 4 {
+      @for $i from 1 through 6 {
         li:nth-child(#{$i*2-1}) {
           opacity: 1;
           transition-delay: #{$i*0.1}s;
@@ -53,7 +53,7 @@
       transform: translate(0, 0);
       transition-delay: 0s; //進入此class時會看這個延遲
       opacity: 1;
-      transition-delay: #{5*0.1}s;
+      transition-delay: #{7*0.1}s;
       transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.970);
     }
   }
@@ -115,12 +115,13 @@
   }
 
   .menuList {
+    // border: 1px solid #000;
     transition: $NavigationBarTransition;
 
     margin: 0;
     padding: 0;
     position: relative;
-    top: 43vh;
+    top: 33vh;
     margin-right: 5.5vw;
 
     display: flex;
@@ -133,6 +134,7 @@
     }
 
     li {
+      // border: 1px solid #000;
       opacity: 0;
       transform: translate(-125%, 0);
       transition: $NavigationBarTransition;
@@ -152,8 +154,8 @@
       .menuNameCN {
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 600;
-        font-size: 2.35rem;
-        line-height: 2.7rem;
+        font-size: 2rem;
+        line-height: 2.35rem;
       }
 
       .menuNameEn {
