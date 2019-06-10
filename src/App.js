@@ -3,7 +3,7 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar/NavigationBar.jsx';
-import { Xmjs } from './components/Xmjs/index.js';
+import { LogoIntroduction } from './components/LogoIntroduction/LogoIntroduction.jsx';
 import Qwzs from './components/Qwzs/Qwzs.jsx';
 import HouseModel3D from './components/HouseModel3D/HouseModel3D.jsx';
 import TestPlayground from './components/TestPlayground/TestPlayground.jsx';
@@ -107,7 +107,7 @@ class App extends React.Component {
                   <Switch location={location}>  {/* Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
                     {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
-                    <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
+                    <Route path="/james/project-template-by-james/Xmjs" component={LogoIntroduction}></Route>
                     <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
                     <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
                     <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
