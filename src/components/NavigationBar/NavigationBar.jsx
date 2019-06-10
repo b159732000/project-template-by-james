@@ -45,7 +45,7 @@ class NavigationBar extends React.Component {
 
                 <ul className="menuList">
                     <li>
-                        <Link to="/james/project-template-by-james/Xmjs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/LogoIntroduction" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">品牌介紹</div>
                             <div className="menuNameEn">Project introduciton</div>
                         </Link>

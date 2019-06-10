@@ -107,6 +107,7 @@ class App extends React.Component {
                   <Switch location={location}>  {/* Switch是一渲染到指定Route，立即停止繼續渲染其他Route */}
                     {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
+                    <Route path="/james/project-template-by-james/LogoIntroduction" component={LogoIntroduction}></Route>
                     <Route path="/james/project-template-by-james/Xmjs" component={LogoIntroduction}></Route>
                     <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
                     <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}

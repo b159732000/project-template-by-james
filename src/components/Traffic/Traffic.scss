@@ -23,25 +23,27 @@
   left: 0;
   background-color: $PrimaryWhite;
 
-  .bgImg {
-    &.changeBgImgTransition-enter {
-      opacity: 0;
-    }
-    &.changeBgImgTransition-enter-active {
-      opacity: 1;
-      transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-    &.changeBgImgTransition-enter-done {
-      //未設定的話，會同enter-active
-    }
-    &.changeBgImgTransition-exit {
-      pointer-events: none;
-      opacity: 1;
-    }
-    &.changeBgImgTransition-exit-active {
-      opacity: 0;
-      transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
+  .changeBgImgTransition-enter {
+    opacity: 0;
+  }
+  .changeBgImgTransition-enter-active {
+    opacity: 1;
+    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  .changeBgImgTransition-enter-done {
+    //未設定的話，會同enter-active
+  }
+  .changeBgImgTransition-exit {
+    pointer-events: none;
+    opacity: 1;
+  }
+  .changeBgImgTransition-exit-active {
+    opacity: 0;
+    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  // 頁面主要內容(共三個分頁)
+  .traffic {
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -50,6 +52,248 @@
     width: 100%;
     height: 100%;
     z-index: 10;
+    overflow-x: scroll;
+
+    &.noDisplay {
+      display: none;
+    }
+    // 第一個分頁 (依照右側menu決定)
+    &.traffic1 {
+      border: 1px solid red;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    // 第二個分頁 (依照右側menu決定)
+    &.traffic2 {
+      border: 1px solid Orange;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      .innerContainer {
+        border: 1px solid yellow;
+        position: relative;
+        top: 0;
+        left: 0;
+        // left: -34vh;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        // transform: translate(-30%, 0);
+
+        // 背景
+        .bg {
+          border: 1px solid red;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 100;
+        }
+        // 大圓
+        .bigLakeAreaStroke {
+          height: 80vh;
+          width: 80vh;
+          border-radius: 50%;
+          border: 3px dotted rgb(255, 164, 79);
+          position: absolute;
+          top: 15vh;
+          left: 9vh;
+          z-index: 110;
+        }
+        // 小圓
+        .oneHourAreaStroke {
+          height: 60vh;
+          width: 60vh;
+          border-radius: 50%;
+          border: 3px solid rgb(255, 229, 79);
+          position: absolute;
+          top: 25vh;
+          left: 19vh;
+          z-index: 110;
+          // background-color: rgba(255, 255, 255, 0.2);
+        }
+        // 大圓文字
+        .bigCircleTextContainer {
+          height: 80vh;
+          width: 80vh;
+          position: absolute;
+          top: 15vh;
+          left: 9vh;
+          z-index: 110;
+          padding: 4vh;
+          svg {
+            overflow: visible;
+            transform: rotate(72deg);
+            path {
+              fill: none;
+            }
+            textPath {
+              font-size: 0.3rem;
+              font-weight: 700;
+              font-family: "Noto Sans TC", sans-serif;
+            }
+          }
+        }
+        // 小圓文字
+        .smallCircleTextContainer {
+          height: 60vh;
+          width: 60vh;
+          position: absolute;
+          top: 25vh;
+          left: 19vh;
+          z-index: 110;
+          padding: 4vh;
+          svg {
+            overflow: visible;
+            transform: rotate(74deg);
+            path {
+              fill: none;
+            }
+            textPath {
+              font-size: 0.3rem;
+              font-weight: 700;
+              font-family: "Noto Sans TC", sans-serif;
+            }
+          }
+        }
+        .DongGuang {
+          position: absolute;
+          top: 31vh;
+          left: 40.5vh;
+          height: 27%;
+          z-index: 105;
+        }
+        .MainArea {
+          position: absolute;
+          top: 43vh;
+          left: 69vh;
+          height: 7.5%;
+          z-index: 106;
+        }
+        .Railway {
+          position: absolute;
+          top: -3vh;
+          left: 58vh;
+          height: 64.5%;
+          z-index: 106;
+        }
+        .dot {
+          &.dot1 {
+            position: absolute;
+            top: 40.5vh;
+            left: 62vh;
+            height: 3.5%;
+            z-index: 106;
+          }
+          &.dot2 {
+            position: absolute;
+            top: 59vh;
+            left: 59vh;
+            height: 3.5%;
+            z-index: 106;
+          }
+        }
+        .logo {
+          position: absolute;
+          top: 27vh;
+          left: 66vh;
+          height: 18.5%;
+          z-index: 120;
+        }
+        .location {
+          position: absolute;
+          top: 0vh;
+          left: 0vh;
+          height: 4.5%;
+          z-index: 106;
+          &.GuangZhou {
+            top: 32vh;
+            left: 24vh;
+          }
+          &.HongKong {
+            top: 73vh;
+            left: 64vh;
+          }
+          &.HuiZhou {
+            top: 33vh;
+            left: 77vh;
+          }
+          &.Macao {
+            top: 85vh;
+            left: 36vh;
+          }
+          &.ShenZheng {
+            top: 59vh;
+            left: 62vh;
+          }
+          &.ZhuHai {
+            top: 77vh;
+            left: 35vh;
+          }
+        }
+        // 大灣區生投控生態城
+        .EnvironmentTown {
+          position: absolute;
+          top: 44vh;
+          left: 73vh;
+          height: 2.5%;
+          z-index: 119;
+        }
+        // 贛深高速
+        .HighWayText {
+          position: absolute;
+          top: 44vh;
+          left: 56vh;
+          height: 9.5%;
+          z-index: 119;
+        }
+        // 深圳北
+        .ShenZhenBei {
+          position: absolute;
+          top: 56.5vh;
+          left: 60.5vh;
+          height: 2%;
+          z-index: 119;
+        }
+        // 塘廈站
+        .TangXia {
+          position: absolute;
+          top: 38vh;
+          left: 59vh;
+          height: 2%;
+          z-index: 119;
+        }
+      }
+    }
+    // 第三個分頁 (依照右側menu決定)
+    &.traffic3 {
+      border: 1px solid green;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      .innerContainer {
+        border: 1px solid yellow;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        // left: -34vh;
+        height: 100%;
+        width: 100%;
+        // transform: translate(-30%, 0);
+        // 背景
+        .bg {
+          border: 1px solid red;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 100;
+        }
+      }
+    }
   }
 
   .bgImgPreload {
@@ -72,7 +316,7 @@
     z-index: 13;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
   }
 
   .pager {
@@ -99,19 +343,19 @@
               opacity: 1;
               font-size: 3.5rem;
               // transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-              transition: all 1s cubic-bezier(.02,.95,.17,1);
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
             }
           }
           .pageName {
             .text {
               opacity: 1;
-              transition: all 1s cubic-bezier(.02,.95,.17,1);
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
             }
           }
           .pageIndicator {
             &::after {
               opacity: 1;
-              transition: all 1s cubic-bezier(.02,.95,.17,1);
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
             }
           }
         }

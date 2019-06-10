@@ -1,14 +1,22 @@
 import React from 'react';
 import './LogoIntroduction.scss';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
 
 class LogoIntroduction extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPageIndex: 1,
+            currentPageIndex: 1,    //目前所在頁數
             bgImgUrl: require('../../images/Traffic/bg1.jpg'),
             bgImgIsChanging: false,
+            currentActiveCircle: {
+                shopping: false,
+                health: false,
+                finance: false,
+                energy: false,
+                city: false,
+            },
             thisTimeTouch: {
                 startX: null,
                 startY: null,
@@ -107,9 +115,57 @@ class LogoIntroduction extends React.Component {
     }
     // 換頁程式碼 END --------    
 
+    // 決定小圓圈(覆蓋層)的顯示隱藏
+    changeCoverCircleHidden(selectedCircle) {
+        switch (selectedCircle) {
+            case "shopping":
+                this.setState({
+                    currentActiveCircle: {
+                        ...this.state.currentActiveCircle,
+                        shopping: !this.state.currentActiveCircle.shopping,
+                    }
+                },()=>console.log(this.state.currentActiveCircle))
+                break;
+            case "health":
+                this.setState({
+                    currentActiveCircle: {
+                        ...this.state.currentActiveCircle,
+                        health: !this.state.currentActiveCircle.health,
+                    }
+                })
+                break;
+            case "finance":
+                this.setState({
+                    currentActiveCircle: {
+                        ...this.state.currentActiveCircle,
+                        finance: !this.state.currentActiveCircle.finance,
+                    }
+                })
+                break;
+            case "energy":
+                this.setState({
+                    currentActiveCircle: {
+                        ...this.state.currentActiveCircle,
+                        energy: !this.state.currentActiveCircle.energy,
+                    }
+                })
+                break;
+            case "city":
+                this.setState({
+                    currentActiveCircle: {
+                        ...this.state.currentActiveCircle,
+                        city: !this.state.currentActiveCircle.city,
+                    }
+                })
+                break;
+            default:
+                break;
+        }
+    }
+
     render() {
         return (
-            <div className="XmjsContainer" onTouchMove={(event) => this.handleTouchScroll(event)} onTouchStart={(event) => this.handleTouchStart(event)} onTouchEnd={() => this.handleTouchEnd()}>
+            <div className="logoIntroContainer" onTouchMove={(event) => this.handleTouchScroll(event)} onTouchStart={(event) => this.handleTouchStart(event)} onTouchEnd={() => this.handleTouchEnd()}>
 
                 {/*<div className="bgImg" style={{backgroundImage: "url(" + this.state.bgImgUrl + ")"}}></div>*/}
                 <TransitionGroup>
@@ -120,17 +176,71 @@ class LogoIntroduction extends React.Component {
                         classNames="changeBgImgTransition"
                         key={this.state.bgImgUrl}
                     >
-                        <div className="bgImg" style={{ backgroundImage: "url(" + this.state.bgImgUrl + ")" }}></div>
+                        <div className="CSSTransitionContainer">
+
+                            {/* <div className="bgImg" style={{ backgroundImage: "url(" + this.state.bgImgUrl + ")" }}></div> */}
+
+                            {/* 品牌介紹第一頁 */}
+                            <div className={(this.state.currentPageIndex === 1) ? ("logoIntruction logoIntruction1") : ("logoIntruction logoIntruction1 noDisplay")}>
+                                <div className="innerContainer" ref={self => this.Page2InnerContainer = self}>
+
+                                    {/* 螢幕上半文字 */}
+                                    <div className="upperText">
+                                        <img src={require('../../images/LogoIntroduction/1/btn/text.png')} alt="" />
+                                    </div>
+
+                                    {/* 螢幕下半圓圈icon*4 */}
+                                    <div className="bottomCirclesPositioner">
+                                        <div className="bottomCirclesContainer">
+                                            {/* 中心骨架圓圈 */}
+                                            <img className="mainCenterImg" src={require('../../images/LogoIntroduction/1/btn/center.png')} alt="" />
+                                            {/* 旁邊的小圓圈 */}
+                                            <div className="childCircles">
+                                                <img src={require('../../images/LogoIntroduction/1/btn/up/shopping.png')} alt="" onClick={()=>this.changeCoverCircleHidden("shopping")}/> {/* 大消費 */}
+                                                <img src={require('../../images/LogoIntroduction/1/btn/up/health.png')} alt="" onClick={()=>this.changeCoverCircleHidden("health")}/> {/* 大健康 */}
+                                                <img src={require('../../images/LogoIntroduction/1/btn/up/finance.png')} alt="" onClick={()=>this.changeCoverCircleHidden("finance")}/> {/* 科技與金融 */}
+                                                <img src={require('../../images/LogoIntroduction/1/btn/up/energy.png')} alt="" onClick={()=>this.changeCoverCircleHidden("energy")}/> {/* 能源服務 */}
+                                                <img src={require('../../images/LogoIntroduction/1/btn/up/city.png')} alt="" onClick={()=>this.changeCoverCircleHidden("city")}/> {/* 城市建設與運營 */}
+                                            </div>
+                                            {/* 覆蓋小圓圈的小圓圈 */}
+                                            <div className="childCirclesCover">
+                                                <img className={(this.state.currentActiveCircle.shopping === true)?(""):("hidden")} src={require('../../images/LogoIntroduction/1/btn/down/shopping.png')} alt="" onClick={()=>this.changeCoverCircleHidden("shopping")}/> {/* 大消費 */}
+                                                <img className={(this.state.currentActiveCircle.health === true)?(""):("hidden")} src={require('../../images/LogoIntroduction/1/btn/down/health.png')} alt="" onClick={()=>this.changeCoverCircleHidden("health")}/> {/* 大健康 */}
+                                                <img className={(this.state.currentActiveCircle.finance === true)?(""):("hidden")} src={require('../../images/LogoIntroduction/1/btn/down/finance.png')} alt="" onClick={()=>this.changeCoverCircleHidden("finance")}/> {/* 科技與金融 */}
+                                                <img className={(this.state.currentActiveCircle.energy === true)?(""):("hidden")} src={require('../../images/LogoIntroduction/1/btn/down/energy.png')} alt="" onClick={()=>this.changeCoverCircleHidden("energy")}/> {/* 能源服務 */}
+                                                <img className={(this.state.currentActiveCircle.city === true)?(""):("hidden")} src={require('../../images/LogoIntroduction/1/btn/down/city.png')} alt="" onClick={()=>this.changeCoverCircleHidden("city")}/> {/* 城市建設與運營 */}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            {/* 品牌介紹第二頁 */}
+                            <div className={(this.state.currentPageIndex === 2) ? ("logoIntruction logoIntruction2") : ("logoIntruction logoIntruction2 noDisplay")}>
+                                <div className="innerContainer" ref={self => this.Page2InnerContainer = self}>
+                                </div>
+                            </div>
+
+                            {/* 品牌介紹第三頁 */}
+                            <div className={(this.state.currentPageIndex === 3) ? ("logoIntruction logoIntruction3") : ("logoIntruction logoIntruction3 noDisplay")}>
+                                <div className="innerContainer" ref={self => this.Page2InnerContainer = self}>
+                                </div>
+                            </div>
+
+                        </div>
                     </CSSTransition>
                 </TransitionGroup>
 
-                <div
+                {/* <div
                     id="boardCanvas"
                     ref={mount => {
                         this.mount = mount;
                     }}
-                />
-                <div className="pager">
+                /> */}
+
+                {/* <div className="pager">
                     <ul>
 
                         <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
@@ -185,6 +295,7 @@ class LogoIntroduction extends React.Component {
 
                     </ul>
                 </div>
+                 */}
             </div>
         )
     }
