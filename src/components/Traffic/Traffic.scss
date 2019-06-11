@@ -572,40 +572,50 @@
             left: 60vh;
           }
         }
-        // // 生活
-        // .lifeContainer {
-        //   position: absolute;
-        //   z-index: 110;
-        //   top: 0;
-        //   left: 0;
-        //   border: 1px solid red;
-        //   // 地點標示通用屬性
-        //   .locationIcon {
-        //     position: absolute;
-        //     height: 4vh;
-        //   }
+        // 生活
+        .educationContainer {
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+          border: 1px solid red;
+          // 地點標示通用屬性
+          .locationIcon {
+            position: absolute;
+            height: 3vh;
+          }
 
-        //   // 清溪醫院
-        //   .lakeHospital {
-        //     top: 0vh;
-        //     left: 0vh;
-        //   }
-        //   // 清溪公園
-        //   .lakePark {
-        //     top: 0vh;
-        //     left: 0vh;
-        //   }
-        //   // 農業銀行
-        //   .Bank {
-        //     top: 0vh;
-        //     left: 0vh;
-        //   }
-        //   // 觀光公園 
-        //   .travelPark {
-        //     top: 0vh;
-        //     left: 0vh;
-        //   }
-        // }
+          // 晨光
+          .morningLight {
+            top: 35vh;
+            left: 59vh;
+          }
+          // 華晨
+          .huaCheng {
+            top: 32vh;
+            left: 60vh;
+          }
+          // 清溪中學
+          .junior {
+            top: 39vh;
+            left: 59vh;
+          }
+          // 清溪小學 
+          .elementary {
+            top: 41vh;
+            left: 57vh;
+          }
+          // 師範 
+          .teacher {
+            top: 44vh;
+            left: 44vh;
+          }
+          // 初級 
+          .basic {
+            top: 56vh;
+            left: 43vh;
+          }
+        }
 
 
       }

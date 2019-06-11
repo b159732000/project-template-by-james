@@ -379,16 +379,20 @@ class Traffic extends React.Component {
                     <img className="bussinessCenter locationIcon" src={require('../../images/Traffic/ThirdLevel/Business/5.png')} alt="" />
                   </div>
 
-                  {/* 生活 */}
-                  <div className="lifeContainer noDisplay">
-                    {/* 清溪醫院 */}
-                    <img className="lakeHospital locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/1.png')} alt="" />
-                    {/* 清溪公園 */}
-                    <img className="lakePark locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/4.png')} alt="" />
-                    {/* 農業銀行 */}
-                    <img className="Bank locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/2.png')} alt="" />
-                    {/* 觀光公園 */}
-                    <img className="travelPark locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/3.png')} alt="" />
+                  {/* 教育 */}
+                  <div className="educationContainer">
+                    {/* 晨光 */}
+                    <img className="morningLight locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/1.png')} alt="" />
+                    {/* 華晨 */}
+                    <img className="huaCheng locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/2.png')} alt="" />
+                    {/* 清溪中學 */}
+                    <img className="junior locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/3.png')} alt="" />
+                    {/* 清溪小學 */}
+                    <img className="elementary locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/4.png')} alt="" />
+                    {/* 師範 */}
+                    <img className="teacher locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/5.png')} alt="" />
+                    {/* 初級 */}
+                    <img className="basic locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/6.png')} alt="" />
                   </div>
 
                 </div>
