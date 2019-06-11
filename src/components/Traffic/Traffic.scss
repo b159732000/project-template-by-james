@@ -59,15 +59,53 @@
     }
     // 第一個分頁 (依照右側menu決定)
     &.traffic1 {
-      border: 1px solid red;
       width: 100%;
       height: 100%;
       position: absolute;
+
+      // 圖片與icon的基準 (bg高度100%，其餘icon定位用vh，大小用height%)
+      .container {
+        width: 100%;
+        height: 100%;
+        // display: flex;
+        // justify-content: center;  //水平置中
+        img {
+          // position: absolute;
+          // left: 0;
+          // top: 0;
+          // max-height: 100%;
+        }
+        .bg {
+          height: 100%;
+        }
+        .icon {
+          position: absolute;
+        }
+        .SanFrancisco {
+          top: 34vh;
+          left: 59.5vh;
+          height: 6%;
+        }
+        .Tokyo {
+          top: 38vh;
+          left: 53.5vh;
+          height: 6%;
+        }
+        .HongKong {
+          top: 47vh;
+          left: 49vh;
+          height: 20%;
+        }
+        .Point {
+          top: 46vh;
+          left: 48vh;
+          height: 2%;
+        }
+      }
     }
 
     // 第二個分頁 (依照右側menu決定)
     &.traffic2 {
-      border: 1px solid Orange;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -84,7 +122,6 @@
 
         // 背景
         .bg {
-          border: 1px solid red;
           height: 100%;
           position: absolute;
           top: 0;
@@ -269,29 +306,308 @@
     }
     // 第三個分頁 (依照右側menu決定)
     &.traffic3 {
-      border: 1px solid green;
       width: 100%;
       height: 100%;
       position: absolute;
+
+      // 圖片與icon的基準 (bg高度100%，其餘icon定位用vh，大小用height%)
       .innerContainer {
-        border: 1px solid yellow;
-        height: 100%;
-        position: absolute;
+        position: relative;
         top: 0;
         left: 0;
-        // left: -34vh;
         height: 100%;
         width: 100%;
-        // transform: translate(-30%, 0);
+        
         // 背景
         .bg {
-          border: 1px solid red;
           height: 100%;
           position: absolute;
           top: 0;
           left: 0;
           z-index: 100;
         }
+        // 專案本體Logo
+        .projectLogo {
+          position: absolute;
+          height: 6vh;
+          top: 36vh;
+          left: 46vh;
+          z-index: 120;
+        }
+
+        // 綠化標示外容器 (跟背景圖同寬高)
+        .greenContainer {
+          border: 1px solid #000;
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+
+          .noDisplay {
+            display: none;
+          }
+
+          // 容器通用屬性 - 字+樹圖標
+          .locationContainer {
+            position: absolute;
+            border: 1px solid red;
+          }
+          .treeIcon {
+            position: absolute;
+            height: 3vh;
+            z-index: 115;
+          }
+          .text {
+            position: absolute;
+            height: 6vh;
+            left: 2vh;
+            top: -3vh;
+            z-index: 110;
+          }
+
+          // 黃牛容器屬性
+          .YellowCowPark {
+            border: 1px solid #000;
+            top: 45vh;
+            left: 20vh;
+          }
+
+          // 大王容器 屬性
+          .BigKing {
+            border: 1px solid #000;
+            top: 55vh;
+            left: 60vh;
+          }
+
+          // 觀音容器屬性
+          .God {
+            border: 1px solid #000;
+            top: 31vh;
+            left: 44vh;
+          }
+
+          // 銀瓶容器屬性
+          .Silver {
+            border: 1px solid #000;
+            top: 29vh;
+            left: 81vh;
+          }
+
+          // 碧湖容器屬性
+          .Lake {
+            border: 1px solid #000;
+            top: 72vh;
+            left: 46vh;
+          }
+
+          // 清溪容器屬性
+          .River {
+            border: 1px solid #000;
+            top: 31vh;
+            left: 68vh;
+          }
+
+
+        }
+
+        .noDisplay {
+          display: none;
+        }
+
+        // 生活
+        .lifeContainer {
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+          border: 1px solid red;
+          // 地點標示通用屬性
+          .locationIcon {
+            position: absolute;
+            height: 4vh;
+          }
+
+          // 清溪醫院
+          .lakeHospital {
+            top: 33vh;
+            left: 54vh;
+            height: 6vh;
+          }
+          // 清溪公園
+          .lakePark {
+            top: 39vh;
+            left: 54vh;
+          }
+          // 農業銀行
+          .Bank {
+            top: 43vh;
+            left: 51vh;
+          }
+          // 觀光公園 
+          .travelPark {
+            top: 60vh;
+            left: 34vh;
+          }
+        }
+        // 行政
+        .govermentContainer {
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+          border: 1px solid red;
+          // 地點標示通用屬性
+          .locationIcon {
+            position: absolute;
+            height: 4vh;
+          }
+
+          // 清溪政府
+          .goverment {
+            top: 35vh;
+            left: 55vh;
+            z-index: 125;
+          }
+          // 綜合服務中心
+          .center {
+            top: 40vh;
+            left: 48vh;
+          }
+          // 公安局
+          .police {
+            top: 43vh;
+            left: 52vh;
+          }
+          // 塘廈政府
+          .tangGoverment {
+            top: 46vh;
+            left: 26vh;
+          }
+          // 鳳崗政府
+          .birdGoverment {
+            top: 68vh;
+            left: 48vh;
+          }
+          // 電視台
+          .tv {
+            top: 38vh;
+            left: 52vh;
+          }
+        }
+        // 娛樂
+        .entertainmentContainer {
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+          border: 1px solid red;
+          // 地點標示通用屬性
+          .locationIcon {
+            position: absolute;
+            height: 4vh;
+          }
+
+          // 銀利高爾夫
+          .silverGolf {
+            top: 37vh;
+            left: 34vh;
+          }
+          // 塘廈體育館
+          .gym {
+            top: 50vh;
+            left: 24vh;
+          }
+          // 觀瀾高爾夫
+          .seaWaveGolf {
+            top: 52vh;
+            left: 6vh;
+          }
+          // 生態體育公園 
+          .gymPark {
+            top: 75vh;
+            left: 6vh;
+          }
+          // 文化廣場 
+          .culture {
+            top: 41vh;
+            left: 54vh;
+          }
+        }
+        // 商業
+        .businessContainer {
+          position: absolute;
+          z-index: 110;
+          top: 0;
+          left: 0;
+          border: 1px solid red;
+          // 地點標示通用屬性
+          .locationIcon {
+            position: absolute;
+            height: 4vh;
+          }
+
+          // 潤生百貨
+          .bornShoppingMall {
+            top: 35vh;
+            left: 55.5vh;
+          }
+          // 商會大廈
+          .bussinessBuilding {
+            top: 37vh;
+            left: 57vh;
+          }
+          // 昌明酒店
+          .hotel {
+            top: 39vh;
+            left: 52vh;
+          }
+          // 嘉信廣場 
+          .ciaXin {
+            top: 43vh;
+            left: 57vh;
+          }
+          // 鹿湖商業中心 
+          .bussinessCenter {
+            top: 38vh;
+            left: 60vh;
+          }
+        }
+        // // 生活
+        // .lifeContainer {
+        //   position: absolute;
+        //   z-index: 110;
+        //   top: 0;
+        //   left: 0;
+        //   border: 1px solid red;
+        //   // 地點標示通用屬性
+        //   .locationIcon {
+        //     position: absolute;
+        //     height: 4vh;
+        //   }
+
+        //   // 清溪醫院
+        //   .lakeHospital {
+        //     top: 0vh;
+        //     left: 0vh;
+        //   }
+        //   // 清溪公園
+        //   .lakePark {
+        //     top: 0vh;
+        //     left: 0vh;
+        //   }
+        //   // 農業銀行
+        //   .Bank {
+        //     top: 0vh;
+        //     left: 0vh;
+        //   }
+        //   // 觀光公園 
+        //   .travelPark {
+        //     top: 0vh;
+        //     left: 0vh;
+        //   }
+        // }
+
+
       }
     }
   }
@@ -320,11 +636,10 @@
   }
 
   .pager {
-    // border: 1px solid red;
     position: absolute;
     width: 150px;
     height: 500px;
-    bottom: 10%;
+    bottom: -20%;
     right: 0;
     z-index: 15;
     ul {

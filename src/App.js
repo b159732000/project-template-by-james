@@ -85,7 +85,7 @@ class App extends React.Component {
                   <div className="hamburger"></div>
                 </div>
                 <Link to="/james/project-template-by-james" onClick={() => this.handleMenuIconClick("Close")}>
-                  <div className={"logo" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}>Cui.hu</div>
+                  <div className={"logo" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}>Hua.run</div>
                 </Link>
               </div>
 

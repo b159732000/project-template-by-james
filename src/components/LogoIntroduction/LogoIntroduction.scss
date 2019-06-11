@@ -27,7 +27,7 @@
   // CSS Transition總容器
   .CSSTransitionContainer {
     // CSS Transition內各個項目
-    .logoIntruction {
+    .logoInstruction {
       background-size: cover;
       background-position: center;
       position: absolute;
@@ -40,8 +40,9 @@
       &.noDisplay {
         display: none;
       }
+
       // 品牌介紹第一頁
-      &.logoIntruction1 {
+      &.logoInstruction1 {
         border: 1px solid red;
         width: 100%;
         height: 100%;
@@ -49,13 +50,15 @@
         .innerContainer {
           height: 100%;
           width: 100%;
+          position: relative;
+          padding: 0 5.5vw;
           // 上半部的文字
           .upperText {
             width: 100%;
             height: 30%;
-            padding: 1.5rem;
             img {
-              height: 100%;
+              max-height: 100%;
+              max-width: 100%;
             }
           }
           // 下半側圓圈們的定位器
@@ -148,6 +151,747 @@
                 }
               }
             }
+          }
+        }
+      }
+
+      // 品牌介紹第二頁
+      &.logoInstruction2 {
+        .innerContainer {
+          height: 100%;
+          width: 100%;
+          position: relative;
+          padding: 0 5.5vw;
+          // 頂部文字
+          .upperTextContainer {
+            width: 100%;
+            height: 15%;
+            img {
+              max-height: 100%;
+              max-width: 100%;
+            }
+          }
+
+          // 中間地圖
+          .middleMapPositioner {
+            width: 100%;
+            // height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .middleMapGroup {
+              width: 408px;
+              height: 335px;
+              // width: 700px;
+              // height: 335px;
+              position: relative;
+              // 中國地圖
+              .chinaMap {
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+              }
+
+              // 地圖上的覆蓋區域
+              // cover是通用屬性
+              .cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                // hidden代表非選種狀態，即不顯示，不覆蓋背景地圖
+                &.hidden {
+                  opacity: 0;
+                }
+              }
+              .name {
+                top: 15%;
+                left: 47%;
+                height: 82%;
+              }
+              .Center {
+                top: 53.3%;
+                left: 61%;
+                height: 28.5%;
+              }
+              .East {
+                top: 51.3%;
+                left: 76%;
+                height: 21.5%;
+              }
+              .EastNorth {
+                top: 0.3%;
+                left: 77.9%;
+                height: 39.8%;
+              }
+              .North {
+                top: 30.9%;
+                left: 64%;
+                height: 31%;
+              }
+              .South {
+                top: 71%;
+                left: 53.5%;
+                height: 28.8%;
+              }
+              .West {
+                top: 30.8%;
+                left: 33%;
+                height: 61%;
+              }
+            }
+          }
+
+          // 螢幕底部六個按鈕
+          .bottomButtonContainer {
+            width: 100%;
+            height: 25%;
+            margin: 4vh 0;
+            // 上半部三個按鈕
+            .upper {
+              .button {
+                height: 100%;
+              }
+              text-align: start;
+              padding-left: 10%;
+              height: 50%;
+            }
+            // 下半部三個按鈕
+            .bottom {
+              .button {
+                height: 100%;
+              }
+              text-align: end;
+              padding-right: 10%;
+              height: 50%;
+            }
+
+            // 假的wrapper，這次button區，要使用漂亮的button，把fake外框拿掉
+            .fake {
+              // colors
+              $color-one: #2c3e50;
+              $btn-colors: (
+                "green": "#2ecc71",
+                "blue": "#3498db",
+                "purple": "#9b59b6",
+                "navy": "#34495e",
+                "orange": "#e67e22",
+                "red": "#e74c3c"
+              );
+              // extenders
+              .animate {
+                transition: all 0.3s;
+              }
+              /* Main Styles */
+              .main-container {
+                width: 100%;
+                max-width: 750px;
+                margin: 0 auto;
+                padding: 0 15px;
+              }
+              h1 {
+                line-height: 1;
+                padding: 25px 0;
+                border-bottom: 1px solid $color-one;
+                font-size: 35px;
+                color: $color-one;
+                text-align: center;
+              }
+              section {
+                padding: 60px 0 61px;
+                text-align: center;
+                position: relative;
+
+                h2 {
+                  margin-bottom: 15px;
+                  font-weight: normal;
+                  font-size: 17px;
+                  color: #d2d2d2;
+                  text-align: center;
+                }
+
+                &:not(:last-child):after {
+                  content: "";
+                  width: 70%;
+                  height: 1px;
+                  border-bottom: 1px dashed $color-one;
+                  opacity: 0.5;
+                  position: absolute;
+                  bottom: -1px;
+                  left: 15%;
+                }
+              }
+              .btn {
+                display: inline-block;
+                line-height: 35px;
+                margin: 8px;
+                padding: 0 15px;
+                font-size: 15px;
+                position: relative;
+                opacity: 0.999;
+                border-radius: 3px;
+                @extend .animate;
+              }
+              .btn-border-o {
+                background-color: transparent;
+                border: 1px solid #d0d0d0;
+                color: #b8b8b8;
+
+                &:before,
+                &:after {
+                  content: "";
+                  border-style: solid;
+                  position: absolute;
+                  z-index: 5;
+                  border-radius: 3px;
+                  box-sizing: content-box;
+                  @extend .animate;
+                }
+
+                &:before {
+                  width: 0;
+                  height: 100%;
+                  border-width: 1px 0 1px 0;
+                  top: -1px;
+                  left: 0;
+                  transition-delay: 0.05s;
+                }
+
+                &:after {
+                  width: 100%;
+                  height: 0;
+                  border-width: 0 1px 0 1px;
+                  top: 0;
+                  left: -1px;
+                }
+
+                &:hover {
+                  &:before {
+                    width: 100%;
+                  }
+
+                  &:after {
+                    height: 100%;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      border-color: #{$hex};
+                    }
+
+                    &:hover {
+                      color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-border {
+                background-color: #e5e5e5;
+                border: 1px solid #e5e5e5;
+                color: #a6a6a6;
+
+                &:before,
+                &:after {
+                  content: "";
+                  border-style: solid;
+                  position: absolute;
+                  z-index: 5;
+                  border-radius: 3px;
+                  box-sizing: content-box;
+                  @extend .animate;
+                }
+
+                &:before {
+                  width: 0;
+                  height: 100%;
+                  border-width: 1px 0 1px 0;
+                  top: -1px;
+                  left: 0;
+                  transition-delay: 0.05s;
+                }
+
+                &:after {
+                  width: 100%;
+                  height: 0;
+                  border-width: 0 1px 0 1px;
+                  top: 0;
+                  left: -1px;
+                }
+
+                &:hover {
+                  background-color: transparent;
+
+                  &:before {
+                    width: 100%;
+                  }
+
+                  &:after {
+                    height: 100%;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      border-color: #{$hex};
+                    }
+
+                    &:hover {
+                      color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-border-rev-o {
+                background-color: transparent;
+                border: 1px solid #d0d0d0;
+                color: #b8b8b8;
+
+                &:before,
+                &:after {
+                  content: "";
+                  border-style: solid;
+                  position: absolute;
+                  z-index: 5;
+                  border-radius: 3px;
+                  box-sizing: content-box;
+                  @extend .animate;
+                }
+
+                &:before {
+                  width: 0;
+                  height: 100%;
+                  border-width: 1px 0 1px 0;
+                  top: -1px;
+                  right: 0;
+                  transition-delay: 0.05s;
+                }
+
+                &:after {
+                  width: 100%;
+                  height: 0;
+                  border-width: 0 1px 0 1px;
+                  bottom: 0;
+                  left: -1px;
+                }
+
+                &:hover {
+                  &:before {
+                    width: 100%;
+                  }
+
+                  &:after {
+                    height: 100%;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      border-color: #{$hex};
+                    }
+
+                    &:hover {
+                      color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-border-rev {
+                background-color: #e5e5e5;
+                border: 1px solid #e5e5e5;
+                color: #a6a6a6;
+
+                &:before,
+                &:after {
+                  content: "";
+                  border-style: solid;
+                  position: absolute;
+                  z-index: 5;
+                  border-radius: 3px;
+                  box-sizing: content-box;
+                  @extend .animate;
+                }
+
+                &:before {
+                  width: 0;
+                  height: 100%;
+                  border-width: 1px 0 1px 0;
+                  top: -1px;
+                  right: 0;
+                }
+
+                &:after {
+                  width: 100%;
+                  height: 0;
+                  border-width: 0 1px 0 1px;
+                  bottom: 0;
+                  left: -1px;
+                  transition-delay: 0.05s;
+                }
+
+                &:hover {
+                  background-color: transparent;
+
+                  &:before {
+                    width: 100%;
+                  }
+
+                  &:after {
+                    height: 100%;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      border-color: #{$hex};
+                    }
+
+                    &:hover {
+                      color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-fill-vert-o {
+                background-color: transparent;
+                border: 1px solid #d0d0d0;
+                color: #b8b8b8;
+                overflow: hidden;
+
+                &:before,
+                &:after {
+                  content: "";
+                  width: 100%;
+                  height: 0;
+                  opacity: 0;
+                  position: absolute;
+                  left: 0;
+                  z-index: -1;
+                  @extend .animate;
+                }
+
+                &:before {
+                  top: 50%;
+                }
+
+                &:after {
+                  bottom: 50%;
+                }
+
+                &:hover {
+                  color: #fff;
+
+                  &:before,
+                  &:after {
+                    height: 50%;
+                    opacity: 1;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      background-color: #{$hex};
+                    }
+
+                    &:hover {
+                      border-color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-fill-vert {
+                background-color: #e5e5e5;
+                border: 1px solid #e5e5e5;
+                color: #a6a6a6;
+                overflow: hidden;
+
+                &:before,
+                &:after {
+                  content: "";
+                  width: 100%;
+                  height: 0;
+                  opacity: 0;
+                  position: absolute;
+                  left: 0;
+                  z-index: -1;
+                  @extend .animate;
+                }
+
+                &:before {
+                  top: 50%;
+                }
+
+                &:after {
+                  bottom: 50%;
+                }
+
+                &:hover {
+                  color: #fff;
+
+                  &:before,
+                  &:after {
+                    height: 50%;
+                    opacity: 1;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      background-color: #{$hex};
+                    }
+
+                    &:hover {
+                      border-color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-fill-horz-o {
+                background-color: transparent;
+                border: 1px solid #d0d0d0;
+                color: #b8b8b8;
+                overflow: hidden;
+
+                &:before,
+                &:after {
+                  content: "";
+                  width: 0;
+                  height: 100%;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0;
+                  z-index: -1;
+                  @extend .animate;
+                }
+
+                &:before {
+                  left: 50%;
+                }
+
+                &:after {
+                  right: 50%;
+                }
+
+                &:hover {
+                  color: #fff;
+
+                  &:before,
+                  &:after {
+                    width: 50%;
+                    opacity: 1;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      background-color: #{$hex};
+                    }
+
+                    &:hover {
+                      border-color: #{$hex};
+                    }
+                  }
+                }
+              }
+              .btn-fill-horz {
+                background-color: #e5e5e5;
+                border: 1px solid #e5e5e5;
+                color: #a6a6a6;
+                overflow: hidden;
+
+                &:before,
+                &:after {
+                  content: "";
+                  width: 0;
+                  height: 100%;
+                  opacity: 0;
+                  position: absolute;
+                  top: 0;
+                  z-index: -1;
+                  @extend .animate;
+                }
+
+                &:before {
+                  left: 50%;
+                }
+
+                &:after {
+                  right: 50%;
+                }
+
+                &:hover {
+                  color: #fff;
+
+                  &:before,
+                  &:after {
+                    width: 50%;
+                    opacity: 1;
+                  }
+                }
+
+                @each $name, $hex in $btn-colors {
+                  &.btn-#{$name} {
+                    &:before,
+                    &:after {
+                      background-color: #{$hex};
+                    }
+
+                    &:hover {
+                      border-color: #{$hex};
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // 品牌介紹第三頁
+      &.logoInstruction3 {
+        height: 100%;
+        width: 100%;
+        .innerContainer {
+          height: 100%;
+          width: 100%;
+          position: relative;
+          padding: 0 5.5vw;
+
+          // 頂部文字
+          .upperTextContainer {
+            height: 15%;
+            img {
+              max-height: 100%;
+              max-width: 100%;
+            }
+          }
+          // 中間地圖
+          .middleMapPositioner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .middleMapContainer {
+              // height: 60%;
+              height: 275px;
+              width: 362px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+              // 背景圖
+              .bg {
+                width: 100%;
+                height: 100%;
+              }
+              // 黃點
+              .yellowPoint {
+                position: absolute;
+                top: 49%;
+                left: 60%;
+                height: 15px;
+                width: 15px;
+                border-radius: 50%;
+                // -webkit-box-shadow: 水平偏移 垂直偏移 最濃半徑 模糊半徑 rgb(255, 255, 255);
+                -webkit-box-shadow: 0px 0px 5px 6px rgb(255, 255, 255);
+                -moz-box-shadow: 0px 0px 5px 6px rgb(255, 255, 255);
+                box-shadow: 0px 0px 5px 6px rgb(255, 255, 255);
+                background-color: rgb(248, 192, 36);
+              }
+              // 地名
+              .name {
+                position: absolute;
+                height: 78%;
+                top: 17%;
+                left: 17%;
+              }
+              // 虛線圓圈
+              .circle {
+                position: absolute;
+                border: 3px dashed rgb(248, 192, 36);
+                width: 116px;
+                height: 116px;
+                border-radius: 50%;
+                top: 31%;
+                left: 45%;
+              }
+              // 大圓文字
+              .bigCircleTextContainer {
+                width: 116px;
+                height: 116px;
+                position: absolute;
+                top: 31%;
+                left: 45%;
+                z-index: 110;
+                padding: 13px;
+                svg {
+                  overflow: visible;
+                  // width: 116px;
+                  // height: 116px;
+                  transform: rotate(30deg);
+                  path {
+                    fill: none;
+                  }
+                  textPath {
+                    // transform: rotate(180deg);
+                    transform: scale(+1, -1);
+                    // transform:scaleY(-1);
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    font-family: "Noto Sans TC", sans-serif;
+                  }
+                }
+              }
+            }
+          }
+
+          // 螢幕底部三個按鈕
+          .bottomButtonContainer {
+            height: 25%;
+            .logo {
+              height: 25%;
+              display: flex;
+              align-items: center;
+              img {
+                height: 50%;
+              }
+            }
+            .button {
+              height: 25%;
+              img {
+                height: 90%;
+              }
+            }
+          }
+        }
+      }
+
+      // 品牌介紹第四頁
+      &.logoInstruction4 {
+        height: 100%;
+        width: 100%;
+        .innerContainer {
+          height: 100%;
+          width: 100%;
+          position: relative;
+          padding: 0 5.5vw;
+          img {
+            max-width: 100%;
+            max-height: 100%;
           }
         }
       }
