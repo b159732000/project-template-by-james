@@ -9,6 +9,7 @@ class Traffic extends React.Component {
     super(props);
     this.state = {
       currentPageIndex: 3,
+      currentNearArea: 1,   //左側選單，生活、辦公、娛樂、商業、教育
       bgImgUrl: require('../../images/Traffic/bg1.jpg'),
       currentPageNumber: 3,
       bgImgIsChanging: false,
@@ -123,6 +124,13 @@ class Traffic extends React.Component {
     })
   }
   // 換頁程式碼 END --------
+
+  // 左側選單點擊觸發
+  handleLeftPagerClick(selectedNearAreaNumber) {
+    this.setState({
+      currentNearArea: selectedNearAreaNumber,
+    });
+  }
 
   // 綠樹圖標點擊後觸發
   handleGreenTreeClick(selectedGreenTreeIcon) {
@@ -324,7 +332,7 @@ class Traffic extends React.Component {
                   </div>
 
                   {/* 生活 */}
-                  <div className="lifeContainer noDisplay">
+                  <div className={(this.state.currentNearArea === 1) ? ("lifeContainer") : ("lifeContainer noDisplay")}>
                     {/* 清溪醫院 */}
                     <img className="lakeHospital locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/1.png')} alt="" />
                     {/* 清溪公園 */}
@@ -336,7 +344,7 @@ class Traffic extends React.Component {
                   </div>
 
                   {/* 政府 */}
-                  <div className="govermentContainer noDisplay">
+                  <div className={(this.state.currentNearArea === 2) ? ("govermentContainer") : ("govermentContainer noDisplay")}>
                     {/* 清溪政府 */}
                     <img className="goverment locationIcon" src={require('../../images/Traffic/ThirdLevel/Goverment/1.png')} alt="" />
                     {/* 綜合服務中心 */}
@@ -352,7 +360,7 @@ class Traffic extends React.Component {
                   </div>
 
                   {/* 娛樂 */}
-                  <div className="entertainmentContainer noDisplay">
+                  <div className={(this.state.currentNearArea === 3) ? ("entertainmentContainer") : ("entertainmentContainer noDisplay")}>
                     {/* 銀利高爾夫 */}
                     <img className="silverGolf locationIcon" src={require('../../images/Traffic/ThirdLevel/Entertainment/1.png')} alt="" />
                     {/* 塘廈體育館 */}
@@ -366,7 +374,7 @@ class Traffic extends React.Component {
                   </div>
 
                   {/* 商業 */}
-                  <div className="businessContainer noDisplay">
+                  <div className={(this.state.currentNearArea === 4) ? ("businessContainer") : ("businessContainer noDisplay")}>
                     {/* 潤生百貨 */}
                     <img className="bornShoppingMall locationIcon" src={require('../../images/Traffic/ThirdLevel/Business/1.png')} alt="" />
                     {/* 商會大廈 */}
@@ -380,30 +388,30 @@ class Traffic extends React.Component {
                   </div>
 
                   {/* 教育 */}
-                  <div className="educationContainer">
-                    {/* 晨光 */}
-                    <img className="morningLight locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/1.png')} alt="" />
-                    {/* 華晨 */}
-                    <img className="huaCheng locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/2.png')} alt="" />
-                    {/* 清溪中學 */}
-                    <img className="junior locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/3.png')} alt="" />
-                    {/* 清溪小學 */}
-                    <img className="elementary locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/4.png')} alt="" />
-                    {/* 師範 */}
-                    <img className="teacher locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/5.png')} alt="" />
-                    {/* 初級 */}
-                    <img className="basic locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/6.png')} alt="" />
-                  </div>
-
+                  <div className={(this.state.currentNearArea === 5) ? ("educationContainer") : ("educationContainer noDisplay")}>
+                  {/* 晨光 */}
+                  <img className="morningLight locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/1.png')} alt="" />
+                  {/* 華晨 */}
+                  <img className="huaCheng locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/2.png')} alt="" />
+                  {/* 清溪中學 */}
+                  <img className="junior locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/3.png')} alt="" />
+                  {/* 清溪小學 */}
+                  <img className="elementary locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/4.png')} alt="" />
+                  {/* 師範 */}
+                  <img className="teacher locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/5.png')} alt="" />
+                  {/* 初級 */}
+                  <img className="basic locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/6.png')} alt="" />
                 </div>
-                {/* <div style={{ width: "100%", height: '100%' }}>
+
+              </div>
+              {/* <div style={{ width: "100%", height: '100%' }}>
                   <PinchZoomPan zoomButtons={false} maxScale={10} minScale={0.5}>
                     <div style={{ display: "inline-block", border: "1px solid Orange" }}>
                       <img alt='Test Image' src='http://picsum.photos/750/750' />
                     </div>
                   </PinchZoomPan>
                 </div> */}
-              </div>
+            </div>
 
             </div>
           </CSSTransition>
@@ -415,40 +423,42 @@ class Traffic extends React.Component {
             this.mount = mount;
           }}
         /> */}
-        <div className="pager">
-          <ul>
 
-            <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
-              <div className="pageNumberContainer">
-                <div className="number">01</div>
-              </div>
-              <div className="pageName">
-                <div className="text">四大湾区</div>
-              </div>
-              <div className="pageIndicator"></div>
-            </li>
+    {/* 右側選單 */ }
+    <div className="pager">
+      <ul>
 
-            <li className={(this.state.currentPageIndex === 2) ? ("active") : ("")} onClick={() => this.handlePagerClick(2)}>
-              <div className="pageNumberContainer">
-                <div className="number">02</div>
-              </div>
-              <div className="pageName">
-                <div className="text">交通枢纽</div>
-              </div>
-              <div className="pageIndicator"></div>
-            </li>
+        <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
+          <div className="pageNumberContainer">
+            <div className="number">01</div>
+          </div>
+          <div className="pageName">
+            <div className="text">四大湾区</div>
+          </div>
+          <div className="pageIndicator"></div>
+        </li>
 
-            <li className={(this.state.currentPageIndex === 3) ? ("active") : ("")} onClick={() => this.handlePagerClick(3)}>
-              <div className="pageNumberContainer">
-                <div className="number">03</div>
-              </div>
-              <div className="pageName">
-                <div className="text">周边区域</div>
-              </div>
-              <div className="pageIndicator"></div>
-            </li>
+        <li className={(this.state.currentPageIndex === 2) ? ("active") : ("")} onClick={() => this.handlePagerClick(2)}>
+          <div className="pageNumberContainer">
+            <div className="number">02</div>
+          </div>
+          <div className="pageName">
+            <div className="text">交通枢纽</div>
+          </div>
+          <div className="pageIndicator"></div>
+        </li>
 
-            {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+        <li className={(this.state.currentPageIndex === 3) ? ("active") : ("")} onClick={() => this.handlePagerClick(3)}>
+          <div className="pageNumberContainer">
+            <div className="number">03</div>
+          </div>
+          <div className="pageName">
+            <div className="text">周边区域</div>
+          </div>
+          <div className="pageIndicator"></div>
+        </li>
+
+        {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
               <div className="pageNumberContainer">
                 <div className="number">04</div>
               </div>
@@ -468,9 +478,72 @@ class Traffic extends React.Component {
               <div className="pageIndicator"></div>
             </li> */}
 
-          </ul>
-        </div>
-      </div>
+      </ul>
+    </div>
+
+    {/* 左側選單 */ }
+    <div className={(this.state.currentPageIndex === 3) ? ("leftPager active") : ("leftPager")}>
+      <ul>
+
+        <li className={(this.state.currentNearArea === 1) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(1)}>
+          <div className="pageIndicator"></div>
+          <div className="pageName">
+            <div className="text">生活</div>
+          </div>
+        </li>
+
+        <li className={(this.state.currentNearArea === 2) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(2)}>
+          <div className="pageIndicator"></div>
+          <div className="pageName">
+            <div className="text">办公</div>
+          </div>
+        </li>
+
+        <li className={(this.state.currentNearArea === 3) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(3)}>
+          <div className="pageIndicator"></div>
+          <div className="pageName">
+            <div className="text">娱乐</div>
+          </div>
+        </li>
+
+        <li className={(this.state.currentNearArea === 4) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(4)}>
+          <div className="pageIndicator"></div>
+          <div className="pageName">
+            <div className="text">商业</div>
+          </div>
+        </li>
+
+        <li className={(this.state.currentNearArea === 5) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(5)}>
+          <div className="pageIndicator"></div>
+          <div className="pageName">
+            <div className="text">教育</div>
+          </div>
+        </li>
+
+        {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+              <div className="pageNumberContainer">
+                <div className="number">04</div>
+              </div>
+              <div className="pageName">
+                <div className="text">房屋配套</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li>
+
+            <li className={(this.state.currentPageIndex === 5) ? ("active") : ("")} onClick={() => this.handlePagerClick(5)}>
+              <div className="pageNumberContainer">
+                <div className="number">05</div>
+              </div>
+              <div className="pageName">
+                <div className="text">房屋本体</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li> */}
+
+      </ul>
+    </div>
+
+      </div >
     );
   }
 }

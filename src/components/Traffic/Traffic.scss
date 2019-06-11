@@ -23,6 +23,10 @@
   left: 0;
   background-color: $PrimaryWhite;
 
+  .noDisplay {
+    display: none;
+  }
+
   .changeBgImgTransition-enter {
     opacity: 0;
   }
@@ -317,7 +321,7 @@
         left: 0;
         height: 100%;
         width: 100%;
-        
+
         // 背景
         .bg {
           height: 100%;
@@ -406,8 +410,6 @@
             top: 31vh;
             left: 68vh;
           }
-
-
         }
 
         .noDisplay {
@@ -443,7 +445,7 @@
             top: 43vh;
             left: 51vh;
           }
-          // 觀光公園 
+          // 觀光公園
           .travelPark {
             top: 60vh;
             left: 34vh;
@@ -522,12 +524,12 @@
             top: 52vh;
             left: 6vh;
           }
-          // 生態體育公園 
+          // 生態體育公園
           .gymPark {
             top: 75vh;
             left: 6vh;
           }
-          // 文化廣場 
+          // 文化廣場
           .culture {
             top: 41vh;
             left: 54vh;
@@ -561,12 +563,12 @@
             top: 39vh;
             left: 52vh;
           }
-          // 嘉信廣場 
+          // 嘉信廣場
           .ciaXin {
             top: 43vh;
             left: 57vh;
           }
-          // 鹿湖商業中心 
+          // 鹿湖商業中心
           .bussinessCenter {
             top: 38vh;
             left: 60vh;
@@ -600,24 +602,22 @@
             top: 39vh;
             left: 59vh;
           }
-          // 清溪小學 
+          // 清溪小學
           .elementary {
             top: 41vh;
             left: 57vh;
           }
-          // 師範 
+          // 師範
           .teacher {
             top: 44vh;
             left: 44vh;
           }
-          // 初級 
+          // 初級
           .basic {
             top: 56vh;
             left: 43vh;
           }
         }
-
-
       }
     }
   }
@@ -645,20 +645,22 @@
     background-color: rgba(0, 0, 0, 0);
   }
 
+  // 右側選單
   .pager {
+    // background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
     position: absolute;
     width: 150px;
-    height: 500px;
-    bottom: -20%;
+    height: 300px;
+    bottom: 5%;
     right: 0;
-    z-index: 15;
+    z-index: 130;
     ul {
       // border: 1px solid white;
       height: 100%;
       width: 100%;
       li {
         // border: 1px solid green;
-        height: 20%;
+        height: 33%;
         display: flex;
         padding: 2%;
 
@@ -722,6 +724,131 @@
         .pageIndicator {
           // border: 1px solid blue;
           width: 10%;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &::after {
+            content: "";
+            position: relative;
+            display: block;
+            // background-color: darken( $PrimaryWhite, 40%);
+            background-color: $PrimaryWhite;
+            opacity: 0.3;
+            height: 100%;
+            width: 30%;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+          }
+        }
+      }
+    }
+  }
+
+  // 左側選單
+  .leftPager {
+    // background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    position: absolute;
+    width: 52.5px;
+    height: 300px;
+    bottom: 5%;
+    left: 0;
+    z-index: 130;
+    opacity: 0;
+
+    // 項目出現/隱藏的動畫
+    li {
+      opacity: 0;
+      transform: translate(-100%, 0);
+      transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.97);
+      transition: all;
+      transition-duration: 0.8s;
+    }
+    &.active {
+      opacity: 1;
+      li {
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            opacity: 1;
+            transition: all;
+            transition-duration: 0.8s;
+            transition-delay: #{($i + 1) * 0.15}s;
+            transition-timing-function: cubic-bezier(0.125, 0.595, 0.315, 0.97);
+            transform: translate(0, 0);
+          }
+        }
+      }
+    }
+
+    ul {
+      // border: 1px solid white;
+      height: 100%;
+      width: 100%;
+      li {
+        // border: 1px solid green;
+        height: 20%;
+        display: flex;
+        padding: 5.7%;
+
+        &.active {
+          .pageNumberContainer {
+            .number {
+              opacity: 1;
+              font-size: 3.5rem;
+              // transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
+            }
+          }
+          .pageName {
+            .text {
+              opacity: 1;
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
+            }
+          }
+          .pageIndicator {
+            &::after {
+              opacity: 1;
+              transition: all 1s cubic-bezier(0.02, 0.95, 0.17, 1);
+            }
+          }
+        }
+
+        // notActive
+        .pageNumberContainer {
+          // border: 1px solid blue;
+          width: 65%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          .number {
+            // transform: scale(0.9, 0.9);
+            opacity: 0.6;
+            // color: $PrimaryRed;
+            color: $PrimaryWhite;
+            font-size: 1.5rem;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            // font-weight: 800;
+          }
+        }
+        .pageName {
+          // border: 1px solid blue;
+          width: 71.4%;
+          display: flex;
+          align-items: center;
+          justify-content: center; //水平
+          .text {
+            // border: 1px solid white;
+            font-size: 1rem;
+            opacity: 0.6;
+            font-family: "Noto Sans TC", sans-serif;
+            color: $PrimaryWhite;
+            writing-mode: vertical-rl; //將整行文字垂直書寫
+            text-orientation: mixed;
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+          }
+        }
+        .pageIndicator {
+          // border: 1px solid blue;
+          width: 35%;
           position: relative;
           display: flex;
           align-items: center;
