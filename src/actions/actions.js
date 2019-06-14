@@ -81,3 +81,10 @@ export function closeFullScreenPano() {    //關閉全螢幕全景圖
 export function openFullScreenPano() {    //開啟全螢幕全景圖
     return {type: OPENFULLSCREENPANO};
 }
+
+// Jghx
+// 此次選取的子戶型 (山月院、山河院、A、B、C)
+export const CHANGESELECTEDSECONDHOUSE = 'CHANGESELECTEDSECONDHOUSE';
+export function changeSelectedSecondHouseStyle(selectedSecondHouseStyle) {
+    return {type: CHANGESELECTEDSECONDHOUSE, value: selectedSecondHouseStyle};
+}

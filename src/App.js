@@ -15,6 +15,12 @@ import LoadingPage from './components/LoadingPage/LoadingPage.jsx';
 import GardenTraveling from './components/GardenTraveling/GardenTraveling.jsx';
 import AerialView from './components/AerialView/AerialView.jsx';
 import FullpageVideoPlayer from './components/FullpageVideoPlayer/FullpageVideoPlayer.jsx';
+import Xmjs from './components/Xmjs/Xmjs.jsx';
+import Jghx from './components/Jghx/Jghx.jsx';
+import MountainMoon from './components/MountainMoon/MountainMoon.jsx';
+import MountainRiver from './components/MountainRiver/MountainRiver.jsx';
+import JghxBuilding from './components/JghxBuilding/JghxBuilding.jsx';
+import ImageSequence from './components/ImageSequence/ImageSequence.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -98,6 +104,7 @@ class App extends React.Component {
                   // 在進入時，產生class-enter，且在瞬間同層加上class-enter-active，在指定時間後被class-enter-done代替。
                   // 在離開時，class-enter-done被class-exit代替，在瞬間加上class-exit-active代替，在指定時間後被刪除
                   // timeout={{ enter: 2000, exit: 600 }}
+                  // timeout={{ enter: 10000, exit: 10000 }}
                   timeout={{ enter: 3000, exit: 2000 }}
                   appear={true}
                   classNames={"componentChangeCSSTransition"}
@@ -108,13 +115,17 @@ class App extends React.Component {
                     {/*<Route path="/Xmjs" exact children={()=>{return(<ReactTransitionGroup component="div"><Xmjs></Xmjs></ReactTransitionGroup>)}}></Route>
                   <Route path="/Qwzs" exact children={()=>{return(<ReactTransitionGroup component="div"><Qwzs></Qwzs></ReactTransitionGroup>)}}></Route>*/}
                     <Route path="/james/project-template-by-james/LogoIntroduction" component={LogoIntroduction}></Route>
-                    <Route path="/james/project-template-by-james/Xmjs" component={LogoIntroduction}></Route>
+                    <Route path="/james/project-template-by-james/Xmjs" component={Xmjs}></Route>
                     <Route path="/james/project-template-by-james/Traffic" component={Traffic}></Route>
                     <Route path="/james/project-template-by-james/Qwzs" component={Qwzs}></Route> {/*Qwzs包含3D模型(HouseModel3D)*/}
                     <Route path="/james/project-template-by-james/TestPlayground" component={TestPlayground}></Route>
                     <Route path="/james/project-template-by-james/GardenTraveling" component={GardenTraveling}></Route>
                     <Route path="/james/project-template-by-james/AerialView" component={AerialView}></Route>
                     <Route path="/james/project-template-by-james/FullpageVideoPlayer" component={FullpageVideoPlayer}></Route>
+                    <Route path="/james/project-template-by-james/Jghx" component={Jghx}></Route>
+                    <Route path="/james/project-template-by-james/MountainMoon" component={MountainMoon}></Route>
+                    <Route path="/james/project-template-by-james/MountainRiver" component={MountainRiver}></Route>
+                    <Route path="/james/project-template-by-james/JghxBuilding" component={JghxBuilding}></Route>
                   </Switch>
                 </CSSTransition>
                 {/*</ReactTransitionGroup>*/}

@@ -80,7 +80,7 @@ class NavigationBar extends React.Component {
                     </li>
                     <div className="lineBreak"></div>
                     <li>
-                        <Link to="/james/project-template-by-james/Qwzs" onClick={() => this.handleMenuIconClick()}>
+                        <Link to="/james/project-template-by-james/Jghx" onClick={() => this.handleMenuIconClick()}>
                             <div className="menuNameCN">精工户型</div>
                             <div className="menuNameEn">Seiko apartment</div>
                         </Link>

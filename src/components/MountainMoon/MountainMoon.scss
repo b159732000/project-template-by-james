@@ -1,0 +1,334 @@
+@import "../../variables.scss";
+
+// 定義本頁高度
+.MountainMoonContainer {
+  background-image: url("../../images/Jghx/HouseStyle/Villa/MountainMoon/bg.png");
+  background-size: 100% 100%; //寬 高
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 10vh 5.5vw 0 5.5vw;
+  transition: all 0.5s $PrimaryTimeFunction 0s;
+  // height: 2247px;
+
+  // 進出此頁(品牌介紹)的動畫
+  &.componentChangeCSSTransition-enter {
+    opacity: 0;
+    // 返回落位圖Icon
+    .backButtonPositione {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    // 山月院標題
+    .topTextPositioner {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    // gif區
+    .showRoomPositioner {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    // 拆分按鈕
+    .buttonPositioner {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    // 平面尺寸標題
+    .sizePictureTitlePositioner {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    // 平面尺寸圖
+    .floor1Positioner,
+    .floor2Positioner,
+    .floor3Positioner {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+    opacity: 1;
+    transition: all 2s $PrimaryTimeFunction 0s;
+    // 第一個動畫延遲秒數
+    $MountainMoonFirstAnimationDelay: 0.2s;
+    // 之後每個動畫的間隔秒數
+    $MountainMoonEachAnimationDelay: 0.3s;
+    // 每一個動畫持續的秒數
+    $MountainMoonAnimationDuration: 2s;
+    // 返回落位圖Icon
+    .backButtonPositione {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay;
+      transform: translate(0, 0);
+    }
+    // 山月院標題
+    .topTextPositioner {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*1;
+      transform: translate(0, 0);
+    }
+    // gif區
+    .showRoomPositioner {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*2;
+      transform: translate(0, 0);
+    }
+    // 拆分按鈕
+    .buttonPositioner {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*3;
+      transform: translate(0, 0);
+    }
+    // 平面尺寸標題
+    .sizePictureTitlePositioner {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*4;
+      transform: translate(0, 0);
+    }
+    // 平面尺寸圖
+    .floor1Positioner,
+    .floor2Positioner,
+    .floor3Positioner {
+      opacity: 1;
+      transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*5;
+      transform: translate(0, 0);
+    }
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+    opacity: 0;
+    transition: all 0.6s $PrimaryTimeFunction;
+  }
+
+  .bg {
+    width: 100%;
+    z-index: -10;
+    position: relative;
+    visibility: hidden;
+  }
+
+  .innerContainer {
+    position: absolute;
+    padding-top: 10vh;
+    margin-left: 5.5vw;
+    width: 89%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.5s $PrimaryTimeFunction 0s;
+    }
+
+    // 頂部返回鈕
+    .backButtonPositioner {
+      height: 2%;
+      position: relative;
+      .backButton {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30vw;
+        height: 7vw;
+        right: 0;
+        position: absolute;
+        // background-color: #7cb3b9;
+        // border-top-left-radius: 3vw; //寬高
+        // border-bottom-left-radius: 3vw;
+        .text {
+          font-size: 4vw;
+          font-weight: 700;
+        }
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    // 標題文字
+    .topTextPositioner {
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    // gif圖
+    .showRoomPositioner {
+      // border: 1px solid #000;
+      height: 16%;
+    }
+
+    // 平面尺寸文字
+    .sizePictureTitlePositioner {
+      height: 2%;
+    }
+
+    // 按鈕們
+    .buttonPositioner {
+      height: 3%;
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      transition: all 0.5s $PrimaryTimeFunction 0s;
+
+      .hidden {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s $PrimaryTimeFunction 0s;
+      }
+
+      .splitBtn {
+        height: 75%;
+        margin-right: 2%;
+        margin-top: 2%;
+      }
+      .splitButtonGroup {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        .splitBtn {
+          height: 75%;
+        }
+      }
+      .splitButtonFloorGroup {
+        transform: translate(0, 100%);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 1%;
+        .group {
+          height: 100%;
+          width: 47%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-image: url("../../images/Jghx/HouseStyle/Villa/MountainMoon/btn/bg.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          .button {
+            display: inline-flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 33%;
+            .floorBtnBg {
+              height: 100%;
+            }
+            .floorNumber {
+              position: absolute;
+              height: 80%;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+
+    // 樓層一圖+字
+    .floor1Positioner {
+      height: 25%;
+      padding: 2%;
+      .layout {
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+      .text {
+        height: 35%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 80%;
+          max-width: 100%;
+        }
+      }
+    }
+
+    // 樓層二圖+字
+    .floor2Positioner {
+      height: 25%;
+      padding: 2%;
+      .layout {
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+      .text {
+        height: 35%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 80%;
+          max-width: 100%;
+        }
+      }
+    }
+
+    // 樓層三圖+字
+    .floor3Positioner {
+      height: 25%;
+      padding: 2%;
+      .layout {
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+      }
+      .text {
+        height: 35%;
+        display: flex;
+        justify-content: center;
+        padding: 2%;
+        img {
+          max-height: 80%;
+          max-width: 100%;
+        }
+      }
+    }
+
+    // 返回頂部按鈕
+    .backToTopIconContainer {
+      position: fixed;
+      right: 8.5vw;
+      top: 90vh;
+      height: 50px;
+      transition: all 1s cubic-bezier(0.29, 1.46, 0.42, 1.01) 0s;
+      &.hidden {
+        transform: translate(0, 300%);
+        transition: all 1s cubic-bezier(0.29, 1.46, 0.42, 1.01) 0s;
+      }
+      img {
+        height: 100%;
+      }
+    }
+  }
+}

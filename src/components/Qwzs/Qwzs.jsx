@@ -254,10 +254,13 @@ class Qwzs extends React.Component {
 
                         <li className={(this.state.listImgIsSelecting === 1) ? ("active") : ("")}>
                             <div className="imgDiv" ref="imgDiv1" onClick={() => this.handleImgClick(1)}>
+                                {/* 真實背景 */}
                                 <div ref="parallaxScene1" className="parallaxScene">
                                     <div data-depth="0.2" className="img" alt="" />
                                 </div>
+                                {/* 白色半透明覆蓋 */}
                                 <div className="cover"></div>
+                                {/* 圖示 */}
                                 <div className="icons">
                                     <i className="fas fa-home"></i>
                                     <i className="fas fa-object-ungroup"></i>

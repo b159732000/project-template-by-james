@@ -1,0 +1,363 @@
+@import "../../variables.scss";
+
+.JghxContainer {
+  // background-color: $PrimaryWhite;
+  background-image: url("../../images/Jghx/bg.png");
+  background-size: 100% 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  // 進出此頁(精工戶型)的動畫
+  &.componentChangeCSSTransition-enter {
+    opacity: 0;
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+    opacity: 1;
+    transition: all 2s $PrimaryTimeFunction 0s;
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+    opacity: 0;
+    transition: all 0.6s $PrimaryTimeFunction;
+  }
+
+  // 內容容器，定義上方及左右側邊距
+  .innerContainer {
+    padding: 10vh 5.5vw 0 5.5vw;
+    height: 100%;
+
+    // 頂部文字定位容器
+    .topTextPositioner {
+      position: absolute;
+      height: 20%;
+      width: 60%;
+      &.MountainMoon {
+        background-image: url("../../images/Jghx/MountainMoon.png");
+        background-size: auto 40%;
+        // background-size: contain;
+        background-repeat: no-repeat;
+        // transition: background-image 0.2s $PrimaryTimeFunction 0s;
+      }
+      &.MountainRiver {
+        background-image: url("../../images/Jghx/MountainRiver.png");
+        background-size: auto 40%;
+        // background-size: contain;
+        background-repeat: no-repeat;
+        transition: background-image 0.2s $PrimaryTimeFunction 0s;
+      }
+      &.A {
+        background-image: url("../../images/Jghx/A.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        // transition: background-image 0.2s $PrimaryTimeFunction 0s;
+      }
+      &.B {
+        background-image: url("../../images/Jghx/B.png");
+        background-size: 100% 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: background-image 0.2s $PrimaryTimeFunction 0s;
+      }
+      &.C {
+        background-image: url("../../images/Jghx/C.png");
+        background-size: 100% 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: background-image 0.2s $PrimaryTimeFunction 0s;
+      }
+    }
+
+    // 中間圖片定位容器
+    .middleMapPositioner {
+      height: 80%;
+      padding-top: 25%;
+      display: flex;
+      justify-content: center;
+      .mapSelf {
+        height: 100%;
+        position: relative;
+        .hidden {
+          opacity: 0;
+        }
+        // 背景圖
+        .middleMapBg {
+          height: 100%;
+        }
+        .fingerImg {
+          position: absolute;
+          top: 72%;
+          left: 80%;
+          height: 15%;
+          z-index: 10;
+          -webkit-animation: NAME-YOUR-ANIMATION 2s infinite; /* Safari 4+ */
+          animation: NAME-YOUR-ANIMATION 2s infinite; /* IE 10+, Fx 29+ */
+          animation-timing-function: ease-in-out;
+        }
+        /* Safari 4+ */
+        @-webkit-keyframes NAME-YOUR-ANIMATION {
+          0% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(1);
+          }
+        }
+        /* IE 10+, Fx 29+ */
+        @keyframes NAME-YOUR-ANIMATION {
+          0% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(1);
+          }
+        }
+        // 覆蓋圖層的通用屬性
+        .locationCover {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .MountainMoonMapCover {
+          height: 43%;
+          top: 42%;
+          left: 29%;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+        .MountainRiverMapCover {
+          height: 38%;
+          top: 48%;
+          left: 32%;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+        .BuildingAMapCover {
+          height: 42.5%;
+          top: 11.6%;
+          left: 43%;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+        .BuildingBMapCover {
+          height: 43%;
+          top: 8%;
+          left: 41%;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+        .BuildingCMapCover {
+          height: 24%;
+          top: 7%;
+          left: 42%;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+      }
+    }
+
+    // 底部按鈕定位容器
+    .bottomButtonPositioner {
+      height: 20%;
+      .notActive {
+        opacity: 0;
+        transition: all 0.2s $PrimaryTimeFunction 0s;
+      }
+
+      // 上排按鈕
+      .upper {
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // 按鈕背景
+        .buttonGroup {
+          background-image: linear-gradient(to bottom, #48767c, #5f9197);
+          border-radius: 6px;
+          height: 60px;
+          width: 186px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+
+          // 按鈕本體 分別/共用屬性
+          .btn {
+            width: 100px;
+            height: 100%;
+            display: inline-flex;
+            justify-content: center;
+            position: absolute;
+
+            // 按鈕背景 (按下去時)
+            .btnBg {
+              height: 100%;
+            }
+
+            // 左按鈕
+            &.Left {
+              left: -3px;
+              .btnText {
+                position: absolute;
+                height: 30px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+            // 右按鈕
+            &.Right {
+              right: -3px;
+              .btnText {
+                position: absolute;
+                height: 30px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+      }
+
+      // 下排按鈕
+      .bottom {
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        padding: 0 5%;
+        .hidden {
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.5s $PrimaryTimeFunction 0s;
+        }
+
+        // 按鈕背景
+        .buttonGroup.groupLeft {
+          background-image: linear-gradient(to bottom, #48767c, #5f9197);
+          border-radius: 6px;
+          height: 40px;
+          width: 130px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+
+          // 按鈕本體 分別/共用屬性
+          .btn {
+            width: 60px;
+            height: 100%;
+            display: inline-flex;
+            justify-content: center;
+            position: absolute;
+
+            // 按鈕背景 (按下去時)
+            .btnBg {
+              height: 100%;
+            }
+
+            // 左按鈕
+            &.Left {
+              left: 0;
+              // 字體
+              .btnText {
+                position: absolute;
+                height: 17px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+            // 右按鈕
+            &.Right {
+              right: 0;
+              // 字體
+              .btnText {
+                position: absolute;
+                height: 17px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+        // 按鈕背景
+        .buttonGroup.groupRight {
+          background-image: linear-gradient(to bottom, #48767c, #5f9197);
+          border-radius: 6px;
+          height: 40px;
+          width: 150px;
+          display: flex;
+          justify-content: center;
+          position: relative;
+
+          // 按鈕本體 分別/共用屬性
+          .btn {
+            width: 60px;
+            height: 100%;
+            display: inline-flex;
+            justify-content: center;
+            position: absolute;
+
+            // 按鈕背景 (按下去時)
+            .btnBg {
+              height: 100%;
+            }
+
+            // 左按鈕
+            &.Left {
+              left: -3px;
+              // 字體
+              .btnText {
+                position: absolute;
+                height: 18px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+            // 中按鈕
+            &.Center {
+              right: 50%;
+              transform: translate(50%, 0%);
+              // 字體
+              .btnText {
+                position: absolute;
+                height: 18px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+            // 右按鈕
+            &.Right {
+              right: -3px;
+              // 字體
+              .btnText {
+                position: absolute;
+                height: 18px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

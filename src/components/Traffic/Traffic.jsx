@@ -3,15 +3,16 @@ import './Traffic.scss';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PinchZoomPan from 'react-responsive-pinch-zoom-pan';
 import TrafficThree from '../TrafficThree/TrafficThree.jsx';
+import * as Scroll from 'react-scroll';
 
 class Traffic extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPageIndex: 3,
+      currentPageIndex: 1,
       currentNearArea: 1,   //左側選單，生活、辦公、娛樂、商業、教育
       bgImgUrl: require('../../images/Traffic/bg1.jpg'),
-      currentPageNumber: 3,
+      currentPageNumber: 1,
       bgImgIsChanging: false,
       greenCurrentShowing: {
         YellowCowPark: false,
@@ -38,45 +39,54 @@ class Traffic extends React.Component {
     setTimeout(() => {
       // this.Page2InnerContainer.scrollTo(500, 0);
     }, 1000);
+    
+    this.moveDOMNodeToViewPortCenter();
   }
 
   // 換頁程式碼 START --------
+  // 點選右側menu
   handlePagerClick(pageNumber) {
     this.changePageTo(pageNumber);
     // this.changeBgImgUrl();
   }
+  // 換頁(state)，並執行換頁時執行的程式碼
   changePageTo(pageNumber) {
     this.setState({
       currentPageIndex: pageNumber,
       currentPageNumber: pageNumber,
-    }, () => setTimeout(() => this.changeBgImgUrl(), 0));
+    }, () => this.whenPageChange());
+  }
+  // 換頁時執行的程式碼 (換背景圖、捲動頁面到指定位置)
+  whenPageChange() {
+    setTimeout(() => this.changeBgImgUrl(), 0);
+    // this.moveDOMNodeToViewPortCenter();
   }
   changeBgImgUrl() {
     switch (this.state.currentPageIndex) {
       case 1:
         this.setState({
           bgImgUrl: require('../../images/Traffic/bg1.jpg'),
-        });
+        }, () => this.moveDOMNodeToViewPortCenter());
         break;
       case 2:
         this.setState({
           bgImgUrl: require('../../images/Traffic/bg2.jpg'),
-        });
+        }, () => this.moveDOMNodeToViewPortCenter());
         break;
       case 3:
         this.setState({
           bgImgUrl: require('../../images/Traffic/bg3.jpg'),
-        });
+        }, () => this.moveDOMNodeToViewPortCenter());
         break;
       case 4:
         this.setState({
           bgImgUrl: require('../../images/Traffic/bg4.jpg'),
-        });
+        }, () => this.moveDOMNodeToViewPortCenter());
         break;
       case 5:
         this.setState({
           bgImgUrl: require('../../images/Traffic/bg5.jpg'),
-        });
+        }, () => this.moveDOMNodeToViewPortCenter());
         break;
       default:
         break;
@@ -188,6 +198,33 @@ class Traffic extends React.Component {
     }
   }
 
+  // 將指定DOMNode移動到畫面中央
+  moveDOMNodeToViewPortCenter() {
+    let thisPageWidth;
+    // travelParkDOMNode  觀光公園標示
+    // SanFranciscoDOMNode  舊金山標示
+    // dot1DOMNode  塘廈站紅點
+    switch (this.state.currentPageIndex) {
+      case 1:
+        thisPageWidth = this.firstTrafficBg.clientWidth;
+        this.firstContainer.scrollTo(thisPageWidth * 0.35, 0);
+        break;
+      case 2:
+        thisPageWidth = this.secondTrafficBg.clientWidth;
+        this.secondContainer.scrollTo(thisPageWidth * 0.32, 0);
+        // this.dot1DOMNode.scrollTo(centerX, centerY);
+        break;
+      case 3:
+        thisPageWidth = this.thirdTrafficBg.clientWidth;
+        this.thirdContainer.scrollTo(thisPageWidth * 0.3, 0);
+        // this.travelParkDOMNode.scrollTo(centerX, centerY);
+        break;
+      default:
+        break;
+    }
+    // console.log(document.body.clientWidth);
+    // console.log(document.body.clientHeight);
+  }
 
   render() {
     return (
@@ -207,10 +244,10 @@ class Traffic extends React.Component {
               {/* <div className="traffic traffic1"></div> */}
 
               {/* 一級區位 */}
-              <div className={(this.state.currentPageNumber === 1) ? ("traffic traffic1") : ("traffic traffic1 noDisplay")}>
+              <div ref={self => this.firstContainer = self} className={(this.state.currentPageNumber === 1) ? ("traffic traffic1") : ("traffic traffic1 noDisplay")}>
                 <div className="container">
-                  <img className='bg' src={require('../../images/Traffic/FirstLevel/bg.png')} />
-                  <img className='SanFrancisco icon' src={require('../../images/Traffic/FirstLevel/SanFrancisco.png')} />
+                  <img className='bg' ref={self => this.firstTrafficBg = self} src={require('../../images/Traffic/FirstLevel/bg.png')} />
+                  <img className='SanFrancisco icon' ref={self => this.SanFranciscoDOMNode = self} src={require('../../images/Traffic/FirstLevel/SanFrancisco.png')} />
                   <img className='Tokyo icon' src={require('../../images/Traffic/FirstLevel/Tokyo.png')} />
                   <img className='HongKong icon' src={require('../../images/Traffic/FirstLevel/HongKong.png')} />
                   <img className='Point icon' src={require('../../images/Traffic/FirstLevel/Point.png')} />
@@ -218,15 +255,15 @@ class Traffic extends React.Component {
               </div>
 
               {/* 二級區位 */}
-              <div className={(this.state.currentPageNumber === 2) ? ("traffic traffic2") : ("traffic traffic2 noDisplay")}>
+              <div ref={self => this.secondContainer = self} className={(this.state.currentPageNumber === 2) ? ("traffic traffic2") : ("traffic traffic2 noDisplay")}>
                 <div className="innerContainer" ref={self => this.Page2InnerContainer = self}>
-                  <img className="bg" src={require('../../images/Traffic/SecondLevel/bg.jpg')} alt="" />
+                  <img className="bg" ref={self => this.secondTrafficBg = self} src={require('../../images/Traffic/SecondLevel/bg.jpg')} alt="" />
 
                   {/* 大圓 */}
                   <div className="bigLakeAreaStroke"></div>
 
                   {/* 大圓文字 */}
-                  <div class="bigCircleTextContainer">
+                  <div className="bigCircleTextContainer">
                     <svg viewBox="0 0 100 100">
                       <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
                       <text>
@@ -239,7 +276,7 @@ class Traffic extends React.Component {
                   <div className="oneHourAreaStroke"></div>
 
                   {/* 小圓文字 */}
-                  <div class="smallCircleTextContainer">
+                  <div className="smallCircleTextContainer">
                     <svg viewBox="0 0 100 100">
                       <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
                       <text>
@@ -251,7 +288,9 @@ class Traffic extends React.Component {
                   <img className="DongGuang" src={require('../../images/Traffic/SecondLevel/Area/DongGuang.png')} alt="" />
                   <img className="MainArea" src={require('../../images/Traffic/SecondLevel/Area/MainArea.png')} alt="" />
                   <img className="Railway" src={require('../../images/Traffic/SecondLevel/Highway/Railway.png')} alt="" />
-                  <img className="dot dot1" src={require('../../images/Traffic/SecondLevel/dot.png')} alt=""></img>
+                  {/* 塘廈站紅點 */}
+                  <img className="dot dot1" ref={self => this.dot1DOMNode = self} src={require('../../images/Traffic/SecondLevel/dot.png')} alt=""></img>
+                  {/* 深圳北紅點 */}
                   <img className="dot dot2" src={require('../../images/Traffic/SecondLevel/dot.png')} alt=""></img>
                   <img className="logo" src={require('../../images/Traffic/SecondLevel/LOGO.png')} alt=""></img>
                   <img className="location GuangZhou" src={require('../../images/Traffic/SecondLevel/Area/GuangZhou.png')} alt=""></img>
@@ -272,9 +311,9 @@ class Traffic extends React.Component {
               </div>
 
               {/* 三級區位 */}
-              <div className={(this.state.currentPageNumber === 3) ? ("traffic traffic3") : ("traffic traffic3 noDisplay")}>
+              <div ref={self => this.thirdContainer = self} className={(this.state.currentPageNumber === 3) ? ("traffic traffic3") : ("traffic traffic3 noDisplay")}>
                 <div className="innerContainer" ref={self => this.Page2InnerContainer = self}>
-                  <img className="bg" src={require('../../images/Traffic/ThirdLevel/bg.jpg')} alt="" />
+                  <img className="bg" ref={self => this.thirdTrafficBg = self} src={require('../../images/Traffic/ThirdLevel/bg.jpg')} alt="" />
                   <img className="projectLogo" src={require('../../images/Traffic/ThirdLevel/LOGO.png')} alt="" />
 
                   {/* 綠化標示 */}
@@ -340,7 +379,7 @@ class Traffic extends React.Component {
                     {/* 農業銀行 */}
                     <img className="Bank locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/2.png')} alt="" />
                     {/* 觀光公園 */}
-                    <img className="travelPark locationIcon" src={require('../../images/Traffic/ThirdLevel/Life/3.png')} alt="" />
+                    <img className="travelPark locationIcon" ref={self => this.travelParkDOMNode = self} src={require('../../images/Traffic/ThirdLevel/Life/3.png')} alt="" />
                   </div>
 
                   {/* 政府 */}
@@ -389,29 +428,29 @@ class Traffic extends React.Component {
 
                   {/* 教育 */}
                   <div className={(this.state.currentNearArea === 5) ? ("educationContainer") : ("educationContainer noDisplay")}>
-                  {/* 晨光 */}
-                  <img className="morningLight locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/1.png')} alt="" />
-                  {/* 華晨 */}
-                  <img className="huaCheng locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/2.png')} alt="" />
-                  {/* 清溪中學 */}
-                  <img className="junior locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/3.png')} alt="" />
-                  {/* 清溪小學 */}
-                  <img className="elementary locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/4.png')} alt="" />
-                  {/* 師範 */}
-                  <img className="teacher locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/5.png')} alt="" />
-                  {/* 初級 */}
-                  <img className="basic locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/6.png')} alt="" />
-                </div>
+                    {/* 晨光 */}
+                    <img className="morningLight locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/1.png')} alt="" />
+                    {/* 華晨 */}
+                    <img className="huaCheng locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/2.png')} alt="" />
+                    {/* 清溪中學 */}
+                    <img className="junior locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/3.png')} alt="" />
+                    {/* 清溪小學 */}
+                    <img className="elementary locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/4.png')} alt="" />
+                    {/* 師範 */}
+                    <img className="teacher locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/5.png')} alt="" />
+                    {/* 初級 */}
+                    <img className="basic locationIcon" src={require('../../images/Traffic/ThirdLevel/Education/6.png')} alt="" />
+                  </div>
 
-              </div>
-              {/* <div style={{ width: "100%", height: '100%' }}>
+                </div>
+                {/* <div style={{ width: "100%", height: '100%' }}>
                   <PinchZoomPan zoomButtons={false} maxScale={10} minScale={0.5}>
                     <div style={{ display: "inline-block", border: "1px solid Orange" }}>
                       <img alt='Test Image' src='http://picsum.photos/750/750' />
                     </div>
                   </PinchZoomPan>
                 </div> */}
-            </div>
+              </div>
 
             </div>
           </CSSTransition>
@@ -424,41 +463,41 @@ class Traffic extends React.Component {
           }}
         /> */}
 
-    {/* 右側選單 */ }
-    <div className="pager">
-      <ul>
+        {/* 右側選單 */}
+        <div className="pager">
+          <ul>
 
-        <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
-          <div className="pageNumberContainer">
-            <div className="number">01</div>
-          </div>
-          <div className="pageName">
-            <div className="text">四大湾区</div>
-          </div>
-          <div className="pageIndicator"></div>
-        </li>
+            <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
+              <div className="pageNumberContainer">
+                <div className="number">01</div>
+              </div>
+              <div className="pageName">
+                <div className="text">四大湾区</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li>
 
-        <li className={(this.state.currentPageIndex === 2) ? ("active") : ("")} onClick={() => this.handlePagerClick(2)}>
-          <div className="pageNumberContainer">
-            <div className="number">02</div>
-          </div>
-          <div className="pageName">
-            <div className="text">交通枢纽</div>
-          </div>
-          <div className="pageIndicator"></div>
-        </li>
+            <li className={(this.state.currentPageIndex === 2) ? ("active") : ("")} onClick={() => this.handlePagerClick(2)}>
+              <div className="pageNumberContainer">
+                <div className="number">02</div>
+              </div>
+              <div className="pageName">
+                <div className="text">交通枢纽</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li>
 
-        <li className={(this.state.currentPageIndex === 3) ? ("active") : ("")} onClick={() => this.handlePagerClick(3)}>
-          <div className="pageNumberContainer">
-            <div className="number">03</div>
-          </div>
-          <div className="pageName">
-            <div className="text">周边区域</div>
-          </div>
-          <div className="pageIndicator"></div>
-        </li>
+            <li className={(this.state.currentPageIndex === 3) ? ("active") : ("")} onClick={() => this.handlePagerClick(3)}>
+              <div className="pageNumberContainer">
+                <div className="number">03</div>
+              </div>
+              <div className="pageName">
+                <div className="text">周边区域</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li>
 
-        {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+            {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
               <div className="pageNumberContainer">
                 <div className="number">04</div>
               </div>
@@ -478,49 +517,49 @@ class Traffic extends React.Component {
               <div className="pageIndicator"></div>
             </li> */}
 
-      </ul>
-    </div>
+          </ul>
+        </div>
 
-    {/* 左側選單 */ }
-    <div className={(this.state.currentPageIndex === 3) ? ("leftPager active") : ("leftPager")}>
-      <ul>
+        {/* 左側選單 */}
+        <div className={(this.state.currentPageIndex === 3) ? ("leftPager active") : ("leftPager")}>
+          <ul>
 
-        <li className={(this.state.currentNearArea === 1) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(1)}>
-          <div className="pageIndicator"></div>
-          <div className="pageName">
-            <div className="text">生活</div>
-          </div>
-        </li>
+            <li className={(this.state.currentNearArea === 1) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(1)}>
+              <div className="pageIndicator"></div>
+              <div className="pageName">
+                <div className="text">生活</div>
+              </div>
+            </li>
 
-        <li className={(this.state.currentNearArea === 2) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(2)}>
-          <div className="pageIndicator"></div>
-          <div className="pageName">
-            <div className="text">办公</div>
-          </div>
-        </li>
+            <li className={(this.state.currentNearArea === 2) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(2)}>
+              <div className="pageIndicator"></div>
+              <div className="pageName">
+                <div className="text">办公</div>
+              </div>
+            </li>
 
-        <li className={(this.state.currentNearArea === 3) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(3)}>
-          <div className="pageIndicator"></div>
-          <div className="pageName">
-            <div className="text">娱乐</div>
-          </div>
-        </li>
+            <li className={(this.state.currentNearArea === 3) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(3)}>
+              <div className="pageIndicator"></div>
+              <div className="pageName">
+                <div className="text">娱乐</div>
+              </div>
+            </li>
 
-        <li className={(this.state.currentNearArea === 4) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(4)}>
-          <div className="pageIndicator"></div>
-          <div className="pageName">
-            <div className="text">商业</div>
-          </div>
-        </li>
+            <li className={(this.state.currentNearArea === 4) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(4)}>
+              <div className="pageIndicator"></div>
+              <div className="pageName">
+                <div className="text">商业</div>
+              </div>
+            </li>
 
-        <li className={(this.state.currentNearArea === 5) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(5)}>
-          <div className="pageIndicator"></div>
-          <div className="pageName">
-            <div className="text">教育</div>
-          </div>
-        </li>
+            <li className={(this.state.currentNearArea === 5) ? ("active") : ("")} onClick={() => this.handleLeftPagerClick(5)}>
+              <div className="pageIndicator"></div>
+              <div className="pageName">
+                <div className="text">教育</div>
+              </div>
+            </li>
 
-        {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+            {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
               <div className="pageNumberContainer">
                 <div className="number">04</div>
               </div>
@@ -540,8 +579,8 @@ class Traffic extends React.Component {
               <div className="pageIndicator"></div>
             </li> */}
 
-      </ul>
-    </div>
+          </ul>
+        </div>
 
       </div >
     );

@@ -11,7 +11,7 @@ class LogoIntroduction extends React.Component {
             bgImgUrl: require('../../images/Traffic/bg1.jpg'),
             bgImgIsChanging: false,
             currentShowingArea: "West",     //第二頁中，顯示的中國地圖地區
-            activatingMenu: "none",     //第三頁中，已選取的menu
+            activatingMenu: "HuaRuinCenter",     //第三頁中，已選取的menu
             currentActiveCircle: {
                 shopping: false,
                 health: false,
@@ -75,15 +75,15 @@ class LogoIntroduction extends React.Component {
     }
 
     handleTouchScroll(event) {
-        // 如果手指的Y軸位移>50，且還沒有換頁，則檢查手指是往下或網上滑動，然後按方向加減頁數pageIndex
-        if (Math.abs(event.touches[0].screenY - this.state.thisTimeTouch.startY) >= 50 && this.state.thisTimeTouch.pageIsChanged === false) {
-            if (event.touches[0].screenY - this.state.thisTimeTouch.startY < 0) {  //換下一頁
+        // 如果手指的X軸位移>50，且還沒有換頁，則檢查手指是往下或網上滑動，然後按方向加減頁數pageIndex
+        if (Math.abs(event.touches[0].screenX - this.state.thisTimeTouch.startX) >= 50 && this.state.thisTimeTouch.pageIsChanged === false) {
+            if (event.touches[0].screenX - this.state.thisTimeTouch.startX < 0) {  //換下一頁
                 let pageNumber = (this.state.currentPageIndex + 1);
                 if (pageNumber === 5) {   //若超過第4頁，就從第一頁開始
                     pageNumber = 1;
                 }
                 this.changePageTo(pageNumber);
-            } else if (event.touches[0].screenY - this.state.thisTimeTouch.startY > 0) {  //換上一頁
+            } else if (event.touches[0].screenX - this.state.thisTimeTouch.startX > 0) {  //換上一頁
                 let pageNumber = (this.state.currentPageIndex - 1);
                 if (pageNumber === 0) {   //若小於第一頁，就從第4頁開始
                     pageNumber = 4;
@@ -232,7 +232,7 @@ class LogoIntroduction extends React.Component {
                         appear={true}   //是否要在第一次掛載TransitionGroup時做動畫
                         timeout={{ enter: 3000, exit: 3000 }}
                         classNames="changeBgImgTransition"
-                        key={this.state.bgImgUrl}
+                    // key={this.state.bgImgUrl}
                     >
                         <div className="CSSTransitionContainer">
 
@@ -359,7 +359,7 @@ class LogoIntroduction extends React.Component {
                                             {/* 虛線圓圈 */}
                                             <div className="circle"></div>
                                             {/* 大圓文字 */}
-                                            <div class="bigCircleTextContainer">
+                                            <div className="bigCircleTextContainer">
                                                 <svg viewBox="0 0 100 100">
                                                     <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
                                                     <text>
@@ -373,9 +373,36 @@ class LogoIntroduction extends React.Component {
                                     {/* 底部的三個按鈕及標題 */}
                                     <div className="bottomButtonContainer">
                                         <div className="logo"><img className="name" src={require('../../images/LogoIntroduction/3/ButtonTitle.png')} alt="" /></div>
-                                        <div className="button button1"><img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinCenter")} src={(this.state.activatingMenu === "HuaRuinCenter") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinCenter.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinCenter.png'))} alt="" /></div>
-                                        <div className="button button2"><img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinCheng")} src={(this.state.activatingMenu === "HuaRuinCheng") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinCheng.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinCheng.png'))} alt="" /></div>
-                                        <div className="button button3"><img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinShenZhungWan")} src={(this.state.activatingMenu === "HuaRuinShenZhungWan") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinShenZhungWan.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinShenZhungWan.png'))} alt="" /></div>
+                                        <div className="button button1">
+                                            <img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinCenter")} src={(this.state.activatingMenu === "HuaRuinCenter") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinCenter.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinCenter.png'))} alt="" />
+                                            {/* 點按鈕顯現的圖片 */}
+                                            {(this.state.activatingMenu === "HuaRuinCenter") ? (
+                                                <div className="detailContainer">
+                                                    <img src={require('../../images/LogoIntroduction/3/Center.png')} alt="" />
+                                                </div>
+                                            ) : (null)}
+                                            {/* <div className="detailContainer">
+                                                <img src={require('../../images/LogoIntroduction/3/Center.png')} alt=""/>
+                                            </div> */}
+                                        </div>
+                                        <div className="button button2">
+                                            <img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinCheng")} src={(this.state.activatingMenu === "HuaRuinCheng") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinCheng.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinCheng.png'))} alt="" />
+                                            {/* 點按鈕顯現的圖片 */}
+                                            {(this.state.activatingMenu === "HuaRuinCheng") ? (
+                                                <div className="detailContainer">
+                                                    <img src={require('../../images/LogoIntroduction/3/Town.png')} alt="" />
+                                                </div>
+                                            ) : (null)}
+                                        </div>
+                                        <div className="button button3">
+                                            <img className="name" onClick={() => this.handleThirdPageMenuClick("HuaRuinShenZhungWan")} src={(this.state.activatingMenu === "HuaRuinShenZhungWan") ? (require('../../images/LogoIntroduction/3/btn/down/HuaRuinShenZhungWan.png')) : (require('../../images/LogoIntroduction/3/btn/up/HuaRuinShenZhungWan.png'))} alt="" />
+                                            {/* 點按鈕顯現的圖片 */}
+                                            {(this.state.activatingMenu === "HuaRuinShenZhungWan") ? (
+                                                <div className="detailContainer">
+                                                    <img src={require('../../images/LogoIntroduction/3/Bay.png')} alt="" />
+                                                </div>
+                                            ) : (null)}
+                                        </div>
 
                                     </div>
                                 </div>
@@ -398,6 +425,74 @@ class LogoIntroduction extends React.Component {
                         this.mount = mount;
                     }}
                 /> */}
+
+                {/* 右側選單 */}
+                <div className="pager">
+                    <ul>
+
+                        <li className={(this.state.currentPageIndex === 1) ? ("active") : ("")} onClick={() => this.handlePagerClick(1)}>
+                            {/* <div className="pageNumberContainer">
+            <div className="number">01</div>
+          </div> */}
+                            <div className="pageName">
+                                <div className="text">华润集团</div>
+                            </div>
+                            <div className="pageIndicator"></div>
+                        </li>
+
+                        <li className={(this.state.currentPageIndex === 2) ? ("active") : ("")} onClick={() => this.handlePagerClick(2)}>
+                            {/* <div className="pageNumberContainer">
+            <div className="number">02</div>
+          </div> */}
+                            <div className="pageName">
+                                <div className="text">华润置地</div>
+                            </div>
+                            <div className="pageIndicator"></div>
+                        </li>
+
+                        <li className={(this.state.currentPageIndex === 3) ? ("active") : ("")} onClick={() => this.handlePagerClick(3)}>
+                            {/* <div className="pageNumberContainer">
+            <div className="number">03</div>
+          </div> */}
+                            <div className="pageName">
+                                <div className="text">华润华南</div>
+                            </div>
+                            <div className="pageIndicator"></div>
+                        </li>
+
+                        <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+                            {/* <div className="pageNumberContainer">
+            <div className="number">04</div>
+          </div> */}
+                            <div className="pageName">
+                                <div className="text">华润东莞</div>
+                            </div>
+                            <div className="pageIndicator"></div>
+                        </li>
+
+                        {/* <li className={(this.state.currentPageIndex === 4) ? ("active") : ("")} onClick={() => this.handlePagerClick(4)}>
+              <div className="pageNumberContainer">
+                <div className="number">04</div>
+              </div>
+              <div className="pageName">
+                <div className="text">房屋配套</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li>
+
+            <li className={(this.state.currentPageIndex === 5) ? ("active") : ("")} onClick={() => this.handlePagerClick(5)}>
+              <div className="pageNumberContainer">
+                <div className="number">05</div>
+              </div>
+              <div className="pageName">
+                <div className="text">房屋本体</div>
+              </div>
+              <div className="pageIndicator"></div>
+            </li> */}
+
+                    </ul>
+                </div>
+
 
                 {/* <div className="pager">
                     <ul>

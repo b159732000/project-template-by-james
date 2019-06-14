@@ -1,0 +1,316 @@
+@import "../../variables.scss";
+.componentChangeCSSTransition-enter {
+  .swiper-container {
+    overflow: visible !important;
+    .swiper-wrapper {
+      transform: translate(0, -20%);
+      opacity: 0;
+    }
+    .swiper-pagination {
+      transform: translate(-50%, 500%);
+      opacity: 0;
+    }
+  }
+}
+.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+  .swiper-container {
+    overflow: visible !important;
+    .swiper-wrapper {
+      transform: translate(0, 0);
+      opacity: 1;
+      transition: all 1.5s $PrimaryTimeFunction 1.2s;
+    }
+    .swiper-pagination {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      transition: all 1.2s $PrimaryTimeFunction 1.2s;
+    }
+  }
+}
+.componentChangeCSSTransition-enter-done {
+  .swiper-container {
+  }
+}
+.componentChangeCSSTransition-exit {
+  background-color: transparent;
+  pointer-events: none;
+}
+.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+  // opacity: 0;
+  transition: all 0.6s $PrimaryTimeFunction;
+  .swiper-container {
+    .swiper-wrapper {
+      transform: translate(0, -15%);
+      opacity: 0;
+      transition: all 0.6s $PrimaryTimeFunction 0.2s;
+    }
+    .swiper-pagination {
+      transform: translate(-50%, 100%);
+      opacity: 0;
+      transition: all 0.6s $PrimaryTimeFunction 0.4s;
+    }
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  // bottom: 7%;
+  position: absolute;
+  .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+    .swiper-slide {
+      height: 100%;
+      &:nth-child(1) {
+        background: url("../../images/Xmjs/1.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(2) {
+        background: url("../../images/Xmjs/2.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(3) {
+        background: url("../../images/Xmjs/3.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(4) {
+        background: url("../../images/Xmjs/4.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(5) {
+        background: url("../../images/Xmjs/5.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(6) {
+        background: url("../../images/Xmjs/6.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(7) {
+        background: url("../../images/Xmjs/7.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(8) {
+        background: url("../../images/Xmjs/8.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(9) {
+        background: url("../../images/Xmjs/9.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(10) {
+        background: url("../../images/Xmjs/10.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(11) {
+        background: url("../../images/Xmjs/11.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(12) {
+        background: url("../../images/Xmjs/12.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(13) {
+        background: url("../../images/Xmjs/13.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(14) {
+        background: url("../../images/Xmjs/14.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(15) {
+        background: url("../../images/Xmjs/15.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(16) {
+        background: url("../../images/Xmjs/16.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(17) {
+        background: url("../../images/Xmjs/17.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(18) {
+        background: url("../../images/Xmjs/18.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(19) {
+        background: url("../../images/Xmjs/19.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(20) {
+        background: url("../../images/Xmjs/20.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(21) {
+        background: url("../../images/Xmjs/21.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(22) {
+        background: url("../../images/Xmjs/22.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(23) {
+        background: url("../../images/Xmjs/23.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(24) {
+        background: url("../../images/Xmjs/24.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(25) {
+        background: url("../../images/Xmjs/25.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(26) {
+        background: url("../../images/Xmjs/26.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(27) {
+        background: url("../../images/Xmjs/27.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(28) {
+        background: url("../../images/Xmjs/28.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(29) {
+        background: url("../../images/Xmjs/29.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(30) {
+        background: url("../../images/Xmjs/30.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(31) {
+        background: url("../../images/Xmjs/31.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(32) {
+        background: url("../../images/Xmjs/32.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(33) {
+        background: url("../../images/Xmjs/33.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(34) {
+        background: url("../../images/Xmjs/34.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(35) {
+        background: url("../../images/Xmjs/35.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(36) {
+        background: url("../../images/Xmjs/36.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(37) {
+        background: url("../../images/Xmjs/37.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(38) {
+        background: url("../../images/Xmjs/38.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(39) {
+        background: url("../../images/Xmjs/39.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(40) {
+        background: url("../../images/Xmjs/40.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(41) {
+        background: url("../../images/Xmjs/41.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+      &:nth-child(42) {
+        background: url("../../images/Xmjs/42.jpg") no-repeat center;
+        -webkit-background-size: auto 100%;
+        background-size: auto 100%;
+      }
+    }
+  }
+  .swiper-pagination {
+    //pagination容器
+    // border: 1px solid #000;
+    // display: block;
+    // height: 80px !important;
+    // width: 20px !important;
+    // position: fixed;
+    // top: 45%;
+    // right: 15%;
+    .swiper-pagination-bullet {
+      //pagination指示點的本體
+      // background-color: $PrimaryWhite;
+      // width: 8px;
+      // height: 8px;
+      // position: absolute;
+      // top: 50%;
+      // height: 50%;
+    }
+    .swiper-pagination-bullet-active {
+      //pagination顯示在畫面上的指示點們
+      background-color: darken($PrimaryWhite, 30%);
+      // background-color: lignten( $PrimaryWhite, 30%);
+      .swiper-pagination-bullet-active-main {
+        //pagination當前頁面的指示點
+      }
+      .swiper-pagination-bullet-active-next {
+        //pagination下一個指示點
+      }
+      .swiper-pagination-bullet-active-next-next {
+        //pagination下下一個指示點
+      }
+      .swiper-pagination-bullet-active-prev {
+        //pagination上一個指示點
+      }
+      .swiper-pagination-bullet-active-prev-prev {
+        //pagination上上一個指示點
+      }
+    }
+  }
+}

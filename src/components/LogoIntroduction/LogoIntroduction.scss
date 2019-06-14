@@ -8,12 +8,63 @@
   top: 0;
   left: 0;
 
+  // 這一段動畫應該沒有用到
   &.componentChangeCSSTransition-enter {
     opacity: 0;
   }
   &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
     opacity: 1;
     transition: all 2s $PrimaryTimeFunction 0s;
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+    opacity: 0;
+    transition: all 0.6s $PrimaryTimeFunction;
+  }
+
+  // 進出此頁(品牌介紹)的動畫
+  &.componentChangeCSSTransition-enter {
+    opacity: 0;
+    // 上半部文字
+    .upperText {
+      opacity: 0;
+      transform: translate(0, 70%);
+    }
+    // 中段圖片
+    .bottomCirclesPositioner {
+      opacity: 0;
+      transform: translate(0, 30%);
+    }
+    // 底部menu列
+    .pager {
+      opacity: 0;
+      transform: translate(-50%, 100%);
+    }
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+    opacity: 1;
+    transition: all 2s $PrimaryTimeFunction 0s;
+    // 上半部文字
+    .upperText {
+      opacity: 1;
+      transform: translate(0, 0);
+      transition: all 2s $PrimaryTimeFunction 0.5s;
+    }
+    // 中段圖片
+    .bottomCirclesPositioner {
+      opacity: 1;
+      transform: translate(0, 0);
+      transition: all 2s $PrimaryTimeFunction 0.7s;
+    }
+    // 底部menu列
+    .pager {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      transition: all 2s $PrimaryTimeFunction 1.3s;
+    }
   }
   &.componentChangeCSSTransition-exit {
     background-color: transparent;
@@ -37,13 +88,21 @@
       height: 100%;
       padding-top: 10vh;
       z-index: 10;
+
+      opacity: 1;
+      transition: all 0.5s $PrimaryTimeFunction 0s;
+      pointer-events: none;
+
+      // 在此等於hidden，因為要做動畫所以棄用display
       &.noDisplay {
-        display: none;
+        // display: none;
+        opacity: 0;
+        transition: all 0.5s $PrimaryTimeFunction 0s;
+        pointer-events: none;
       }
 
       // 品牌介紹第一頁
       &.logoInstruction1 {
-        border: 1px solid red;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -51,7 +110,7 @@
           height: 100%;
           width: 100%;
           position: relative;
-          padding: 0 5.5vw;
+          padding: 0 5.5vw 50px 5.5vw;
           // 上半部的文字
           .upperText {
             width: 100%;
@@ -161,7 +220,7 @@
           height: 100%;
           width: 100%;
           position: relative;
-          padding: 0 5.5vw;
+          padding: 0 5.5vw 50px 5.5vw;
           // 頂部文字
           .upperTextContainer {
             width: 100%;
@@ -770,7 +829,7 @@
           height: 100%;
           width: 100%;
           position: relative;
-          padding: 0 5.5vw;
+          padding: 0 5.5vw 50px 5.5vw;
 
           // 頂部文字
           .upperTextContainer {
@@ -861,6 +920,7 @@
 
           // 螢幕底部三個按鈕
           .bottomButtonContainer {
+            position: relative;
             height: 25%;
             .logo {
               height: 25%;
@@ -872,8 +932,23 @@
             }
             .button {
               height: 25%;
-              img {
+              .name {
                 height: 90%;
+              }
+              // 點按鈕顯現的圖片
+              .detailContainer {
+                position: absolute;
+                top: 10%;
+                height: 100%;
+                width: 55%;
+                left: 45%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img {
+                  max-height: 100%;
+                  max-width: 100%;
+                }
               }
             }
           }
@@ -888,7 +963,9 @@
           height: 100%;
           width: 100%;
           position: relative;
-          padding: 0 5.5vw;
+          padding: 0 5.5vw 50px 5.5vw;
+          display: flex;
+          justify-content: center;
           img {
             max-width: 100%;
             max-height: 100%;
@@ -951,22 +1028,26 @@
   }
 
   .pager {
-    // border: 1px solid red;
+    // background-image: linear-gradient(to left, #404749, transparent);
     position: absolute;
-    width: 150px;
-    height: 500px;
-    bottom: 10%;
-    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
     z-index: 15;
+    padding-top: 10px;
     ul {
       // border: 1px solid white;
       height: 100%;
       width: 100%;
       li {
         // border: 1px solid green;
-        height: 20%;
-        display: flex;
-        padding: 2%;
+        width: 25%;
+        height: 100%;
+        display: inline-block;
+        padding: 0%;
 
         &.active {
           .pageNumberContainer {
@@ -1002,32 +1083,36 @@
             // transform: scale(0.9, 0.9);
             opacity: 0.6;
             // color: $PrimaryRed;
-            color: $PrimaryWhite;
+            color: $PrimaryBlack;
             font-size: 1.5rem;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
             // font-weight: 800;
           }
         }
+        // 文字
         .pageName {
           // border: 1px solid blue;
-          width: 25%;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center; //水平
           .text {
             // border: 1px solid white;
+            font-weight: bold;
             font-size: 1rem;
             opacity: 0.6;
             font-family: "Noto Sans TC", sans-serif;
-            color: $PrimaryWhite;
-            writing-mode: vertical-rl; //將整行文字垂直書寫
+            color: $PrimaryBlack;
+            // writing-mode: vertical-rl; //將整行文字垂直書寫
             text-orientation: mixed;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
           }
         }
+        // 指示
         .pageIndicator {
           // border: 1px solid blue;
-          width: 10%;
+          width: 100%;
+          height: 30%;
           position: relative;
           display: flex;
           align-items: center;
@@ -1036,11 +1121,11 @@
             content: "";
             position: relative;
             display: block;
-            // background-color: darken( $PrimaryWhite, 40%);
-            background-color: $PrimaryWhite;
+            // background-color: darken( $PrimaryBlack, 40%);
+            background-color: $PrimaryBlack;
             opacity: 0.3;
-            height: 100%;
-            width: 30%;
+            height: 30%;
+            width: 90%;
             transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
           }
         }
