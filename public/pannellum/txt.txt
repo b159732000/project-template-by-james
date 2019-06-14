@@ -1,1 +1,7 @@
-py "D:\Desktop\pannellum\generate.py" "D:\Desktop\pannellum\AreaMainPano.jpg" -nona "C:\Program Files\Hugin\bin\nona.exe"
+以下稱.py所在資料夾為 $父 資料夾
+
+- 把 $父>output 資料夾刪掉
+- 將要用的img放進 $父
+- 打開Windows PowerShell
+- 用cd打開.py所在資料夾 (若在d槽輸入 cd d: )
+- 執行.py: 輸入 py generate.py "D:\Desktop\pannellum\ThridFloorCloadRoom.jpg" --nona "C:\Program Files\Hugin\bin\nona.exe"

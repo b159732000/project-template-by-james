@@ -130,7 +130,7 @@ class JghxBuilding extends React.Component {
                     <div className="backButtonPositioner">
                         <Link to="/james/project-template-by-james/Jghx">
                             <div className="backButton">
-                                <div className="text">返回落位图</div>
+                            <img src={require('../../images/Jghx/BackLastPageIcon.png')} alt="" />
                             </div>
                         </Link>
                     </div>

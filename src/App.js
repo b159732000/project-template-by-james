@@ -21,6 +21,7 @@ import MountainMoon from './components/MountainMoon/MountainMoon.jsx';
 import MountainRiver from './components/MountainRiver/MountainRiver.jsx';
 import JghxBuilding from './components/JghxBuilding/JghxBuilding.jsx';
 import ImageSequence from './components/ImageSequence/ImageSequence.jsx';
+import JghxPannellum from './components/JghxPannellum/JghxPannellum.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -126,6 +127,7 @@ class App extends React.Component {
                     <Route path="/james/project-template-by-james/MountainMoon" component={MountainMoon}></Route>
                     <Route path="/james/project-template-by-james/MountainRiver" component={MountainRiver}></Route>
                     <Route path="/james/project-template-by-james/JghxBuilding" component={JghxBuilding}></Route>
+                    <Route path="/james/project-template-by-james/JghxPannellum" component={JghxPannellum}></Route>
                   </Switch>
                 </CSSTransition>
                 {/*</ReactTransitionGroup>*/}

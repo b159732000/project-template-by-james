@@ -1,0 +1,43 @@
+@import "../../variables.scss";
+
+.JghxPannellumContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $PrimaryWhite;
+  &.componentChangeCSSTransition-enter {
+    opacity: 0;
+  }
+  &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+    opacity: 1;
+    transition: all 2s $PrimaryTimeFunction 0s;
+  }
+  &.componentChangeCSSTransition-exit {
+    background-color: transparent;
+    pointer-events: none;
+  }
+  &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+    opacity: 0;
+    transition: all 0.6s $PrimaryTimeFunction;
+  }
+
+  .button1 {
+    position: fixed;
+    top: 150px;
+    left: 150px;
+    width: 80px;
+    height: 80px;
+    z-index: 100001;
+  }
+
+  .panorama {
+    .circleSceneHotspot1 {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+  }
+
+}

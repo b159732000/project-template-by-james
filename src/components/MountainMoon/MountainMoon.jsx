@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
 import './MountainMoon.scss';
 import ImageSequence from '../ImageSequence/ImageSequence.jsx';
+import ImageSequenceCombine from '../ImageSequenceMountainMoonCombine/ImageSequenceMountainMoonCombine.jsx';
+import ImageSequenceFirst from '../ImageSequenceMountainMoonFirst/ImageSequenceMountainMoonFirst.jsx';
+import ImageSequenceSecond from '../ImageSequenceMountainMoonSecond/ImageSequenceMountainMoonSecond.jsx';
+import ImageSequenceThird from '../ImageSequenceMountainMoonThird/ImageSequenceMountainMoonThird.jsx';
 
 class MountainMoon extends React.Component {
     constructor(props) {
         super(props);
         this.updateWhenScroll = this.updateWhenScroll.bind(this);
         this.state = {
-            combineOrSplit: 'combine',  //目前是結合or拆分
+            combineOrSplit: 'combine',  //目前是結合or拆分 (combine, split)
             currentActiveFloor: 1,  //拆分時，目前瀏覽的樓層
             showBackToTopIcon: false,   //是否顯示回到頂端的按鈕
         }
@@ -51,6 +55,11 @@ class MountainMoon extends React.Component {
     // 拆分和合併按鈕按下時
     handleCombineOrSplitButtonClick(combineOrSplit) {
         this.changeCombineOrSplitTo(combineOrSplit);
+
+        // 將樓層預設回1樓
+        this.setState({
+            currentActiveFloor: 1
+        })
     }
 
     // 按下樓層按鈕 (樓層按鈕為拆分狀態才顯示)
@@ -79,6 +88,37 @@ class MountainMoon extends React.Component {
         Scroll.animateScroll.scrollToTop();
     }
 
+    // 決定顯示的序列禎
+    desideImageSequenceShowing() {
+        switch (this.state.combineOrSplit + this.state.currentActiveFloor) {
+            case 'combine1':
+                return (
+                    <ImageSequenceCombine></ImageSequenceCombine>
+                );
+                break;
+            case 'split1':
+                return (
+                    <ImageSequenceFirst></ImageSequenceFirst>
+                );
+
+                break;
+            case 'split2':
+                return (
+                    <ImageSequenceSecond></ImageSequenceSecond>
+                );
+
+                break;
+            case 'split3':
+                return (
+                    <ImageSequenceThird></ImageSequenceThird>
+                );
+                break;
+
+            default:
+                break;
+        }
+    }
+
     render() {
         return (
             <div className="MountainMoonContainer">
@@ -103,7 +143,14 @@ class MountainMoon extends React.Component {
 
                     {/* gif圖 */}
                     <div className="showRoomPositioner">
-                        <ImageSequence></ImageSequence>
+
+                        {/* 合併、拆分1樓、拆分2樓、拆分3樓 */}
+                        {/* <ImageSequenceCombine></ImageSequenceCombine>
+                        <ImageSequenceFirst></ImageSequenceFirst>
+                        <ImageSequenceSecond></ImageSequenceSecond>
+                        <ImageSequenceThird></ImageSequenceThird> */}
+                        {this.desideImageSequenceShowing()}
+
                     </div>
 
                     {/* 按鈕們 */}
@@ -143,7 +190,7 @@ class MountainMoon extends React.Component {
 
                     {/* 平面尺寸文字 */}
                     <div className={(this.state.combineOrSplit === "combine") ? ("sizePictureTitlePositioner") : ("sizePictureTitlePositioner hidden")}>
-                        <img src={require('../../images/Jghx/HouseStyle/Villa/MountainMoon/SizePictureTitle.png')} alt=""/>
+                        <img src={require('../../images/Jghx/HouseStyle/Villa/MountainMoon/SizePictureTitle.png')} alt="" />
                     </div>
 
                     {/* 樓層一圖+字 */}
@@ -177,7 +224,7 @@ class MountainMoon extends React.Component {
                     </div>
 
                     {/* 返回頂部按鈕 */}
-                    <div onClick={()=>this.handleBackToTopIconClick()} className={(this.state.showBackToTopIcon) ? ("backToTopIconContainer") : ("backToTopIconContainer hidden")} ref={self => this.backToTopIcon = self}>
+                    <div onClick={() => this.handleBackToTopIconClick()} className={(this.state.showBackToTopIcon) ? ("backToTopIconContainer") : ("backToTopIconContainer hidden")} ref={self => this.backToTopIcon = self}>
                         {/* <div className="backToTopIconContainer" ref={self=>this.backToTopIcon = self}> */}
                         <img src={require('../../images/Jghx/BackToTop.png')} alt="" />
                     </div>

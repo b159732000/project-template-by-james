@@ -12,6 +12,99 @@
   transition: all 0.5s $PrimaryTimeFunction 0s;
   // height: 2247px;
 
+    // 進出此頁(品牌介紹)的動畫
+    &.componentChangeCSSTransition-enter {
+      opacity: 0;
+      // 返回落位圖Icon
+      .backButtonPositione {
+        opacity: 0;
+        transform: translate(0, 100%);
+      }
+      // 山月院標題
+      .topTextPositioner {
+        opacity: 0;
+        transform: translate(0, 100%);
+      }
+      // gif區
+      .showRoomPositioner {
+        opacity: 0;
+        transform: translate(0, 20%);
+      }
+      // 拆分按鈕
+      .buttonPositioner {
+        opacity: 0;
+        transform: translate(0, 100%);
+      }
+      // 平面尺寸標題
+      .sizePictureTitlePositioner {
+        opacity: 0;
+        transform: translate(0, 100%);
+      }
+      // 平面尺寸圖
+      .floor1Positioner,
+      .floor2Positioner,
+      .floor3Positioner {
+        opacity: 0;
+        transform: translate(0, 100%);
+      }
+    }
+    &.componentChangeCSSTransition-enter.componentChangeCSSTransition-enter-active {
+      opacity: 1;
+      transition: all 2s $PrimaryTimeFunction 0s;
+      // 第一個動畫延遲秒數
+      $MountainMoonFirstAnimationDelay: 0.3s;
+      // 之後每個動畫的間隔秒數
+      $MountainMoonEachAnimationDelay: 0s;
+      // 每一個動畫持續的秒數
+      $MountainMoonAnimationDuration: 2s;
+      // 返回落位圖Icon
+      .backButtonPositione {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay;
+        transform: translate(0, 0);
+      }
+      // 山月院標題
+      .topTextPositioner {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*1;
+        transform: translate(0, 0);
+      }
+      // gif區
+      .showRoomPositioner {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*2;
+        transform: translate(0, 0);
+      }
+      // 拆分按鈕
+      .buttonPositioner {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*3;
+        transform: translate(0, 0);
+      }
+      // 平面尺寸標題
+      .sizePictureTitlePositioner {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*4;
+        transform: translate(0, 0);
+      }
+      // 平面尺寸圖
+      .floor1Positioner,
+      .floor2Positioner,
+      .floor3Positioner {
+        opacity: 1;
+        transition: all $MountainMoonAnimationDuration $PrimaryTimeFunction $MountainMoonFirstAnimationDelay+$MountainMoonEachAnimationDelay*5;
+        transform: translate(0, 0);
+      }
+    }
+    &.componentChangeCSSTransition-exit {
+      background-color: transparent;
+      pointer-events: none;
+    }
+    &.componentChangeCSSTransition-exit.componentChangeCSSTransition-exit-active {
+      opacity: 0;
+      transition: all 0.6s $PrimaryTimeFunction;
+    }
+
   .bg {
     width: 100%;
     z-index: -10;
@@ -46,12 +139,15 @@
         height: 7vw;
         right: 0;
         position: absolute;
-        background-color: #7cb3b9;
-        border-top-left-radius: 3vw; //寬高
-        border-bottom-left-radius: 3vw;
+        // background-color: #7cb3b9;
+        // border-top-left-radius: 3vw; //寬高
+        // border-bottom-left-radius: 3vw;
         .text {
           font-size: 4vw;
           font-weight: 700;
+        }
+        img {
+          height: 100%;
         }
       }
     }
