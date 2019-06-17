@@ -185,6 +185,14 @@
         transition: all 0.5s $PrimaryTimeFunction 0s;
       }
 
+      // 這是Link，其中包含全景看房按鈕
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
       .splitBtn {
         height: 75%;
         margin-right: 2%;

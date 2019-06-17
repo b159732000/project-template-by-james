@@ -164,7 +164,9 @@ class MountainMoon extends React.Component {
                             {/* 結合按鈕 */}
                             <img onClick={() => this.handleCombineOrSplitButtonClick('combine')} className="splitBtn" src={require('../../images/Jghx/HouseStyle/Villa/MountainMoon/btn/Combine.png')} alt="" />
                             {/* 全景按鈕 */}
-                            <img className="splitBtn" src={require('../../images/Jghx/HouseStyle/Villa/MountainMoon/btn/FullPannellum.png')} alt="" />
+                            <Link to="/james/project-template-by-james/JghxPannellum">
+                                <img className="splitBtn" src={require('../../images/Jghx/HouseStyle/Villa/MountainMoon/btn/FullPannellum.png')} alt="" />
+                            </Link>
                         </div>
 
                         {/* 當前為拆分時顯示的樓層按鈕 */}

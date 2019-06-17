@@ -32,11 +32,45 @@
     z-index: 100001;
   }
 
+  // 全景圖
   .panorama {
+    // 圖中按鈕hotspot
     .circleSceneHotspot1 {
-      width: 50px;
+      width: 70px;
       height: 50px;
-      background-color: red;
+      // background-color: red;
+      background-image: url('../../images/Jghx/Pannellum/DoubleFrontArrow.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      // hotspot上的文字方塊
+      &.custom-tooltip {
+        span {
+          visibility: visible;
+          position: absolute;
+          border-radius: 3px;
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          text-align: center;
+          max-height: 1rem;
+          max-width: 200px;
+          padding: 5px 10px;
+          margin-left: -220px;
+          cursor: default;
+          // 文字方塊下的小箭頭
+          // &:after {
+          //   content: '';
+          //   position: absolute;
+          //   width: 0;
+          //   height: 0;
+          //   border-width: 10px;
+          //   border-style: solid;
+          //   border-color: #fff transparent transparent transparent;
+          //   bottom: -20px;
+          //   left: -10px;
+          //   margin: 0 50%;
+          // }
+        }
+      }
     }
   }
 
