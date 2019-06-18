@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { openMenu, closeMenu } from './actions/actions.js'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Traffic from './components/Traffic/Traffic.jsx';
-import LoadingPage from './components/LoadingPage/LoadingPage.jsx';
+// import LoadingPage from './components/LoadingPage/LoadingPage.jsx';    //Three.js紅色方塊畫面
 import GardenTraveling from './components/GardenTraveling/GardenTraveling.jsx';
 import AerialView from './components/AerialView/AerialView.jsx';
 import FullpageVideoPlayer from './components/FullpageVideoPlayer/FullpageVideoPlayer.jsx';
@@ -22,6 +22,7 @@ import MountainRiver from './components/MountainRiver/MountainRiver.jsx';
 import JghxBuilding from './components/JghxBuilding/JghxBuilding.jsx';
 import ImageSequence from './components/ImageSequence/ImageSequence.jsx';
 import JghxPannellum from './components/JghxPannellum/JghxPannellum.jsx';
+import GardenTravelingFullpageVideoPlayer from './components/GardenTravelingFullpageVideoPlayer/GardenTravelingFullpageVideoPlayer.jsx';
 // import ReactTransitionGroup from 'react-addons-transition-group'
 
 // 將接收到的state(包含在store內)放為本頁的state
@@ -82,7 +83,7 @@ class App extends React.Component {
         <div className={"blackCover" + ((this.props.menuIsOpen) ? " menuIsActive" : "")}></div>
 
         <BrowserRouter>   {/* BrowserRouter底下的每一個Route，都會有match,location,history三個props */}
-          <Route path="/james/project-template-by-james/" exact component={LoadingPage}></Route>
+          <Route path="/james/project-template-by-james/" exact component={LogoIntroduction}></Route>
           <Route render={({ location }) => (
             <div className="mainRouteContainer">
 
@@ -123,6 +124,7 @@ class App extends React.Component {
                     <Route path="/james/project-template-by-james/GardenTraveling" component={GardenTraveling}></Route>
                     <Route path="/james/project-template-by-james/AerialView" component={AerialView}></Route>
                     <Route path="/james/project-template-by-james/FullpageVideoPlayer" component={FullpageVideoPlayer}></Route>
+                    <Route path="/james/project-template-by-james/GardenTravelingFullpageVideoPlayer" component={GardenTravelingFullpageVideoPlayer}></Route>
                     <Route path="/james/project-template-by-james/Jghx" component={Jghx}></Route>
                     <Route path="/james/project-template-by-james/MountainMoon" component={MountainMoon}></Route>
                     <Route path="/james/project-template-by-james/MountainRiver" component={MountainRiver}></Route>

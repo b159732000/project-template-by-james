@@ -36,10 +36,9 @@ class Traffic extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      // this.Page2InnerContainer.scrollTo(500, 0);
-    }, 1000);
-    
+    // setTimeout(() => {
+    //   // this.Page2InnerContainer.scrollTo(500, 0);
+    // }, 1000);
     this.moveDOMNodeToViewPortCenter();
   }
 
@@ -206,17 +205,38 @@ class Traffic extends React.Component {
     // dot1DOMNode  塘廈站紅點
     switch (this.state.currentPageIndex) {
       case 1:
-        thisPageWidth = this.firstTrafficBg.clientWidth;
-        this.firstContainer.scrollTo(thisPageWidth * 0.35, 0);
+        if (this.firstTrafficBg.clientWidth === 0) {
+          setTimeout(() => {
+            thisPageWidth = this.firstTrafficBg.clientWidth;
+            this.firstContainer.scrollTo(thisPageWidth * 0.35, 0);
+          }, 500);
+        } else {
+          thisPageWidth = this.firstTrafficBg.clientWidth;
+          this.firstContainer.scrollTo(thisPageWidth * 0.35, 0);
+        }
         break;
       case 2:
-        thisPageWidth = this.secondTrafficBg.clientWidth;
-        this.secondContainer.scrollTo(thisPageWidth * 0.32, 0);
+        if (this.secondTrafficBg.clientWidth === 0) {
+          setTimeout(() => {
+            thisPageWidth = this.secondTrafficBg.clientWidth;
+            this.secondContainer.scrollTo(thisPageWidth * 0.32, 0);
+          }, 500);
+        } else {
+          thisPageWidth = this.secondTrafficBg.clientWidth;
+          this.secondContainer.scrollTo(thisPageWidth * 0.32, 0);
+        }
         // this.dot1DOMNode.scrollTo(centerX, centerY);
         break;
       case 3:
-        thisPageWidth = this.thirdTrafficBg.clientWidth;
-        this.thirdContainer.scrollTo(thisPageWidth * 0.3, 0);
+        if (this.thirdTrafficBg.clientWidth === 0) {
+          setTimeout(() => {
+            thisPageWidth = this.thirdTrafficBg.clientWidth;
+            this.thirdContainer.scrollTo(thisPageWidth * 0.3, 0);
+          }, 500);
+        } else {
+          thisPageWidth = this.thirdTrafficBg.clientWidth;
+          this.thirdContainer.scrollTo(thisPageWidth * 0.3, 0);
+        }
         // this.travelParkDOMNode.scrollTo(centerX, centerY);
         break;
       default:
@@ -292,6 +312,7 @@ class Traffic extends React.Component {
                   <img className="dot dot1" ref={self => this.dot1DOMNode = self} src={require('../../images/Traffic/SecondLevel/dot.png')} alt=""></img>
                   {/* 深圳北紅點 */}
                   <img className="dot dot2" src={require('../../images/Traffic/SecondLevel/dot.png')} alt=""></img>
+                  {/* 地名 */}
                   <img className="logo" src={require('../../images/Traffic/SecondLevel/LOGO.png')} alt=""></img>
                   <img className="location GuangZhou" src={require('../../images/Traffic/SecondLevel/Area/GuangZhou.png')} alt=""></img>
                   <img className="location HongKong" src={require('../../images/Traffic/SecondLevel/Area/HongKong.png')} alt=""></img>

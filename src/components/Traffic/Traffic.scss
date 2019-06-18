@@ -1,6 +1,26 @@
 @import "../../variables.scss";
 
 .TrafficContainer {
+  // 交通樞紐大園轉圈
+  @keyframes bigLakeAreaStrokeAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  // 鐵路顯示隱藏
+  @keyframes dotShowingAndHideAnimation {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   &.componentChangeCSSTransition-enter {
     opacity: 0;
   }
@@ -142,7 +162,9 @@
           top: 15vh;
           left: 9vh;
           z-index: 110;
+          animation: bigLakeAreaStrokeAnimation 25s infinite linear;
         }
+
         // 小圓
         .oneHourAreaStroke {
           height: 60vh;
@@ -213,14 +235,17 @@
           height: 7.5%;
           z-index: 106;
         }
+        // 鐵軌
         .Railway {
           position: absolute;
           top: -3vh;
           left: 58vh;
           height: 64.5%;
           z-index: 106;
+          animation: dotShowingAndHideAnimation 1s infinite alternate;
         }
         .dot {
+          animation: dotShowingAndHideAnimation 1s infinite alternate;
           &.dot1 {
             position: absolute;
             top: 40.5vh;

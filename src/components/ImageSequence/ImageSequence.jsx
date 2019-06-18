@@ -25,6 +25,8 @@ class ImageSequence extends React.Component {
             imageNameStartNumber: 0,                //第一張圖片名稱的數字
             imagesFormat: ".png",                   // 圖片格式
             fingerMoveDistanceToChangeImage: 1,    //手指每滑過多遠距離(x軸)就換一張圖片
+            autoPlay: false,                         //自動播放是否啟用
+            changeImageRotateDirection: true,      //是否改變圖片旋轉方向 (預設: false 左滑上一張，右滑下一張)
 
             // 不用手動設定的
             startShowingImageSequence: false,       //是否開始載入所有圖片
@@ -52,6 +54,11 @@ class ImageSequence extends React.Component {
 
     componentDidMount() {
         this._isMounted = true;
+
+        // 自動播放若啟用，則執行撥放
+        if (this.state.autoPlay) {
+            this.handlePlayButtonClick();
+        }
     }
     componentWillUnmount() {
         if (this.requestID !== null) {
@@ -119,45 +126,93 @@ class ImageSequence extends React.Component {
     // 滑鼠滑動時觸發(未做)
     handleTouchMove(event) {
 
-        // 檢查手指是往左/右滑動，然後按方向加減圖片顯示第幾張
-        if (event.touches[0].screenX - this.state.thisTimeTouch.startX < 0) {  //往左滑，換上一張
-
-            // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
-            if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
-                this.setState({
-                    thisTimeTouch: {
-                        ...this.state.thisTimeTouch,
-                        startX: event.touches[0].screenX,
+        // 按照this.state，設定手指滑動方向是要切換上一張或下一張
+        if (this.state.changeImageRotateDirection) {
+            
+            // 檢查手指是往左/右滑動，然後按方向加減圖片顯示第幾張
+            if (event.touches[0].screenX - this.state.thisTimeTouch.startX > 0) {  //往右滑，換上一張
+    
+                // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
+                if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
+                    this.setState({
+                        thisTimeTouch: {
+                            ...this.state.thisTimeTouch,
+                            startX: event.touches[0].screenX,
+                        }
+                    })
+                    let imageNumber = (this.state.currentShowingImage - 1);
+                    if (imageNumber <= 0) {
+                        imageNumber = this.state.totalImagesNumber;
                     }
-                })
-                let imageNumber = (this.state.currentShowingImage - 1);
-                if (imageNumber <= 0) {
-                    imageNumber = this.state.totalImagesNumber;
+                    this.setCurrentShowingImageTo(imageNumber);
                 }
-                this.setCurrentShowingImageTo(imageNumber);
+    
+            } else if (event.touches[0].screenX - this.state.thisTimeTouch.startX < 0) {  //往左滑，換下一張
+    
+                // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
+                if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
+                    this.setState({
+                        thisTimeTouch: {
+                            ...this.state.thisTimeTouch,
+                            startX: event.touches[0].screenX,
+                        }
+                    })
+                    let imageNumber = (this.state.currentShowingImage + 1);
+                    if (imageNumber > this.state.totalImagesNumber) {
+                        imageNumber = 1;
+                    }
+                    this.setCurrentShowingImageTo(imageNumber);
+                }
+    
             }
 
-        } else if (event.touches[0].screenX - this.state.thisTimeTouch.startX > 0) {  //往右滑，換下一張
-
-            // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
-            if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
-                this.setState({
-                    thisTimeTouch: {
-                        ...this.state.thisTimeTouch,
-                        startX: event.touches[0].screenX,
+        } else if (!this.state.changeImageRotateDirection) {
+            
+            // 檢查手指是往左/右滑動，然後按方向加減圖片顯示第幾張
+            if (event.touches[0].screenX - this.state.thisTimeTouch.startX < 0) {  //往左滑，換上一張
+    
+                // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
+                if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
+                    this.setState({
+                        thisTimeTouch: {
+                            ...this.state.thisTimeTouch,
+                            startX: event.touches[0].screenX,
+                        }
+                    })
+                    let imageNumber = (this.state.currentShowingImage - 1);
+                    if (imageNumber <= 0) {
+                        imageNumber = this.state.totalImagesNumber;
                     }
-                })
-                let imageNumber = (this.state.currentShowingImage + 1);
-                if (imageNumber > this.state.totalImagesNumber) {
-                    imageNumber = 1;
+                    this.setCurrentShowingImageTo(imageNumber);
                 }
-                this.setCurrentShowingImageTo(imageNumber);
+    
+            } else if (event.touches[0].screenX - this.state.thisTimeTouch.startX > 0) {  //往右滑，換下一張
+    
+                // 每滑動npx則顯示前一張 (n是state.fingerMoveDistanceToChangeImage, 手指每滑過多遠距離(x軸)就換一張圖片)
+                if ((event.touches[0].screenX - this.state.thisTimeTouch.startX) % this.state.fingerMoveDistanceToChangeImage === 0) {
+                    this.setState({
+                        thisTimeTouch: {
+                            ...this.state.thisTimeTouch,
+                            startX: event.touches[0].screenX,
+                        }
+                    })
+                    let imageNumber = (this.state.currentShowingImage + 1);
+                    if (imageNumber > this.state.totalImagesNumber) {
+                        imageNumber = 1;
+                    }
+                    this.setCurrentShowingImageTo(imageNumber);
+                }
+    
             }
 
         }
+
+        // 為了讓下一個手指移動的位置跟這次比較
         this.setState({
             thisTimeTouch: {
                 ...this.state.thisTimeTouch,
+                startX: event.touches[0].screenX,
+                startY: event.touches[0].screenY,
             }
         })
     }

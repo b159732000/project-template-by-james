@@ -155,9 +155,12 @@ class ImageSequenceThird extends React.Component {
             }
 
         }
+        // 為了讓下一個手指移動的位置跟這次比較
         this.setState({
             thisTimeTouch: {
                 ...this.state.thisTimeTouch,
+                startX: event.touches[0].screenX,
+                startY: event.touches[0].screenY,
             }
         })
     }

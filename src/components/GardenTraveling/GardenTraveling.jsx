@@ -1,5 +1,6 @@
 import React from 'react';
 import './GardenTraveling.scss';
+import '../GardenTravelingFullpageVideoPlayer/GardenTravelingFullpageVideoPlayer.jsx';
 
 const pannellum = window.pannellum;
 var panorama;
@@ -129,6 +130,8 @@ class GardenTraveling extends React.Component {
                 {/*<button className="button1" onClick={() => this.handleButton1Click()}></button>*/}
 
                 <div className="panorama" ref={self => this.panorama = self}></div>
+
+
             </div>
         )
     }
