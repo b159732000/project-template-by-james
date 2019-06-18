@@ -21,4 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# 圖片影片直接放在oss上
 src/images/View_From_A_Blue_Moon_Trailer-1080p.mp4
+src/images
+public/pannellum

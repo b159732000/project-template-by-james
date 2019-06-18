@@ -21,11 +21,11 @@ class ImageSequenceAerialView extends React.Component {
             imagesBaseUrl: "../../images/AerialView/AerialViewGif/",    //圖片所在的目錄
 
             // 對應不同專案，要在此手動設定的
-            totalImagesNumber: 178,                  //圖片總張數
+            totalImagesNumber: 69,                  //圖片總張數
             imageNameStartNumber: 0,                //第一張圖片名稱的數字
             imagesFormat: ".jpg",                   // 圖片格式
             fingerMoveDistanceToChangeImage: 1,    //手指每滑過多遠距離(x軸)就換一張圖片
-            autoPlay: true,                         //自動播放
+            autoPlay: false,                         //自動播放
             changeImageRotateDirection: true,      //是否改變圖片旋轉方向 (預設: false 左滑上一張，右滑下一張)
 
             // 不用手動設定的
